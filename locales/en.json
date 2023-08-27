@@ -1,1 +1,12 @@
-{}
+{
+  "layout": {
+    "navigation": {
+      "item": {
+        "about": "About Us",
+        "projects": "Projects",
+        "blog": "blog",
+        "join": "Join now!"
+      }
+    }
+  }
+}

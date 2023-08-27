@@ -13,6 +13,19 @@ export default defineNuxtConfig({
   build: {
     transpile: ["vuetify"],
   },
+  css: ["@/assets/main.sass"],
   devtools: { enabled: true },
+  i18n: {
+    locales: [{ code: "en", iso: "en-US", file: "en.json" }],
+    lazy: true,
+    langDir: "./locales",
+    defaultLocale: "en",
+    detectBrowserLanguage: {
+      cookieKey: "lang",
+      useCookie: true,
+      redirectOn: "root",
+      alwaysRedirect: true,
+    },
+  },
   modules: ["@nuxtjs/i18n"],
 });
