@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar color="accent">
+  <v-app-bar color="accent" sticky :absolute="false">
     <v-container>
       <v-row class="align-center">
         <v-app-bar-title class="d-flex align-center justify-start">
