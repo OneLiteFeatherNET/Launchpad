@@ -21,7 +21,6 @@
         </v-btn-toggle>
 
         <v-btn
-          id="join"
           variant="tonal"
           color="secondary"
           class="ml-10"
