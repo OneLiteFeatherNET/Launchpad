@@ -1,5 +1,13 @@
 {
   "layout": {
+    "footer": {
+      "legal": {
+        "title": "Legal notices",
+        "imprint": "Imprint",
+        "privacy": "Privacy Policy"
+      },
+      "association": "NOT AN OFFICIAL MINECRAFT [PRODUCT/SERVICE/EVENT/etc.]. NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT"
+    },
     "navigation": {
       "item": {
         "about": "About Us",

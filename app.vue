@@ -7,6 +7,8 @@
         <NuxtPage />
       </NuxtLayout>
     </div>
+
+    <Footer />
   </v-app>
 </template>
 
