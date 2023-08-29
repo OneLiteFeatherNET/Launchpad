@@ -13,10 +13,18 @@ export default defineNuxtConfig({
   build: {
     transpile: ["vuetify"],
   },
-  css: ["@/assets/main.sass"],
+  css: [
+    "vuetify/styles",
+    "@mdi/font/css/materialdesignicons.min.css",
+    "@/assets/main.sass",
+  ],
   devtools: { enabled: true },
   i18n: {
-    locales: [{ code: "en", iso: "en-US", file: "en.json" }],
+    locales: [
+      { code: "en", iso: "en-US", file: "en.json" },
+      // just for testing purposes
+      { code: "de", iso: "de-DE", file: "de.json" },
+    ],
     lazy: true,
     langDir: "./locales",
     defaultLocale: "en",
@@ -27,5 +35,5 @@ export default defineNuxtConfig({
       alwaysRedirect: true,
     },
   },
-  modules: ["@nuxtjs/i18n"],
+  modules: ["@nuxtjs/i18n", "@vueuse/nuxt", "@nuxtjs/color-mode", "nuxt-icon"],
 });
