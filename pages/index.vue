@@ -1,7 +1,7 @@
 <template>
   <PagesIndexCarousel />
 
-  <v-container style="max-width: 1200px" class="mt-16">
+  <v-container style="max-width: 1200px" class="pt-16 mt-16">
     <!-- TODO WIP: adjust graph-lines -->
     <v-row id="content-cards">
       <v-col cols="12">
@@ -42,39 +42,42 @@
 
 <script setup>
 onMounted(() => {
-  const settings = {
-    dash: true,
-    dropShadow: true,
-    endPlug: "behind",
-    color: "grey",
-  };
+  // only draw the lines, if the client has enough width
+  if (!isXs.value) {
+    const settings = {
+      dash: true,
+      dropShadow: true,
+      endPlug: "behind",
+      color: "grey",
+    };
 
-  new LeaderLine(
-    document.getElementById("start-marker"),
-    document.getElementById("content-card-1"),
-    {
-      startSocket: "bottom",
-      endSocket: "top",
-      path: "magnet",
-      startSocketGravity: [0, -100],
-      ...settings,
-    },
-  );
-  new LeaderLine(
-    document.getElementById("content-card-1"),
-    document.getElementById("content-card-2"),
-    { startSocket: "bottom", ...settings },
-  );
-  new LeaderLine(
-    document.getElementById("content-card-2"),
-    document.getElementById("content-card-3"),
-    { startSocket: "bottom", path: "magnet", ...settings },
-  );
-  new LeaderLine(
-    document.getElementById("content-card-3"),
-    document.getElementById("end-marker"),
-    { startSocket: "bottom", path: "magnet", ...settings },
-  );
+    new LeaderLine(
+      document.getElementById("start-marker"),
+      document.getElementById("content-card-1"),
+      {
+        startSocket: "bottom",
+        endSocket: "right",
+        path: "magnet",
+        startSocketGravity: [0, -100],
+        ...settings,
+      },
+    );
+    new LeaderLine(
+      document.getElementById("content-card-1"),
+      document.getElementById("content-card-2"),
+      { startSocket: "bottom", ...settings },
+    );
+    new LeaderLine(
+      document.getElementById("content-card-2"),
+      document.getElementById("content-card-3"),
+      { startSocket: "bottom", path: "magnet", ...settings },
+    );
+    new LeaderLine(
+      document.getElementById("content-card-3"),
+      document.getElementById("end-marker"),
+      { startSocket: "bottom", path: "magnet", ...settings },
+    );
+  }
 });
 </script>
 
@@ -82,7 +85,7 @@ onMounted(() => {
 #start-marker
   position: absolute
   left: 0
-  top: calc(100vh + 20px)
+  top: calc(100vh + 50px)
   height: 1px
   width: 1px
 
@@ -91,4 +94,18 @@ onMounted(() => {
   width: 1px
   position: absolute
   right: 0
+
+#content-cards
+  @media screen and (max-width: 1400px)
+    .v-col
+      margin-top: 15px !important
+
+    @media screen and (max-width: 600px)
+      justify-content: center
+      align-items: center
+      margin: 0 !important
+
+      .v-col
+        > *
+          float: left !important
 </style>
