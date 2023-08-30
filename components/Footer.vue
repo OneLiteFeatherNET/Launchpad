@@ -46,5 +46,5 @@
 <style lang="sass" scoped>
 .light-mode
   .v-footer
-    background-color: rgb(var(--v-theme-secondary))
+    background-color: rgb(var(--v-theme-surface))
 </style>
