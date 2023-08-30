@@ -17,7 +17,7 @@
     </v-card-text>
 
     <v-card-actions class="float-right">
-      <v-btn variant="tonal">
+      <v-btn variant="tonal" :href="link" target="_blank">
         <Icon name="mdi:github" class="mr-2" />
         GitHub
       </v-btn>
