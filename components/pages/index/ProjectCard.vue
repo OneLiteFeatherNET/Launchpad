@@ -7,7 +7,7 @@
     <v-card-text>
       <v-row>
         <v-col cols="12">
-          <v-img :src="image" alt="" height="250px" cover />
+          <v-img :src="image" alt="" height="250px" cover class="rounded" />
         </v-col>
 
         <v-col cols="12">
