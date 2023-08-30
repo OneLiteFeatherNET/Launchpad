@@ -33,6 +33,8 @@
         >
           {{ $t("pages.index.cards.3") }}
         </PagesIndexContentCard>
+
+        <div id="end-marker" />
       </v-col>
     </v-row>
   </v-container>
@@ -68,6 +70,11 @@ onMounted(() => {
     document.getElementById("content-card-3"),
     { startSocket: "bottom", path: "magnet", ...settings },
   );
+  new LeaderLine(
+    document.getElementById("content-card-3"),
+    document.getElementById("end-marker"),
+    { startSocket: "bottom", path: "magnet", ...settings },
+  );
 });
 </script>
 
@@ -78,4 +85,10 @@ onMounted(() => {
   top: calc(100vh + 20px)
   height: 1px
   width: 1px
+
+#end-marker
+  height: 1px
+  width: 1px
+  position: absolute
+  right: 0
 </style>
