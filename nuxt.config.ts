@@ -7,7 +7,11 @@ export default defineNuxtConfig({
       viewport: "width=device-width, initial-scale=1",
       meta: [{ name: "format-detection", content: "telephone=no" }],
       style: [],
-      script: [],
+      script: [
+        {
+          src: "https://cdnjs.cloudflare.com/ajax/libs/leader-line/1.0.7/leader-line.min.js",
+        },
+      ],
     },
   },
   build: {

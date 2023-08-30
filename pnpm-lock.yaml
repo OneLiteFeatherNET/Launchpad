@@ -44,6 +44,9 @@ devDependencies:
   eslint-plugin-vue:
     specifier: ^9.17.0
     version: 9.17.0(eslint@8.48.0)
+  leader-line:
+    specifier: ^1.0.7
+    version: 1.0.7
   nuxt:
     specifier: ^3.7.0
     version: 3.7.0(@types/node@20.5.6)(eslint@8.48.0)(sass@1.66.1)(typescript@5.2.2)
@@ -5037,6 +5040,10 @@ packages:
     engines: {node: '>= 0.6.3'}
     dependencies:
       readable-stream: 2.3.8
+    dev: true
+
+  /leader-line@1.0.7:
+    resolution: {integrity: sha512-PhJpQLV7XychSIuGPD0TEqR9PgRYBbrhReaOcmHFOVtTw4dWKfUMAtOb7UP7xTsoib6sFzq2giQeOUHy7LCuJQ==}
     dev: true
 
   /levn@0.4.1:
