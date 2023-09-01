@@ -19,5 +19,5 @@ import { ref } from "#imports";
   `public/images/carousel` directory. For example if the file is stored under `public/images/carousel/example.jpg` you would
   have to insert `/images/carousel/example.jpg` into the array below (Dont forget the / at the start!).
  */
-const images = ref(["/images/placeholder.jpg", "/images/placeholder.jpg"]);
+const images = ref(["/images/slideshow1.png", "/images/slideshow2.png", "/images/slideshow2.png"]);
 </script>
