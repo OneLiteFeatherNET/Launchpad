@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar color="primary" sticky :absolute="false">
+  <v-app-bar color="accent" sticky :absolute="false">
     <v-container>
       <v-row class="align-center">
         <v-app-bar-title class="d-flex align-center justify-start">
@@ -15,17 +15,13 @@
             :key="i"
             nuxt
             :to="localePath(item.to)"
+            color="white"
           >
             {{ $t(item.title) }}
           </v-btn>
         </v-btn-toggle>
 
-        <v-btn
-          variant="tonal"
-          color="secondary"
-          class="ml-10"
-          @click="copyAddress"
-        >
+        <v-btn variant="tonal" class="ml-10" @click="copyAddress">
           <v-icon icon="mdi-human-greeting" class="mr-2" />
           {{ $t("layout.navigation.item.join") }}
         </v-btn>
