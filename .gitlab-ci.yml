@@ -1,0 +1,30 @@
+image: node:16
+
+before_script:
+  - corepack enable
+  - corepack prepare pnpm@latest-8 --activate
+  - pnpm config set store-dir .pnpm-store
+
+generate:
+  script:
+    - pnpm i --frozen-lockfile
+    - pnpm run generate
+  artifacts:
+    paths:
+      - .output/public
+    expire_in: 10 mins
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+
+pages:
+  needs: [generate]
+  variables:
+    GIT_STRATEGY: none
+  script:
+    - mv .output/public ./public
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
