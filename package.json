@@ -27,5 +27,9 @@
     "prettier": "^3.0.2",
     "sass": "^1.66.1",
     "vuetify": "^3.3.14"
+  },
+  "dependencies": {
+    "@pinia/nuxt": "^0.4.11",
+    "pinia": "^2.1.6"
   }
 }
