@@ -46,7 +46,7 @@ onMounted(() => {
       dash: true,
       dropShadow: true,
       endPlug: "behind",
-      color: "grey",
+      color: "#E0E0E0",
     };
 
     new LeaderLine(
@@ -82,7 +82,7 @@ onMounted(() => {
 <style lang="sass" scoped>
 #start-marker
   position: absolute
-  left: 0
+  left: -5px
   top: calc(100vh + 50px)
   height: 1px
   width: 1px

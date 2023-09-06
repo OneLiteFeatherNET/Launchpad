@@ -1,5 +1,6 @@
 <template>
   <v-carousel
+    id="carousel"
     height="calc(100vh - 64px)"
     hide-delimiter-background
     :show-arrows="false"
@@ -25,3 +26,10 @@ const images = ref([
   "/images/carousel/slideshow3.png",
 ]);
 </script>
+
+<style lang="sass">
+#carousel
+  .v-progress-linear
+    .v-progress-linear__determinate
+      background: rgb(var(--v-theme-accent)) !important
+</style>

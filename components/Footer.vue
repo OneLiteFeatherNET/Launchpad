@@ -1,5 +1,5 @@
 <template>
-  <v-footer class="pt-12 pb-12">
+  <v-footer color="footer" class="pt-12 pb-12">
     <v-container>
       <v-row>
         <v-col cols="12" md="5" sm="5">

@@ -1,10 +1,19 @@
 <template>
-  <v-app-bar color="accent" sticky :absolute="false">
+  <v-app-bar class="text-white" color="secondary" sticky :absolute="false">
     <v-container>
       <v-row class="align-center">
         <v-app-bar-title class="d-flex align-center justify-start">
-          <NuxtLink :to="localePath('/')">OneLiteFeather</NuxtLink>
-          <!-- TODO: Brand -->
+          <NuxtLink class="d-flex align-center" :to="localePath('/')">
+            OneLiteFeather
+          </NuxtLink>
+
+          <v-avatar class="ml-3">
+            <img
+              height="30"
+              src="~/assets/images/Serverlogo.png"
+              alt="onelitefeather-logo"
+            />
+          </v-avatar>
         </v-app-bar-title>
 
         <v-spacer />
@@ -52,8 +61,16 @@ const copyAddress = async () => {
 };
 </script>
 
-<style lang="sass" scoped>
+<style lang="sass">
 .v-app-bar
+  border-bottom: 3px solid rgb(var(--v-theme-accent)) !important
+
   .v-container
     max-width: 1200px
+
+    .v-toolbar-title
+      .v-toolbar-title__placeholder
+        display: flex
+        justify-content: center
+        align-items: center
 </style>

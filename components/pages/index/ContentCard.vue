@@ -2,7 +2,7 @@
   <v-sheet color="accent" width="500px" max-width="100%" rounded>
     <v-row>
       <v-col cols="12">
-        <v-img :src="image" alt="" height="200px" cover />
+        <v-img class="elevation-4" :src="image" alt="" height="200px" cover />
       </v-col>
 
       <v-col cols="12">
