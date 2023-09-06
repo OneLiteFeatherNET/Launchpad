@@ -8,9 +8,24 @@
       </NuxtLayout>
     </div>
 
+    <v-alert
+      v-for="(emit, i) in emitter.emits"
+      :key="i"
+      class="emit"
+      :text="$t(emit.content)"
+      :icon="emit.icon!"
+      :color="emit.type"
+    />
+
     <Footer />
   </v-app>
 </template>
+
+<script lang="ts" setup>
+import { useEmitter } from "~/store/emitter";
+
+const emitter = useEmitter();
+</script>
 
 <style lang="sass">
 #content
@@ -19,4 +34,12 @@
 
 html
   scroll-behavior: smooth
+
+.emit
+  position: fixed
+  left: 50%
+  bottom: 20px
+  transform: translateX(-50%)
+  width: fit-content
+  z-index: 1000
 </style>

@@ -35,5 +35,11 @@ export default defineNuxtConfig({
       alwaysRedirect: true,
     },
   },
-  modules: ["@nuxtjs/i18n", "@vueuse/nuxt", "@nuxtjs/color-mode", "nuxt-icon"],
+  modules: [
+    "@nuxtjs/i18n",
+    "@vueuse/nuxt",
+    "@nuxtjs/color-mode",
+    "nuxt-icon",
+    "@pinia/nuxt",
+  ],
 });

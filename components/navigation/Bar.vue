@@ -44,12 +44,14 @@
 
 <script setup lang="ts">
 import { useLocalePath, NavigationItem, useClipboard } from "#imports";
+import { useEmitter } from "~/store/emitter";
 
 interface NavigationBarProps {
   items: NavigationItem[];
 }
 
 const localePath = useLocalePath();
+const emitter = useEmitter();
 defineProps<NavigationBarProps>();
 
 const copyAddress = async () => {
@@ -57,7 +59,10 @@ const copyAddress = async () => {
   const { copy } = useClipboard();
   await copy("onelitefeather.net");
 
-  // TODO: emit notification to the client
+  emitter.emit({
+    type: "success",
+    content: "layout.navigation.copy",
+  });
 };
 </script>
 
