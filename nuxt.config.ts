@@ -2,12 +2,12 @@
 export default defineNuxtConfig({
   app: {
     head: {
-      title: "OneLiteFeather",
       charset: "utf-8",
-      viewport: "width=device-width, initial-scale=1",
-      meta: [{ name: "format-detection", content: "telephone=no" }],
-      style: [],
+      meta: [{ content: "telephone=no", name: "format-detection" }],
       script: [],
+      style: [],
+      title: "OneLiteFeather",
+      viewport: "width=device-width, initial-scale=1",
     },
   },
   build: {
@@ -20,20 +20,20 @@ export default defineNuxtConfig({
   ],
   devtools: { enabled: true },
   i18n: {
-    locales: [
-      { code: "en", iso: "en-US", file: "en.json" },
-      // just for testing purposes
-      { code: "de", iso: "de-DE", file: "de.json" },
-    ],
-    lazy: true,
-    langDir: "./locales",
     defaultLocale: "en",
     detectBrowserLanguage: {
-      cookieKey: "lang",
-      useCookie: true,
-      redirectOn: "root",
       alwaysRedirect: true,
+      cookieKey: "lang",
+      redirectOn: "root",
+      useCookie: true,
     },
+    langDir: "./locales",
+    lazy: true,
+    locales: [
+      { code: "en", file: "en.json", iso: "en-US" },
+      // just for testing purposes
+      { code: "de", file: "de.json", iso: "de-DE" },
+    ],
   },
   modules: [
     "@nuxtjs/i18n",

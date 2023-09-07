@@ -16,6 +16,6 @@
 
 <script lang="ts" setup>
 defineProps({
-  image: { type: String, required: true },
+  image: { required: true, type: String },
 });
 </script>

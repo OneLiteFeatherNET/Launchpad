@@ -27,9 +27,9 @@
 
 <script lang="ts" setup>
 defineProps({
-  title: { type: String, required: true },
-  image: { type: String, required: true },
-  description: { type: String, required: true },
-  link: { type: String, required: true },
+  description: { required: true, type: String },
+  image: { required: true, type: String },
+  link: { required: true, type: String },
+  title: { required: true, type: String },
 });
 </script>

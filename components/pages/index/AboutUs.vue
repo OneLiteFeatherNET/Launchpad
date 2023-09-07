@@ -42,19 +42,19 @@ onMounted(() => {
   // only draw the lines, if the client has enough width
   if (!isXs.value) {
     const settings = {
+      color: "#E0E0E0",
       dash: true,
       dropShadow: true,
       endPlug: "behind",
-      color: "#E0E0E0",
     };
 
     new LeaderLine(
       document.getElementById("start-marker"),
       document.getElementById("content-card-1"),
       {
-        startSocket: "bottom",
         endSocket: "right",
         path: "magnet",
+        startSocket: "bottom",
         startSocketGravity: [0, -100],
         ...settings,
       },
@@ -67,12 +67,12 @@ onMounted(() => {
     new LeaderLine(
       document.getElementById("content-card-2"),
       document.getElementById("content-card-3"),
-      { startSocket: "bottom", path: "magnet", ...settings },
+      { path: "magnet", startSocket: "bottom", ...settings },
     );
     new LeaderLine(
       document.getElementById("content-card-3"),
       document.getElementById("end-marker"),
-      { startSocket: "bottom", path: "magnet", ...settings },
+      { path: "magnet", startSocket: "bottom", ...settings },
     );
   }
 });
