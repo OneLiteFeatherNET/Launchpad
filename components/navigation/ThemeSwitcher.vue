@@ -1,5 +1,5 @@
 <template>
-  <v-btn v-bind="$attrs" :icon="icon" @click="changeTheme" />
+  <v-btn variant="text" v-bind="$attrs" :icon="icon" @click="changeTheme" />
 </template>
 
 <script setup lang="ts">
@@ -21,5 +21,7 @@ const syncTheme = () => {
   theme.global.name.value = colorMode.value;
 };
 
-syncTheme();
+if (process.client) {
+  syncTheme();
+}
 </script>

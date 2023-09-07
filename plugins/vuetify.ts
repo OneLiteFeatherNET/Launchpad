@@ -30,7 +30,7 @@ export default defineNuxtPlugin((nuxtApp) => {
             info: "#346ddb",
             success: "#4caf50",
             background: "#006064",
-            surface: "#424242",
+            surface: "#014a51",
             footer: "#424242",
           },
         },
@@ -39,7 +39,7 @@ export default defineNuxtPlugin((nuxtApp) => {
           colors: {
             primary: "#0097A7",
             secondary: "#00ACC1",
-            surface: "#E0E0E0",
+            surface: "#0097A7",
             accent: "#3498db",
             error: "#d33d3d",
             warning: "#ffc107",
