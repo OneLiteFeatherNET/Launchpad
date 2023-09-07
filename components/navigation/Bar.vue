@@ -1,5 +1,10 @@
 <template>
-  <v-app-bar class="text-white" color="secondary" sticky :absolute="false">
+  <v-app-bar
+    class="text-white pl-4 pr-4"
+    color="secondary"
+    sticky
+    :absolute="false"
+  >
     <v-container>
       <v-row class="align-center">
         <template v-if="isXs">
@@ -35,7 +40,7 @@
             </v-avatar>
           </v-app-bar-title>
 
-          <v-spacer />
+          <v-spacer v-if="lg" />
 
           <v-btn-toggle selected-class="text--white" group variant="plain">
             <v-btn
@@ -49,7 +54,7 @@
             </v-btn>
           </v-btn-toggle>
 
-          <v-btn variant="tonal" class="ml-10" @click="copyAddress">
+          <v-btn v-if="lg" variant="tonal" class="ml-10" @click="copyAddress">
             <v-icon icon="mdi-human-greeting" class="mr-2" />
             {{ $t("layout.navigation.item.join") }}
           </v-btn>
@@ -63,7 +68,7 @@
 </template>
 
 <script setup lang="ts">
-import { useLocalePath, useClipboard, isXs } from "#imports";
+import { useLocalePath, useClipboard, isXs, lg } from "#imports";
 import { useEmitter } from "~/store/emitter";
 import { NavigationItem } from "~/composables/types";
 
@@ -75,7 +80,7 @@ interface NavigationBarProps {
 const localePath = useLocalePath();
 const emit = defineEmits(["update:expanded"]);
 const emitter = useEmitter();
-defineProps<NavigationBarProps>();
+const props = defineProps<NavigationBarProps>();
 
 const expanded = computed({
   get() {
