@@ -1,7 +1,8 @@
 <template>
-  <!-- TODO: add an alternative navigation for small devices here. Still require design ideas therefore  -->
-  <NavigationDrawer v-model:expanded="expanded" :items="items" v-if="isXs" />
-  <NavigationBar v-model:expanded="expanded" :items="items" />
+  <ClientOnly>
+    <NavigationDrawer v-model:expanded="expanded" :items="items" v-if="isXs" />
+    <NavigationBar v-model:expanded="expanded" :items="items" />
+  </ClientOnly>
 </template>
 
 <script lang="ts" setup>

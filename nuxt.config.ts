@@ -22,18 +22,15 @@ export default defineNuxtConfig({
   i18n: {
     defaultLocale: "en",
     detectBrowserLanguage: {
-      alwaysRedirect: true,
+      alwaysRedirect: false,
       cookieKey: "lang",
+      fallbackLocale: "en",
       redirectOn: "root",
       useCookie: true,
     },
     langDir: "./locales",
     lazy: true,
-    locales: [
-      { code: "en", file: "en.json", iso: "en-US" },
-      // just for testing purposes
-      { code: "de", file: "de.json", iso: "de-DE" },
-    ],
+    locales: [{ code: "en", file: "en.json", iso: "en-US" }],
   },
   modules: [
     "@nuxtjs/i18n",

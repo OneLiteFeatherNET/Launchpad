@@ -1,35 +1,33 @@
 <template>
-  <v-expand-x-transition>
-    <v-navigation-drawer class="elevation-12" v-model="expanded" rail fixed>
-      <v-btn
-        class="ml-4 mt-4"
-        icon="mdi-close-thick"
-        variant="text"
-        @click="expanded = false"
-      />
+  <v-navigation-drawer class="elevation-12" v-model="expanded" fixed>
+    <v-btn
+      class="ml-4 mt-4"
+      icon="mdi-close-thick"
+      variant="text"
+      @click="expanded = false"
+    />
 
-      <NuxtLink
-        v-for="(item, i) in items"
-        :key="i"
-        class="d-flex justify-start ml-8 mr-8 pt-6 pb-6 drawer-link"
-        :to="localePath(item.to)"
-      >
-        {{ $t(item.title) }}
-      </NuxtLink>
+    <NuxtLink
+      v-for="(item, i) in items"
+      :key="i"
+      class="d-flex justify-start ml-8 mr-8 pt-6 pb-6 drawer-link"
+      :to="localePath(item.to)"
+    >
+      {{ $t(item.title) }}
+    </NuxtLink>
 
-      <v-divider thickness="2" class="mt-10 mb-5" />
+    <v-divider thickness="2" class="mt-10 mb-5" />
 
-      <v-row>
-        <v-col class="d-flex justify-end align-center" cols="6">
-          <NavigationThemeSwitcher />
-        </v-col>
+    <v-row>
+      <v-col class="d-flex justify-end align-center" cols="6">
+        <NavigationThemeSwitcher />
+      </v-col>
 
-        <v-col class="d-flex justify-start align-center" cols="6">
-          <NavigationLocaleSelection />
-        </v-col>
-      </v-row>
-    </v-navigation-drawer>
-  </v-expand-x-transition>
+      <v-col class="d-flex justify-start align-center" cols="6">
+        <NavigationLocaleSelection />
+      </v-col>
+    </v-row>
+  </v-navigation-drawer>
 </template>
 
 <script setup lang="ts">

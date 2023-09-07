@@ -40,9 +40,7 @@
             </v-avatar>
           </v-app-bar-title>
 
-          <ClientOnly>
-            <v-spacer v-if="lg" />
-          </ClientOnly>
+          <v-spacer v-if="lg" />
 
           <v-btn-toggle selected-class="text--white" group variant="plain">
             <v-btn
@@ -56,12 +54,10 @@
             </v-btn>
           </v-btn-toggle>
 
-          <ClientOnly>
-            <v-btn v-if="lg" variant="tonal" class="ml-10" @click="copyAddress">
-              <v-icon icon="mdi-human-greeting" class="mr-2" />
-              {{ $t("layout.navigation.item.join") }}
-            </v-btn>
-          </ClientOnly>
+          <v-btn v-if="lg" variant="tonal" class="ml-10" @click="copyAddress">
+            <v-icon icon="mdi-human-greeting" class="mr-2" />
+            {{ $t("layout.navigation.item.join") }}
+          </v-btn>
 
           <NavigationThemeSwitcher class="ml-2" />
           <NavigationLocaleSelection class="ml-2" />
