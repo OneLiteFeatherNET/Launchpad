@@ -17,6 +17,13 @@ generate:
   script:
     - pnpm i --frozen-lockfile
     - pnpm run generate
+  cache:
+    key:
+      files:
+        - package.json
+        - pnpm-lock.yaml
+    paths:
+      - node_modules/
   artifacts:
     paths:
       - .output/public
