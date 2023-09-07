@@ -21,5 +21,7 @@ const syncTheme = () => {
   theme.global.name.value = colorMode.value;
 };
 
-syncTheme();
+if (process.client) {
+  syncTheme();
+}
 </script>
