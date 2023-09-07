@@ -1,5 +1,5 @@
 <template>
-  <v-btn v-bind="$attrs" :icon="icon" @click="changeTheme" />
+  <v-btn variant="text" v-bind="$attrs" :icon="icon" @click="changeTheme" />
 </template>
 
 <script setup lang="ts">

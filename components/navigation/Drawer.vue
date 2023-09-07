@@ -16,6 +16,18 @@
       >
         {{ $t(item.title) }}
       </NuxtLink>
+
+      <v-divider thickness="2" class="mt-10 mb-5" />
+
+      <v-row>
+        <v-col class="d-flex justify-end align-center" cols="6">
+          <NavigationThemeSwitcher />
+        </v-col>
+
+        <v-col class="d-flex justify-start align-center" cols="6">
+          <NavigationLocaleSelection />
+        </v-col>
+      </v-row>
     </v-navigation-drawer>
   </v-expand-x-transition>
 </template>
