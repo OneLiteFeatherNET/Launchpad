@@ -1,6 +1,5 @@
 <template>
   <v-container style="max-width: 1200px" class="pt-16 mt-16">
-    <!-- TODO WIP: adjust graph-lines -->
     <v-row id="content-cards">
       <v-col cols="12">
         <div id="start-marker" />

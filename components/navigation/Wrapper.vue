@@ -1,7 +1,9 @@
 <template>
-  <!-- TODO: add an alternative navigation for small devices here. Still require design ideas therefore  -->
-  <template :items="items" v-if="isXs" />
-  <NavigationBar :items="items" v-else />
+  <ClientOnly>
+    <!-- TODO: add an alternative navigation for small devices here. Still require design ideas therefore  -->
+    <template :items="items" v-if="isXs" />
+    <NavigationBar :items="items" v-else />
+  </ClientOnly>
 </template>
 
 <script lang="ts" setup>
