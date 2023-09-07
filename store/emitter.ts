@@ -20,9 +20,6 @@ export interface Emit {
 }
 
 export const useEmitter = defineStore("emit", {
-  state: () => ({
-    emits: [] as Emit[],
-  }),
   actions: {
     emit(emit: Emit) {
       emit.callback ||= (id: string) => this.revokeEmit(id);
@@ -36,4 +33,7 @@ export const useEmitter = defineStore("emit", {
       this.emits = this.emits.filter((current) => current.id !== id);
     },
   },
+  state: () => ({
+    emits: [] as Emit[],
+  }),
 });

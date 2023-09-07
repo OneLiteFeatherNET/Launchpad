@@ -26,22 +26,22 @@ import { ref } from "#imports";
 
 const projects = ref([
   {
-    image: "/images/placeholder.jpg",
-    title: "pages.index.projects.1.title",
-    link: "https://example.com",
     description: "pages.index.projects.1.description",
+    image: "/images/placeholder.jpg",
+    link: "https://example.com",
+    title: "pages.index.projects.1.title",
   },
   {
-    image: "/images/placeholder.jpg",
-    title: "pages.index.projects.1.title",
-    link: "https://example.com",
     description: "pages.index.projects.1.description",
+    image: "/images/placeholder.jpg",
+    link: "https://example.com",
+    title: "pages.index.projects.1.title",
   },
   {
-    image: "/images/placeholder.jpg",
-    title: "pages.index.projects.1.title",
-    link: "https://example.com",
     description: "pages.index.projects.1.description",
+    image: "/images/placeholder.jpg",
+    link: "https://example.com",
+    title: "pages.index.projects.1.title",
   },
 ]);
 </script>

@@ -101,8 +101,8 @@ const copyAddress = async () => {
   await copy("onelitefeather.net");
 
   emitter.emit({
-    type: "success",
     content: "layout.navigation.copy",
+    type: "success",
   });
 };
 </script>

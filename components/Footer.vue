@@ -19,8 +19,9 @@
               <v-btn
                 width="100%"
                 style="border-radius: 8px"
-                variant="flat"
-                color="blue-grey-darken-4"
+                variant="elevated"
+                class="rounded-sm"
+                color="surface"
               >
                 {{ $t("layout.footer.legal.imprint") }}
               </v-btn>
@@ -30,8 +31,9 @@
               <v-btn
                 width="100%"
                 style="border-radius: 8px"
-                variant="flat"
-                color="blue-grey-darken-4"
+                variant="elevated"
+                class="rounded-sm"
+                color="surface"
               >
                 {{ $t("layout.footer.legal.privacy") }}
               </v-btn>
@@ -48,3 +50,4 @@
   .v-footer
     background-color: rgb(var(--v-theme-surface))
 </style>
+<script setup lang="ts"></script>
