@@ -5,6 +5,14 @@ before_script:
   - corepack prepare pnpm@latest-8 --activate
   - pnpm config set store-dir .pnpm-store
 
+variables:
+  KUBERNETES_CPU_REQUEST: "1"
+  KUBERNETES_CPU_LIMIT: "4"
+  KUBERNETES_MEMORY_REQUEST: "512Mi"
+  KUBERNETES_MEMORY_LIMIT: "4Gi"
+  KUBERNETES_EPHEMERAL_STORAGE_REQUEST: "2Gi"
+  KUBERNETES_EPHEMERAL_STORAGE_LIMIT: "5Gi"
+
 generate:
   script:
     - pnpm i --frozen-lockfile
@@ -18,7 +26,7 @@ generate:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
 
 pages:
-  needs: [generate]
+  needs: [ generate ]
   variables:
     GIT_STRATEGY: none
   script:
