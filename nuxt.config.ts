@@ -19,6 +19,12 @@ export default defineNuxtConfig({
     "@/assets/main.sass",
   ],
   devtools: { enabled: true },
+  googleFonts: {
+    download: true,
+    families: {
+      Poppins: [600],
+    },
+  },
   i18n: {
     defaultLocale: "en",
     detectBrowserLanguage: {
@@ -38,5 +44,6 @@ export default defineNuxtConfig({
     "@nuxtjs/color-mode",
     "nuxt-icon",
     "@pinia/nuxt",
+    "@nuxtjs/google-fonts",
   ],
 });

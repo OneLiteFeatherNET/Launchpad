@@ -6,28 +6,26 @@
     :absolute="false"
   >
     <v-container>
-      <v-row class="align-center">
+      <v-row class="align-center justify-space-between flex-row">
         <template v-if="isXs">
           <v-app-bar-nav-icon @click="expanded = !expanded" />
 
-          <v-spacer />
+          <div class="poppins text-h5">OneLiteFeather</div>
 
-          <v-app-bar-title class="d-flex align-center justify-end">
-            <NuxtLink :to="localePath('/')">
-              <v-avatar size="60" class="ml-3">
-                <img
-                  height="45"
-                  src="~/assets/images/Serverlogo.png"
-                  alt="onelitefeather-logo"
-                />
-              </v-avatar>
-            </NuxtLink>
-          </v-app-bar-title>
+          <NuxtLink :to="localePath('/')">
+            <v-avatar size="60" class="ml-3">
+              <img
+                height="45"
+                src="~/assets/images/Serverlogo.png"
+                alt="onelitefeather-logo"
+              />
+            </v-avatar>
+          </NuxtLink>
         </template>
 
         <template v-else>
           <v-app-bar-title class="d-flex align-center justify-start">
-            <NuxtLink class="d-flex align-center" :to="localePath('/')">
+            <NuxtLink class="d-flex align-center poppins" :to="localePath('/')">
               OneLiteFeather
             </NuxtLink>
 

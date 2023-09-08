@@ -2,7 +2,7 @@
   <div id="projects" class="pt-12 pb-16 mt-16">
     <v-container style="max-width: 1300px">
       <v-row>
-        <v-col cols="12" class="text-center text-h3 font-weight-bold pb-16">
+        <v-col cols="12" class="text-center text-h3 pb-16 poppins">
           {{ $t("pages.index.projects.title") }}
         </v-col>
 

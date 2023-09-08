@@ -12,7 +12,7 @@
 
         <v-col cols="12" md="2" sm="2" />
 
-        <v-col class="text-center" cols="12" md="5" sm="5">
+        <v-col class="text-center poppins" cols="12" md="5" sm="5">
           {{ $t("layout.footer.legal.title") }}
           <v-row class="mt-2">
             <v-col cols="12" md="6" sm="6">
@@ -50,4 +50,3 @@
   .v-footer
     background-color: rgb(var(--v-theme-surface))
 </style>
-<script setup lang="ts"></script>

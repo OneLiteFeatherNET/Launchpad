@@ -1,6 +1,6 @@
 <template>
   <v-card color="accent">
-    <v-card-title class="text-center">
+    <v-card-title class="text-center poppins">
       {{ $t(title) }}
     </v-card-title>
 
