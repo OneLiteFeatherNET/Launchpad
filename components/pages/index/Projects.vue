@@ -50,4 +50,10 @@ const projects = ref([
 <style lang="sass" scoped>
 #projects
   background: rgb(var(--v-theme-primary))
+
+  .v-container
+    .v-row
+      > *
+        @media screen and (max-width: 600px)
+          margin-top: 30px
 </style>
