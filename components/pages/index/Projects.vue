@@ -27,10 +27,10 @@ import placeholder from "~/assets/images/placeholder.jpg";
 
 const projects = ref([
   {
-    description: "pages.index.projects.1.description",
+    description: "pages.index.projects.0.description",
     image: placeholder,
     link: "https://example.com",
-    title: "pages.index.projects.1.title",
+    title: "pages.index.projects.0.title",
   },
   {
     description: "pages.index.projects.1.description",
@@ -39,10 +39,10 @@ const projects = ref([
     title: "pages.index.projects.1.title",
   },
   {
-    description: "pages.index.projects.1.description",
+    description: "pages.index.projects.2.description",
     image: placeholder,
     link: "https://example.com",
-    title: "pages.index.projects.1.title",
+    title: "pages.index.projects.2.title",
   },
 ]);
 </script>

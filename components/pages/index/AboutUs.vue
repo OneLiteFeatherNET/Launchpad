@@ -8,7 +8,7 @@
           id="content-card-1"
           class="float-right"
         >
-          {{ $t("pages.index.cards.1") }}
+          {{ $t("pages.index.cards.0") }}
         </PagesIndexContentCard>
       </v-col>
 
@@ -18,7 +18,7 @@
           id="content-card-2"
           class="float-left"
         >
-          {{ $t("pages.index.cards.2") }}
+          {{ $t("pages.index.cards.1") }}
         </PagesIndexContentCard>
       </v-col>
 
@@ -28,7 +28,7 @@
           id="content-card-3"
           class="float-right"
         >
-          {{ $t("pages.index.cards.3") }}
+          {{ $t("pages.index.cards.2") }}
         </PagesIndexContentCard>
 
         <div id="end-marker" />
