@@ -41,15 +41,19 @@
           <v-spacer v-if="lg" />
 
           <v-btn-toggle selected-class="text--white" group variant="plain">
-            <v-btn
-              v-for="(item, i) in items"
-              :key="i"
-              nuxt
-              :to="localePath(item.to)"
-              color="white"
-            >
-              {{ $t(item.title) }}
-            </v-btn>
+            <template v-for="(item, i) in items" :key="i">
+              <v-btn
+                href="localePath(item.to)"
+                color="white"
+                v-if="item.to.startsWith('http')"
+              >
+                {{ $t(item.title) }}
+              </v-btn>
+
+              <v-btn v-else nuxt :to="localePath(item.to)" color="white">
+                {{ $t(item.title) }}
+              </v-btn>
+            </template>
           </v-btn-toggle>
 
           <v-btn v-if="lg" variant="tonal" class="ml-10" @click="copyAddress">

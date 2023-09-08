@@ -8,23 +8,17 @@
     progress
     cycle
   >
-    <v-carousel-item v-for="(image, i) in images" :key="i" :src="image" cover />
+    <v-carousel-item v-for="(image, i) in images" :key="i" cover :src="image" />
   </v-carousel>
 </template>
 
 <script setup lang="ts">
 import { ref } from "#imports";
+import slideshow1 from "~/assets/images/carousel/slideshow1.png";
+import slideshow2 from "~/assets/images/carousel/slideshow2.png";
+import slideshow3 from "~/assets/images/carousel/slideshow3.png";
 
-/*
-  In order to add a new element to the carousel just insert the image link here. The image files are preferred to be stored in the
-  `public/images/carousel` directory. For example if the file is stored under `public/images/carousel/example.jpg` you would
-  have to insert `/images/carousel/example.jpg` into the array below (Dont forget the / at the start!).
- */
-const images = ref([
-  "/images/carousel/slideshow1.png",
-  "/images/carousel/slideshow2.png",
-  "/images/carousel/slideshow3.png",
-]);
+const images = ref([slideshow1, slideshow2, slideshow3]);
 </script>
 
 <style lang="sass">

@@ -22,7 +22,7 @@ const items: NavigationItem[] = ref([
   },
   {
     title: "layout.navigation.item.blog",
-    to: "",
+    to: "https://blog.onelitefeather.net/",
   },
 ]);
 </script>

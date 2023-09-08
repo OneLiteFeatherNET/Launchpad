@@ -7,14 +7,22 @@
       @click="expanded = false"
     />
 
-    <NuxtLink
-      v-for="(item, i) in items"
-      :key="i"
-      class="d-flex justify-start ml-8 mr-8 pt-6 pb-6 drawer-link"
-      :to="localePath(item.to)"
-    >
-      {{ $t(item.title) }}
-    </NuxtLink>
+    <template v-for="(item, i) in items" :key="i">
+      <a
+        v-if="item.to.startsWith('http')"
+        class="d-flex justify-start ml-8 mr-8 pt-6 pb-6 drawer-link"
+        :href="item.to"
+      >
+        {{ $t(item.title) }}
+      </a>
+
+      <NuxtLink
+        class="d-flex justify-start ml-8 mr-8 pt-6 pb-6 drawer-link"
+        :to="localePath(item.to)"
+      >
+        {{ $t(item.title) }}
+      </NuxtLink>
+    </template>
 
     <v-divider thickness="2" class="mt-10 mb-5" />
 

@@ -4,7 +4,7 @@
       <v-col cols="12">
         <div id="start-marker" />
         <PagesIndexContentCard
-          image="/images/placeholder.jpg"
+          :image="placeholder"
           id="content-card-1"
           class="float-right"
         >
@@ -14,7 +14,7 @@
 
       <v-col cols="12">
         <PagesIndexContentCard
-          image="/images/placeholder.jpg"
+          :image="placeholder"
           id="content-card-2"
           class="float-left"
         >
@@ -24,7 +24,7 @@
 
       <v-col cols="12" class="mt-14">
         <PagesIndexContentCard
-          image="/images/placeholder.jpg"
+          :image="placeholder"
           id="content-card-3"
           class="float-right"
         >
@@ -38,6 +38,8 @@
 </template>
 
 <script setup>
+import placeholder from "~/assets/images/placeholder.jpg";
+
 onMounted(() => {
   // only draw the lines, if the client has enough width
   if (!isXs.value) {
