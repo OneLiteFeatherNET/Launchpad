@@ -43,7 +43,7 @@
           <v-btn-toggle selected-class="text--white" group variant="plain">
             <template v-for="(item, i) in items" :key="i">
               <v-btn
-                href="localePath(item.to)"
+                :href="item.to"
                 color="white"
                 v-if="item.to.startsWith('http')"
               >
