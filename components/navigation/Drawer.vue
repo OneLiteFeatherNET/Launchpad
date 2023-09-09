@@ -18,6 +18,7 @@
       </a>
 
       <NuxtLink
+        v-else
         class="d-flex justify-start ml-8 mr-8 pt-6 pb-6 drawer-link"
         :to="localePath(item.to)"
       >
