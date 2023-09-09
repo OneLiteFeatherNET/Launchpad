@@ -56,10 +56,30 @@
             </template>
           </v-btn-toggle>
 
-          <v-btn v-if="lg" variant="tonal" class="ml-10" @click="copyAddress">
-            <v-icon icon="mdi-human-greeting" class="mr-2" />
-            {{ $t("layout.navigation.item.join") }}
-          </v-btn>
+          <v-menu v-if="lg" class="ml-10">
+            <template #activator="{ props }">
+              <v-btn variant="tonal" v-bind="props">
+                <v-icon icon="mdi-human-greeting" class="mr-2" />
+                {{ $t("layout.navigation.item.join") }}
+              </v-btn>
+            </template>
+
+            <v-list>
+              <v-list-item
+                prepend-icon="mdi-monitor"
+                @click="copyAddress('OneLiteFeather.net')"
+              >
+                <v-list-item-title> Java</v-list-item-title>
+              </v-list-item>
+
+              <v-list-item
+                prepend-icon="mdi-cellphone"
+                @click="copyAddress('OneLiteFeather.com')"
+              >
+                <v-list-item-title> Bedrock</v-list-item-title>
+              </v-list-item>
+            </v-list>
+          </v-menu>
 
           <NavigationThemeSwitcher class="ml-2" />
           <NavigationLocaleSelection class="ml-2" />
@@ -93,10 +113,10 @@ const expanded = computed({
   },
 });
 
-const copyAddress = async () => {
+const copyAddress = async (address: string) => {
   // access the clipboard
   const { copy } = useClipboard();
-  await copy("onelitefeather.net");
+  await copy(address);
 
   emitter.emit({
     content: "layout.navigation.copy",
