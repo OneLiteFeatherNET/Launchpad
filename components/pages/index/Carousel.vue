@@ -22,11 +22,11 @@
 
 <script setup lang="ts">
 import { ref } from "#imports";
-import slideshow1 from "~/assets/images/carousel/slideshow1.png";
-import slideshow2 from "~/assets/images/carousel/slideshow2.png";
-import slideshow3 from "~/assets/images/carousel/slideshow3.png";
+import slideshow0 from "assets/images/carousel/slideshow0.png";
+import slideshow1 from "assets/images/carousel/slideshow1.png";
+import slideshow2 from "assets/images/carousel/slideshow2.png";
 
-const images = ref([slideshow1, slideshow2, slideshow3]);
+const images = ref([slideshow0, slideshow1, slideshow2]);
 </script>
 
 <style lang="sass">

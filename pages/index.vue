@@ -1,6 +1,6 @@
 <template>
   <PagesIndexCarousel />
-  <PagesIndexAboutUs />
+  <PagesIndexTimeline />
   <PagesIndexProjects />
 </template>
 
