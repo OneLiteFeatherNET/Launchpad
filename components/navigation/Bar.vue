@@ -43,9 +43,10 @@
           <v-btn-toggle selected-class="text--white" group variant="plain">
             <template v-for="(item, i) in items" :key="i">
               <v-btn
-                :href="item.to"
-                color="white"
                 v-if="item.to.startsWith('http')"
+                :href="item.to"
+                target="_blank"
+                color="white"
               >
                 {{ $t(item.title) }}
               </v-btn>
