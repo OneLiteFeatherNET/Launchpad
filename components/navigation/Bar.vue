@@ -57,30 +57,7 @@
             </template>
           </v-btn-toggle>
 
-          <v-menu v-if="lg" class="ml-10">
-            <template #activator="{ props }">
-              <v-btn variant="tonal" v-bind="props">
-                <v-icon icon="mdi-human-greeting" class="mr-2" />
-                {{ $t("layout.navigation.item.join") }}
-              </v-btn>
-            </template>
-
-            <v-list>
-              <v-list-item
-                prepend-icon="mdi-monitor"
-                @click="copyAddress('OneLiteFeather.net')"
-              >
-                <v-list-item-title> Java</v-list-item-title>
-              </v-list-item>
-
-              <v-list-item
-                prepend-icon="mdi-cellphone"
-                @click="copyAddress('OneLiteFeather.com')"
-              >
-                <v-list-item-title> Bedrock</v-list-item-title>
-              </v-list-item>
-            </v-list>
-          </v-menu>
+          <NavigationJoin v-if="lg" />
 
           <NavigationThemeSwitcher class="ml-2" />
           <NavigationLocaleSelection class="ml-2" />
@@ -91,8 +68,7 @@
 </template>
 
 <script setup lang="ts">
-import { useLocalePath, useClipboard, isXs, lg } from "#imports";
-import { useEmitter } from "~/store/emitter";
+import { useLocalePath, isXs, lg } from "#imports";
 import { NavigationItem } from "~/composables/types";
 
 interface NavigationBarProps {
@@ -102,7 +78,6 @@ interface NavigationBarProps {
 
 const localePath = useLocalePath();
 const emit = defineEmits(["update:expanded"]);
-const emitter = useEmitter();
 const props = defineProps<NavigationBarProps>();
 
 const expanded = computed({
@@ -113,17 +88,6 @@ const expanded = computed({
     emit("update:expanded", value);
   },
 });
-
-const copyAddress = async (address: string) => {
-  // access the clipboard
-  const { copy } = useClipboard();
-  await copy(address);
-
-  emitter.emit({
-    content: "layout.navigation.copy",
-    type: "success",
-  });
-};
 </script>
 
 <style lang="sass">

@@ -29,6 +29,14 @@
     <v-divider thickness="2" class="mt-10 mb-5" />
 
     <v-row>
+      <v-col class="d-flex justify-center align-center">
+        <NavigationJoin />
+      </v-col>
+    </v-row>
+
+    <v-divider thickness="2" class="mt-5 mb-5" />
+
+    <v-row>
       <v-col class="d-flex justify-end align-center" cols="6">
         <NavigationThemeSwitcher />
       </v-col>
