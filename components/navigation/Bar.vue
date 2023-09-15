@@ -43,9 +43,10 @@
           <v-btn-toggle selected-class="text--white" group variant="plain">
             <template v-for="(item, i) in items" :key="i">
               <v-btn
-                href="localePath(item.to)"
-                color="white"
                 v-if="item.to.startsWith('http')"
+                :href="item.to"
+                target="_blank"
+                color="white"
               >
                 {{ $t(item.title) }}
               </v-btn>
@@ -56,10 +57,7 @@
             </template>
           </v-btn-toggle>
 
-          <v-btn v-if="lg" variant="tonal" class="ml-10" @click="copyAddress">
-            <v-icon icon="mdi-human-greeting" class="mr-2" />
-            {{ $t("layout.navigation.item.join") }}
-          </v-btn>
+          <NavigationJoin v-if="lg" />
 
           <NavigationThemeSwitcher class="ml-2" />
           <NavigationLocaleSelection class="ml-2" />
@@ -70,8 +68,7 @@
 </template>
 
 <script setup lang="ts">
-import { useLocalePath, useClipboard, isXs, lg } from "#imports";
-import { useEmitter } from "~/store/emitter";
+import { useLocalePath, isXs, lg } from "#imports";
 import { NavigationItem } from "~/composables/types";
 
 interface NavigationBarProps {
@@ -81,7 +78,6 @@ interface NavigationBarProps {
 
 const localePath = useLocalePath();
 const emit = defineEmits(["update:expanded"]);
-const emitter = useEmitter();
 const props = defineProps<NavigationBarProps>();
 
 const expanded = computed({
@@ -92,17 +88,6 @@ const expanded = computed({
     emit("update:expanded", value);
   },
 });
-
-const copyAddress = async () => {
-  // access the clipboard
-  const { copy } = useClipboard();
-  await copy("onelitefeather.net");
-
-  emitter.emit({
-    content: "layout.navigation.copy",
-    type: "success",
-  });
-};
 </script>
 
 <style lang="sass">

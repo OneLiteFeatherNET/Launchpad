@@ -41,5 +41,5 @@ html
   bottom: 20px
   transform: translateX(-50%)
   width: fit-content
-  z-index: 1000
+  z-index: 1000000
 </style>

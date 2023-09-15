@@ -12,11 +12,13 @@
         v-if="item.to.startsWith('http')"
         class="d-flex justify-start ml-8 mr-8 pt-6 pb-6 drawer-link"
         :href="item.to"
+        target="_blank"
       >
         {{ $t(item.title) }}
       </a>
 
       <NuxtLink
+        v-else
         class="d-flex justify-start ml-8 mr-8 pt-6 pb-6 drawer-link"
         :to="localePath(item.to)"
       >
@@ -25,6 +27,14 @@
     </template>
 
     <v-divider thickness="2" class="mt-10 mb-5" />
+
+    <v-row>
+      <v-col class="d-flex justify-center align-center">
+        <NavigationJoin />
+      </v-col>
+    </v-row>
+
+    <v-divider thickness="2" class="mt-5 mb-5" />
 
     <v-row>
       <v-col class="d-flex justify-end align-center" cols="6">
