@@ -8,7 +8,7 @@
 useHead({
   script: [
     {
-      src: "https://cdnjs.cloudflare.com/ajax/libs/leader-line/1.0.7/leader-line.min.js",
+      src: "/scripts/leader-line.min.js",
     },
   ],
 });

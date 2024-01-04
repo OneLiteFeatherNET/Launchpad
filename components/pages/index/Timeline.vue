@@ -38,6 +38,7 @@ const items = ref([
     image: timeline2,
   },
 ]);
+const lines = ref([]);
 
 onMounted(() => {
   // only draw the lines, if the client has enough width
@@ -49,33 +50,45 @@ onMounted(() => {
       endPlug: "behind",
     };
 
-    new LeaderLine(
-      document.getElementById("start-marker"),
-      document.getElementById("content-card-0"),
-      {
-        endSocket: "right",
-        path: "magnet",
-        startSocket: "bottom",
-        startSocketGravity: [0, -100],
-        ...settings,
-      },
+    lines.value.push(
+      new LeaderLine(
+        document.getElementById("start-marker"),
+        document.getElementById("content-card-0"),
+        {
+          startSocket: "bottom",
+          endSocket: "right",
+          path: "magnet",
+          startSocketGravity: [0, -100],
+          ...settings,
+        },
+      ),
     );
-    new LeaderLine(
-      document.getElementById("content-card-0"),
-      document.getElementById("content-card-1"),
-      { startSocket: "bottom", ...settings },
+    lines.value.push(
+      new LeaderLine(
+        document.getElementById("content-card-0"),
+        document.getElementById("content-card-1"),
+        { startSocket: "bottom", ...settings },
+      ),
     );
-    new LeaderLine(
-      document.getElementById("content-card-1"),
-      document.getElementById("content-card-2"),
-      { path: "magnet", startSocket: "bottom", ...settings },
+    lines.value.push(
+      new LeaderLine(
+        document.getElementById("content-card-1"),
+        document.getElementById("content-card-2"),
+        { startSocket: "bottom", path: "magnet", ...settings },
+      ),
     );
-    new LeaderLine(
-      document.getElementById("content-card-2"),
-      document.getElementById("end-marker"),
-      { path: "magnet", startSocket: "bottom", ...settings },
+    lines.value.push(
+      new LeaderLine(
+        document.getElementById("content-card-2"),
+        document.getElementById("end-marker"),
+        { startSocket: "bottom", path: "magnet", ...settings },
+      ),
     );
   }
+});
+
+onUnmounted(() => {
+  lines.value.forEach((line) => line.remove());
 });
 </script>
 

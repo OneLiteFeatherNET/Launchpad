@@ -23,6 +23,8 @@
                   variant="elevated"
                   class="rounded-sm"
                   color="surface"
+                  nuxt 
+                  to="/impressum"
                 >
                   {{ $t("layout.footer.legal.imprint") }}
                 </v-btn>
@@ -35,6 +37,8 @@
                   variant="elevated"
                   class="rounded-sm"
                   color="surface"
+                  nuxt 
+                  to="/datenschutz"
                 >
                   {{ $t("layout.footer.legal.privacy") }}
                 </v-btn>
