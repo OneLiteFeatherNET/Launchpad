@@ -46,8 +46,7 @@ container:
   image: "${HTL_NEXUS_PROXY}/buildah/stable:latest"
   tags:
     - saas-linux-medium-amd64
-  needs:
-    - "generate"
+  needs: [ generate ]
   stage: deploy
   cache: {}
   script:
