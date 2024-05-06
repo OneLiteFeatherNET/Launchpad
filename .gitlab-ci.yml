@@ -38,9 +38,6 @@ generate:
     paths:
       - .output/public
     expire_in: 10 mins
-  rules:
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
 
 container:
   image: "${HTL_NEXUS_PROXY}/buildah/stable:latest"
