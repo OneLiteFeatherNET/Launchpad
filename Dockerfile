@@ -1,3 +1,5 @@
-FROM docker.io/nginx:1.21.1-alpine
-WORKDIR /usr/share/nginx/html
-COPY .output/public ./
+FROM docker.io/node:current-slim
+RUN mkdir /app
+WORKDIR /app
+COPY .output/ ./app
+ENTRYPOINT ["node","server/index.mjs"]
