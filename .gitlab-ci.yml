@@ -2,7 +2,7 @@ include:
   - component: gitlab.themeinerlp.dev/onelitefeather/ci-components/pnpm-build@0.0.6
     inputs:
       step_build_artifact: '.output/'
-      step_build_script: 'nitro build'
+      step_build_script: 'pnpm run build'
 
   - component: gitlab.themeinerlp.dev/onelitefeather/ci-components/docker-build@0.0.6
     inputs:
