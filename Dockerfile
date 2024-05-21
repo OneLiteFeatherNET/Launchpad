@@ -3,4 +3,4 @@ RUN mkdir /app
 WORKDIR /app
 COPY .output/ ./
 RUN ls -la 
-ENTRYPOINT ["node","public/server/index.mjs"]
+ENTRYPOINT ["node","server/index.mjs"]
