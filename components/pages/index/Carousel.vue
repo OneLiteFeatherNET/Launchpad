@@ -1,13 +1,14 @@
 <template>
-  <v-carousel
-    id="carousel"
-    height="calc(100vh - 64px)"
-    hide-delimiter-background
-    :show-arrows="false"
-    color="white"
-    progress
-    cycle
-  >
+  <v-carousel id="carousel" height="calc(100vh - 64px)" hide-delimiter-background show-arrows color="white" progress
+    :cycle="cycle">
+    <template v-slot:prev="{ props }">
+      <v-icon name="mdi-chevron-left" size="x-large" v-bind="props" @click="pauseOnManual(props.onClick)" />
+    </template>
+
+    <template v-slot:next="{ props }">
+      <v-icon name="mdi-chevron-right" size="x-large" v-bind="props" @click="pauseOnManual(props.onClick)" />
+    </template>
+
     <v-carousel-item v-for="(image, i) in images" :key="i" cover :src="image">
       <div class="carousel-item-title poppins">
         {{ $t(`pages.index.carousel.${i}.title`) }}
@@ -27,6 +28,12 @@ import slideshow1 from "assets/images/carousel/slideshow1.png";
 import slideshow2 from "assets/images/carousel/slideshow2.png";
 
 const images = ref([slideshow0, slideshow1, slideshow2]);
+const cycle = ref(true);
+
+const pauseOnManual = (callback: any) => {
+  cycle.value = false;
+  callback();
+};
 </script>
 
 <style lang="sass">
