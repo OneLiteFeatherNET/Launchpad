@@ -58,10 +58,26 @@
     },
     "team": {
       "title": "Our Team",
-      "members" : {
+      "members": {
         "0": {
           "name": "Random",
-          "position": "Gigachad"
+          "position": "Gigachad",
+          "category": "Gigachads"
+        },
+        "1": {
+          "name": "Random",
+          "position": "Gigachad",
+          "category": "Gigachad2"
+        },
+        "2": {
+          "name": "Random",
+          "position": "Gigachad",
+          "category": "Gigachad2"
+        },
+        "3": {
+          "name": "Random",
+          "position": "Gigachad",
+          "category": "Gigachad2"
         }
       }
     }
