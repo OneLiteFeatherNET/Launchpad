@@ -5,21 +5,21 @@
     </v-col>
   </v-row>
 
-  <div class="pb-10 pt-8" v-for="(category, i) in categories" :key="i" :style="style(i)">
+  <div class="pb-16 pt-8" v-for="(category, i) in categories" :key="i" :style="style(i)">
     <v-container style="max-width: 1300px">
       <v-row cols="12">
-        <v-col cols="12" class="text-left text-h3 poppins">
+        <v-col cols="12" class="text-center text-h3 poppins">
           {{ category.name }}
         </v-col>
 
-        <v-col class="d-flex justify-center align-center" cols="12" sm="6" md="4" v-for="(member, i) in category.members"
+        <v-col class="mt-6 d-flex justify-center align-center" cols="12" sm="6" md="4" v-for="(member, i) in category.members"
           :key="i" @click="router.push(localePath(`/team/${i}`))">
-          <v-row class="member justify-center flex-direction-column">
+          <v-row class="member ml-4 mr-4 pt-4 elevation-2 justify-center flex-direction-column">
             <!-- TODO: REPLACE ME -->
             <img
               src="https://kagi.com/proxy/6l3com.png?c=kPRFzVRYJ3F-DHkv6vwSytzNKq9h6QGBKl1ypujiLd9Je-4aRF9TpqbxFpEQ6u13" />
 
-            <div class="mt-4 text-center">
+            <div class="pt-4 pl-4 pr-4 pb-4 text-center bg-accent">
               <div class="poppins text-h5 text-center">{{ member.name }}</div>
               {{ member.position }}
             </div>
