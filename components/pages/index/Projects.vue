@@ -22,29 +22,17 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from "#imports";
-import placeholder from "~/assets/images/placeholder.jpg";
-
-const projects = ref([
-  {
-    description: "pages.index.projects.0.description",
-    image: placeholder,
-    link: "https://example.com",
-    title: "pages.index.projects.0.title",
-  },
-  {
-    description: "pages.index.projects.1.description",
-    image: placeholder,
-    link: "https://example.com",
-    title: "pages.index.projects.1.title",
-  },
-  {
-    description: "pages.index.projects.2.description",
-    image: placeholder,
-    link: "https://example.com",
-    title: "pages.index.projects.2.title",
-  },
-]);
+const { getItems } = useDirectusItems();
+interface Project {
+  id?: string | number;
+  name: string;
+  description: string;
+  github: string;
+  header: string;
+}
+const projects = await getItems<Project>({
+  collection: "projects"
+});
 </script>
 
 <style lang="sass" scoped>

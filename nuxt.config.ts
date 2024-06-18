@@ -38,6 +38,17 @@ export default defineNuxtConfig({
     lazy: true,
     locales: [{ code: "en", file: "en.json", iso: "en-US" }],
   },
+  runtimeConfig: {
+    public: {
+      directus: {
+        url: "https://cms.onelitefeather.dev/"
+      }
+    },
+    markdownit: {
+      runtime: true
+    },
+  },
+
   modules: [
     "@nuxtjs/i18n",
     "@vueuse/nuxt",
@@ -45,5 +56,6 @@ export default defineNuxtConfig({
     "nuxt-icon",
     "@pinia/nuxt",
     "@nuxtjs/google-fonts",
+    "nuxt-directus"
   ],
 });

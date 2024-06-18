@@ -1,23 +1,16 @@
 <template>
-  <v-card color="accent">
-    <v-card-title class="text-center poppins">
-      {{ $t(title) }}
-    </v-card-title>
+  <v-card color="accent"
+          class="mx-auto flex-fill fill-height">
+    <v-img :src="getThumbnail(header, {format: 'auto', fit: 'cover', withoutEnlargement: true})" alt="" height="275px" cover >
+      <v-card-title class="text-center poppins text-black bg-light-blue-accent-4">
+        {{ name }}
+      </v-card-title>
+    </v-img>
+    <v-card-text v-html="$mdRenderer.render(description)">
 
-    <v-card-text>
-      <v-row>
-        <v-col cols="12">
-          <v-img :src="image" alt="" height="250px" cover class="rounded" />
-        </v-col>
-
-        <v-col cols="12">
-          {{ $t(description) }}
-        </v-col>
-      </v-row>
     </v-card-text>
-
-    <v-card-actions class="float-right">
-      <v-btn variant="tonal" :href="link" target="_blank">
+    <v-card-actions class="float-left mb-2 ml-2">
+      <v-btn variant="tonal" :href="github" target="_blank">
         <Icon name="mdi:github" class="mr-2" />
         GitHub
       </v-btn>
@@ -26,10 +19,13 @@
 </template>
 
 <script lang="ts" setup>
+import {de} from "vuetify/locale";
+
+const { getThumbnail } = useDirectusFiles();
 defineProps({
   description: { required: true, type: String },
-  image: { required: true, type: String },
-  link: { required: true, type: String },
-  title: { required: true, type: String },
+  header: { required: true, type: String },
+  github: { required: true, type: String },
+  name: { required: true, type: String },
 });
 </script>
