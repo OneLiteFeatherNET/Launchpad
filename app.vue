@@ -25,6 +25,22 @@
 import { useEmitter } from "~/store/emitter";
 
 const emitter = useEmitter();
+/*
+useHead({
+  title: 'OneLiteFeather.net',
+  meta: [
+    { name: 'description', content: 'My amazing site.' }
+  ],
+});
+
+useSeoMeta({
+  title: 'OneLiteFeather.net',
+  ogTitle: 'OneLiteFeather.net',
+  description: 'This is my amazing site, let me tell you all about it.',
+  ogDescription: 'This is my amazing site, let me tell you all about it.',
+  ogImage: 'https://example.com/image.png',
+  twitterCard: 'summary_large_image',
+})*/
 </script>
 
 <style lang="sass">

@@ -25,13 +25,18 @@
     "eslint-plugin-sort-keys-fix": "^1.1.2",
     "eslint-plugin-vue": "^9.17.0",
     "nuxt": "^3.7.0",
+    "nuxt-directus": "^5.6.1",
     "nuxt-icon": "^0.5.0",
     "prettier": "^3.0.2",
     "sass": "^1.66.1",
     "vuetify": "^3.3.14"
   },
   "dependencies": {
+    "@directus/sdk": "^16.1.0",
+    "@nuxtjs/markdownit": "^2.0.0",
     "@pinia/nuxt": "^0.5.0",
+    "@types/markdown-it": "^14.1.1",
     "pinia": "^2.1.6"
-  }
+  },
+  "packageManager": "pnpm@9.4.0+sha1.9217c800d4ab947a7aee520242a7b70d64fc7638"
 }

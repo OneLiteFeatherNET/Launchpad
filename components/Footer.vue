@@ -4,7 +4,7 @@
       <v-container>
         <v-row>
           <v-col cols="12" md="5" sm="5">
-            &copy; OneLiteFeather.net 2023 - {{ new Date().getFullYear() }}
+            OneLiteFeather.net &copy; {{ new Date().getFullYear() }}
 
             <p class="mt-4">
               {{ $t("layout.footer.association") }}

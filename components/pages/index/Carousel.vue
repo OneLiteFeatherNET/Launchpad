@@ -9,25 +9,31 @@
       <v-icon name="mdi-chevron-right" size="x-large" v-bind="props" @click="pauseOnManual(props.onClick)" />
     </template>
 
-    <v-carousel-item v-for="(image, i) in images" :key="i" cover :src="image">
+    <v-carousel-item v-for="(entry, i) in carouselEntries" :key="i" cover :src="getThumbnail(entry.image, {format: 'auto'})">
       <div class="carousel-item-title poppins">
-        {{ $t(`pages.index.carousel.${i}.title`) }}
+        {{ entry.title }}
       </div>
 
-      <div class="carousel-item-description">
-        {{ $t(`pages.index.carousel.${i}.description`) }}
+      <div class="carousel-item-description" v-html="$mdRenderer.render(entry.description)">
       </div>
     </v-carousel-item>
   </v-carousel>
 </template>
 
 <script setup lang="ts">
-import { ref } from "#imports";
-import slideshow0 from "assets/images/carousel/slideshow0.png";
-import slideshow1 from "assets/images/carousel/slideshow1.png";
-import slideshow2 from "assets/images/carousel/slideshow2.png";
+const { getItems } = useDirectusItems();
+const { getThumbnail } = useDirectusFiles();
+interface CarouselEntry {
+  id?: string | number;
+  title: string;
+  description: string;
+  image: string;
+}
+const carouselEntries = await getItems<CarouselEntry>({
+  collection: "carousel"
+});
+import {ref} from "#imports";
 
-const images = ref([slideshow0, slideshow1, slideshow2]);
 const cycle = ref(true);
 
 const pauseOnManual = (callback: any) => {
