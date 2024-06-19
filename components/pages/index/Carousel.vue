@@ -9,7 +9,7 @@
       <v-icon name="mdi-chevron-right" size="x-large" v-bind="props" @click="pauseOnManual(props.onClick)" />
     </template>
 
-    <v-carousel-item v-for="(entry, i) in carouselEntries" :key="i" cover :src="getThumbnail(entry.image, {format: 'auto'})">
+    <v-carousel-item v-for="(entry, i) in carouselEntries" :key="i" cover :src="getThumbnail(entry.image)">
       <div class="carousel-item-title poppins">
         {{ entry.title }}
       </div>
