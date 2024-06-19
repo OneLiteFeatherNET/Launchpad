@@ -16,7 +16,7 @@
             <v-avatar size="60" class="ml-3">
               <img
                 height="45"
-                :src="getThumbnail('5924a3d0-613e-4e51-a3ab-de3dca3619b2')"
+                :src="imgProxy(getThumbnail('5924a3d0-613e-4e51-a3ab-de3dca3619b2'), {format: 'webp'}, false)"
                 alt="onelitefeather-logo"
               />
             </v-avatar>
@@ -30,9 +30,9 @@
             </NuxtLink>
 
             <v-avatar class="ml-3">
-              <img
+              <v-img
                 height="30"
-                :src="getThumbnail('5924a3d0-613e-4e51-a3ab-de3dca3619b2')"
+                :src="imgProxy(getThumbnail('5924a3d0-613e-4e51-a3ab-de3dca3619b2'), {format: 'webp'}, false)"
                 alt="onelitefeather-logo"
               />
             </v-avatar>
@@ -71,6 +71,8 @@
 const { getThumbnail } = useDirectusFiles();
 import { useLocalePath, isXs, lg } from "#imports";
 import { NavigationItem } from "~/composables/types";
+const imgProxy = useNuxtApp().$imgProxy
+
 
 interface NavigationBarProps {
   items: NavigationItem[];

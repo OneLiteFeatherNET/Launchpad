@@ -42,7 +42,10 @@ export default defineNuxtConfig({
     public: {
       directus: {
         url: "https://cms.onelitefeather.dev/"
-      }
+      },
+      IMGPROXY_URL: process.env.NUXT_IMGPROXY_URL ?? 'https://imgproxy.onelitefeather.dev/',
+      IMGPROXY_KEY: process.env.NUXT_IMGPROXY_KEY,
+      IMGPROXY_SALT: process.env.NUXT_IMGPROXY_SALT,
     },
     markdownit: {
       runtime: true
