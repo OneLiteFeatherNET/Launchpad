@@ -1,7 +1,7 @@
 <template>
   <v-card color="accent"
           class="mx-auto flex-fill fill-height">
-    <v-img :src="getThumbnail(header)" alt="" height="275px" cover >
+    <v-img :src="getThumbnail(header, {format: 'auto'})" alt="" height="275px" cover >
       <v-card-title class="text-center poppins text-black bg-light-blue-accent-4">
         {{ name }}
       </v-card-title>

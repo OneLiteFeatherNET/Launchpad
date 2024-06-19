@@ -16,7 +16,7 @@
             <v-avatar size="60" class="ml-3">
               <img
                 height="45"
-                :src="getThumbnail('5924a3d0-613e-4e51-a3ab-de3dca3619b2')"
+                :src="getThumbnail('5924a3d0-613e-4e51-a3ab-de3dca3619b2' , {format: 'auto'})"
                 alt="onelitefeather-logo"
               />
             </v-avatar>
@@ -32,7 +32,7 @@
             <v-avatar class="ml-3">
               <v-img
                 height="30"
-                :src="getThumbnail('5924a3d0-613e-4e51-a3ab-de3dca3619b2')"
+                :src="getThumbnail('5924a3d0-613e-4e51-a3ab-de3dca3619b2', {format: 'auto'})"
                 alt="onelitefeather-logo"
               />
             </v-avatar>

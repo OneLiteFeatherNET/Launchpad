@@ -23,17 +23,17 @@ const { getThumbnail } = useDirectusFiles();
 const items = ref([
   {
     classes: ["float-right"],
-    image: getThumbnail("2b8dd035-a2ff-4d18-a887-cf6ab9f18ef2"),
+    image: getThumbnail("2b8dd035-a2ff-4d18-a887-cf6ab9f18ef2", {format: 'auto'}),
     start: true,
   },
   {
     classes: ["float-left"],
-    image: getThumbnail("45d31e91-69c1-4203-be06-1686e1b63464"),
+    image: getThumbnail("45d31e91-69c1-4203-be06-1686e1b63464", {format: 'auto'}),
   },
   {
     classes: ["float-right"],
     end: true,
-    image: getThumbnail("de1c0905-0522-4f0d-84e7-9e93f8906a52"),
+    image: getThumbnail("de1c0905-0522-4f0d-84e7-9e93f8906a52", {format: 'auto'}),
   },
 ]);
 const lines = ref([]);
