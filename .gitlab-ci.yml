@@ -1,10 +1,10 @@
 include:
-  - component: gitlab.themeinerlp.dev/onelitefeather/ci-components/pnpm-build@0.0.7
+  - component: gitlab.themeinerlp.dev/onelitefeather/ci-components/pnpm-build@0.0.8
     inputs:
       step_build_artifact: '.output/'
       step_build_script: 'pnpm run build'
 
-  - component: gitlab.themeinerlp.dev/onelitefeather/ci-components/docker-build@0.0.7
+  - component: gitlab.themeinerlp.dev/onelitefeather/ci-components/docker-build@0.0.8
     inputs:
       step_deploy-container_needs:
         - build
