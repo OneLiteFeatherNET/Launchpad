@@ -9,7 +9,7 @@
       <v-icon name="mdi-chevron-right" size="x-large" v-bind="props" @click="pauseOnManual(props.onClick)" />
     </template>
 
-    <v-carousel-item v-for="(entry, i) in data" :key="i" cover :src="getThumbnail(entry.image, {format: 'auto'})">
+    <v-carousel-item v-for="(entry, i) in carouselEntries" :key="i" cover :src="getThumbnail(entry.image, {format: 'auto'})">
       <div class="carousel-item-title poppins">
         {{ entry.title }}
       </div>
@@ -29,9 +29,9 @@ interface CarouselEntry {
   description: string;
   image: string;
 }
-const {data, error} = await useAsyncData('carousel', () => getItems<CarouselEntry>({
+const carouselEntries = await getItems<CarouselEntry>({
   collection: "carousel"
-}));
+});
 import {ref} from "#imports";
 
 const cycle = ref(true);

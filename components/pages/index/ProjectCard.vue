@@ -19,8 +19,6 @@
 </template>
 
 <script lang="ts" setup>
-import {de} from "vuetify/locale";
-
 const { getThumbnail } = useDirectusFiles();
 defineProps({
   description: { required: true, type: String },

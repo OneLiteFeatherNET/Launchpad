@@ -7,7 +7,7 @@
         </v-col>
 
         <v-col
-          v-for="(project, i) in data"
+          v-for="(project, i) in projects"
           :key="i"
           cols="12"
           sm="6"
@@ -30,9 +30,9 @@ interface Project {
   github: string;
   header: string;
 }
-const {data, error} = await useAsyncData('projects', () => getItems<Project>({
+const projects = await getItems<Project>({
   collection: "projects"
-}));
+});
 </script>
 
 <style lang="sass" scoped>
