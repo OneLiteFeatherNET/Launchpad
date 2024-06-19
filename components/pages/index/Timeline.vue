@@ -18,24 +18,22 @@
 </template>
 
 <script setup>
-import timeline0 from "~/assets/images/timeline/timeline0.png";
-import timeline1 from "assets/images/timeline/timeline1.png";
-import timeline2 from "assets/images/timeline/timeline2.png";
+const { getThumbnail } = useDirectusFiles();
 
 const items = ref([
   {
     classes: ["float-right"],
-    image: timeline0,
+    image: getThumbnail("2b8dd035-a2ff-4d18-a887-cf6ab9f18ef2", {format: "auto"}),
     start: true,
   },
   {
     classes: ["float-left"],
-    image: timeline1,
+    image: getThumbnail("45d31e91-69c1-4203-be06-1686e1b63464", {format: "auto"}),
   },
   {
     classes: ["float-right"],
     end: true,
-    image: timeline2,
+    image: getThumbnail("de1c0905-0522-4f0d-84e7-9e93f8906a52", {format: "auto"}),
   },
 ]);
 const lines = ref([]);
