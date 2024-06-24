@@ -18,7 +18,7 @@ const items: NavigationItem[] = ref([
   },
   {
     title: "layout.navigation.item.projects",
-    to: "",
+    to: "#projects",
   },
   {
     title: "layout.navigation.item.blog",
