@@ -10,11 +10,11 @@
     </template>
 
     <v-carousel-item v-for="(entry, i) in carouselEntries" :key="i" cover :src="getThumbnail(entry.image, {format: 'auto'})">
-      <div class="carousel-item-title poppins">
+      <div class="carousel-item-title poppins text-white">
         {{ entry.title }}
       </div>
 
-      <div class="carousel-item-description" v-html="$mdRenderer.render(entry.description)">
+      <div class="carousel-item-description text-white" v-html="$mdRenderer.render(entry.description)">
       </div>
     </v-carousel-item>
   </v-carousel>

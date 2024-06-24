@@ -51,7 +51,9 @@ export default defineNuxtConfig({
       runtime: true
     },
   },
-
+  directus: {
+    devtools: true
+  },
   modules: [
     "@nuxtjs/i18n",
     "@vueuse/nuxt",
