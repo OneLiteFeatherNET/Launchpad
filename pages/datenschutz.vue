@@ -1,5 +1,5 @@
 <template>
-  <v-container v-html="data.value" />
+  <v-container id="privacy" v-html="data.value" />
 </template>
 
 <script setup lang="ts">
@@ -18,7 +18,7 @@ const data = await getSingletonItem<DataPrivacy>({
 });
 </script>
 
-<style lang="sass" scoped>
-.v-container
+<style lang="sass">
+#privacy *
   margin-top: 10px
 </style>

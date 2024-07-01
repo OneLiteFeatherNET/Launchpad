@@ -1,5 +1,5 @@
 <template>
-  <v-container v-html="data.value" />
+  <v-container id="imprint" v-html="data.value" />
 </template>
 
 <script setup lang="ts">
@@ -19,6 +19,6 @@ const data = await getSingletonItem<Imprint>({
 </script>
 
 <style lang="sass" scoped>
-.v-container
+#imprint *
   margin-top: 10px
 </style>
