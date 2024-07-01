@@ -14,27 +14,29 @@
         {{ entry.title }}
       </div>
 
-      <div class="carousel-item-description text-white" v-html="$mdRenderer.render(entry.description)">
-      </div>
+      <div class="carousel-item-description text-white" v-html="$mdRenderer.render(entry.description)" />
     </v-carousel-item>
   </v-carousel>
 </template>
 
 <script setup lang="ts">
-const { getItems } = useDirectusItems();
-const { getThumbnail } = useDirectusFiles();
+import {ref} from "#imports";
+
 interface CarouselEntry {
   id?: string | number;
   title: string;
   description: string;
   image: string;
 }
+
+const { getItems } = useDirectusItems();
+const { getThumbnail } = useDirectusFiles();
+const cycle = ref(true);
+
 const carouselEntries = await getItems<CarouselEntry>({
   collection: "carousel"
 });
-import {ref} from "#imports";
 
-const cycle = ref(true);
 
 const pauseOnManual = (callback: any) => {
   cycle.value = false;

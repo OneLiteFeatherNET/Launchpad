@@ -5,14 +5,9 @@
         Timeline
       </v-col>
     </v-row>
+
     <v-timeline align="start" truncate-line="start">
-      <v-timeline-item
-          v-for="(item, i) in timelineEntries"
-          :key="i"
-          dot-color="secondary"
-          fill-dot
-          size="x-small"
-      >
+      <v-timeline-item v-for="(item, i) in timelineEntries" :key="i" dot-color="secondary" fill-dot size="x-small">
         <template v-slot:opposite>
           <v-row>
             <v-col cols="12" class="text-h3 poppins light:text-black">
@@ -21,14 +16,12 @@
           </v-row>
 
         </template>
-        <PagesIndexTimelineCard
-            :image="getThumbnail(item.header, {format: 'auto'})"
-            :id="`content-card-${i}`"
-        >
+        <PagesIndexTimelineCard :image="getThumbnail(item.header, { format: 'auto' })" :id="`content-card-${i}`">
           {{ $t(`pages.index.timeline.${i}`) }}
         </PagesIndexTimelineCard>
       </v-timeline-item>
     </v-timeline>
+
     <v-row>
       <v-col cols="12" class="text-center text-h3 pt-16 poppins">
         <v-btn rounded="xl" elevation="16" size="x-large">More</v-btn>
@@ -37,9 +30,10 @@
   </v-container>
 </template>
 
-<script setup  lang="ts">
+<script setup lang="ts">
 const { getThumbnail } = useDirectusFiles();
 const { getItems } = useDirectusItems();
+
 interface TimelineEntry {
   id?: string | number;
   text: string;
@@ -56,7 +50,3 @@ const timelineEntries = await getItems<TimelineEntry>({
   }
 });
 </script>
-
-<style lang="sass" scoped>
-
-</style>

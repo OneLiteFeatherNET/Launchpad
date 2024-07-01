@@ -6,13 +6,7 @@
           {{ $t("pages.index.projects.title") }}
         </v-col>
 
-        <v-col
-          v-for="(project, i) in projects"
-          :key="i"
-          cols="12"
-          sm="6"
-          md="4"
-        >
+        <v-col v-for="(project, i) in projects" :key="i" cols="12" sm="6" md="4">
           <PagesIndexProjectCard v-bind="project" />
         </v-col>
       </v-row>
@@ -23,6 +17,7 @@
 
 <script lang="ts" setup>
 const { getItems } = useDirectusItems();
+
 interface Project {
   id?: string | number;
   name: string;
@@ -30,6 +25,7 @@ interface Project {
   github: string;
   header: string;
 }
+
 const projects = await getItems<Project>({
   collection: "projects"
 });
