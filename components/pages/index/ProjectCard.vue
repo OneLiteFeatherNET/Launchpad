@@ -1,5 +1,5 @@
 <template>
-  <v-card color="primary" class="mx-auto flex-fill fill-height elevation-4">
+  <v-card class="mx-auto flex-fill fill-height elevation-4">
     <v-img :src="getThumbnail(header, { format: 'auto' })" alt="" height="275px" cover>
       <v-card-title class="text-center poppins bg-secondary" color="secondary">
         {{ name }}

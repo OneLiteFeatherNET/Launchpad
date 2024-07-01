@@ -14,7 +14,7 @@
 
           <NuxtLink :to="localePath('/')">
             <v-avatar size="60" class="ml-3">
-              <img
+              <v-img
                 height="45"
                 :src="getThumbnail('5924a3d0-613e-4e51-a3ab-de3dca3619b2' , {format: 'auto'})"
                 alt="onelitefeather-logo"

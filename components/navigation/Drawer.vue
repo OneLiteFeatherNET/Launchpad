@@ -78,8 +78,7 @@ const expanded = computed({
 
 
 .drawer-link
-  border-bottom: 2px solid lightgrey
-  color: lightgrey
+  border-bottom: 2px solid
   transition: all .3s linear
   font-size: 18px
 
