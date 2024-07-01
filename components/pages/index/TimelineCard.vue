@@ -1,5 +1,5 @@
 <template>
-  <v-sheet color="secondary" width="500px" max-width="100%" rounded>
+  <v-sheet color="secondary" width="500px" max-width="65vw" rounded>
     <v-row>
       <v-col cols="12">
         <v-img class="elevation-8" :src="image" alt="" height="200px" cover />

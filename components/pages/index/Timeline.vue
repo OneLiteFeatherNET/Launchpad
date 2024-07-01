@@ -6,17 +6,24 @@
       </v-col>
     </v-row>
 
-    <v-timeline align="start" truncate-line="start">
+    <v-timeline align="start" truncate-line="start" :side="!lg ? 'end' : undefined">
       <v-timeline-item v-for="(item, i) in timelineEntries" :key="i" dot-color="secondary" fill-dot size="x-small">
-        <template v-slot:opposite>
-          <v-row>
+        <template v-if="!isXs" v-slot:opposite>
+          <v-row class="mt-5">
             <v-col cols="12" class="text-h3 poppins light:text-black">
               {{ new Date(Date.parse(item.date)).getFullYear() }}
             </v-col>
           </v-row>
-
         </template>
-        <PagesIndexTimelineCard :image="getThumbnail(item.header, { format: 'auto' })" :id="`content-card-${i}`">
+
+        <v-row v-if="isXs" class="mt-5">
+          <v-col cols="12" class="text-h3 poppins light:text-black">
+            {{ new Date(Date.parse(item.date)).getFullYear() }}
+          </v-col>
+        </v-row>
+
+        <PagesIndexTimelineCard class="mt-5" :image="getThumbnail(item.header, { format: 'auto' })"
+          :id="`content-card-${i}`">
           {{ $t(`pages.index.timeline.${i}`) }}
         </PagesIndexTimelineCard>
       </v-timeline-item>
