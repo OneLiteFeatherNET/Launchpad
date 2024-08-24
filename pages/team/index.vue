@@ -13,16 +13,18 @@
         </v-col>
 
         <v-col class="mt-6 d-flex justify-center align-center" cols="12" sm="6" md="4" v-for="member in membersOfRole(role)"
-          :key="member.id" @click="router.push(localePath(`/team/${member.id}`))">
-          <v-row class="member ml-4 mr-4 pt-4 elevation-2 justify-center flex-direction-column">
-            <v-img 
-              :src="getThumbnail(member.profile, {format: 'auto'})" />
+          :key="member.id">
+          <NuxtLink class="member ml-4 mr-4 pt-4" :to="localePath(`/team/${member.id}`)">
+            <v-row class="elevation-2 justify-center flex-direction-column">
+              <v-img 
+                :src="getThumbnail(member.profile, {format: 'auto'})" />
 
-            <div class="pt-4 pl-4 pr-4 pb-4 text-center bg-accent">
-              <div class="poppins text-h5 text-center">{{ member.username }}</div>
-              {{ member.position }}
-            </div>
-          </v-row>
+              <div class="pt-4 pl-4 pr-4 pb-4 text-center bg-accent">
+                <div class="poppins text-h5 text-center">{{ member.username }}</div>
+                {{ member.position }}
+              </div>
+            </v-row>
+          </NuxtLink>
         </v-col>
       </v-row>
     </v-container>
@@ -40,9 +42,7 @@ const { getItems } = useDirectusItems();
 const { getThumbnail } = useDirectusFiles();
 
 const members = ref([] as TeamMember[]);
-// TODO: use i18n / directus
 const roles = ref(["administrator", "content", "moderator"]);
-
 
 members.value = await getItems<TeamMember>({
   collection: "profiles"
@@ -56,20 +56,22 @@ const style = computed(
 );
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .member {
   cursor: pointer;
   max-width: 90vw;
   width: 300px;
 
-  .v-img {
-    width: 300px;
-    height: 300px;
-    max-height: 90vw;
-  }
+  .v-row {
+    .v-img {
+      width: 300px;
+      height: 300px;
+      max-height: 90vw;
+    }
 
-  >div {
-    width: 100%;
+    >div {
+      width: 100%;
+    }
   }
 }
 </style>
