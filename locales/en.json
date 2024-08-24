@@ -20,13 +20,19 @@
     }
   },
   "pages": {
+    "index": {
+      "projects": {
+        "title": "Our projects"
+      }
+    },
     "team": {
       "title": "Our Team",
       "role": {
         "administrator": "Administrator",
         "content": "Content",
         "moderator": "Moderator"
-      }
+      },
+      "aboutMe": "About me"
     }
   }
 }

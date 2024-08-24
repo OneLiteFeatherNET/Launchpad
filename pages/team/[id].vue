@@ -16,7 +16,11 @@
 
     <v-col cols="12" class="pt-14 mt-14 pb-14 bg-primary">
       <v-container>
-        <div class="text-center"  v-html="member.description" />
+        <span class="poppins text-h4">
+          {{ $t("pages.team.aboutMe") }}
+        </span>
+
+        <div class="mt-4" v-html="member.description" />
       </v-container>
     </v-col>
   </v-row>

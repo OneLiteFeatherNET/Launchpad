@@ -29,9 +29,8 @@
               OneLiteFeather
             </NuxtLink>
 
-            <v-avatar class="ml-3">
+            <v-avatar>
               <v-img
-                height="30"
                 :src="getThumbnail('5924a3d0-613e-4e51-a3ab-de3dca3619b2', {format: 'auto'})"
                 alt="onelitefeather-logo"
               />
@@ -43,9 +42,9 @@
           <v-btn-toggle selected-class="text--white" group variant="plain">
             <template v-for="(item, i) in items" :key="i">
               <v-btn
-                v-if="item.to.startsWith('http')"
+                v-if="item.to.startsWith('http') || item.to.startsWith('#')"
                 :href="item.to"
-                target="_blank"
+                :target="item.to.startsWith('http') ? '_blank' : ''"
                 color="white"
               >
                 {{ $t(item.title) }}
