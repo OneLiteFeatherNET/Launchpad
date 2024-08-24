@@ -3,13 +3,10 @@ export interface NavigationItem {
   to: string;
 }
 
-export interface TeamCategory {
-  name: string;
-  members: TeamMember[];
-}
-
 export interface TeamMember {
-  name: string;
-  category: string;
-  position: string;
+  id?: string; 
+  role: string;
+  description: string;
+  username: string;
+  profile: string;
 }

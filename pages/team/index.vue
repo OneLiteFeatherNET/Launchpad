@@ -5,22 +5,21 @@
     </v-col>
   </v-row>
 
-  <div class="pb-16 pt-8" v-for="(category, i) in categories" :key="i" :style="style(i)">
+  <div class="pb-16 pt-8" v-for="(role, i) in roles" :key="i" :style="style(i)">
     <v-container style="max-width: 1300px">
       <v-row cols="12">
         <v-col cols="12" class="text-center text-h3 poppins">
-          {{ category.name }}
+          {{ role.name }}
         </v-col>
 
-        <v-col class="mt-6 d-flex justify-center align-center" cols="12" sm="6" md="4" v-for="(member, i) in category.members"
-          :key="i" @click="router.push(localePath(`/team/${i}`))">
+        <v-col class="mt-6 d-flex justify-center align-center" cols="12" sm="6" md="4" v-for="member in membersOfRole(role)"
+          :key="member.id" @click="router.push(localePath(`/team/${member.id}`))">
           <v-row class="member ml-4 mr-4 pt-4 elevation-2 justify-center flex-direction-column">
-            <!-- TODO: REPLACE ME -->
-            <img
-              src="https://kagi.com/proxy/6l3com.png?c=kPRFzVRYJ3F-DHkv6vwSytzNKq9h6QGBKl1ypujiLd9Je-4aRF9TpqbxFpEQ6u13" />
+            <v-img 
+              :src="getThumbnail(member.profile, {format: 'auto'})" />
 
             <div class="pt-4 pl-4 pr-4 pb-4 text-center bg-accent">
-              <div class="poppins text-h5 text-center">{{ member.name }}</div>
+              <div class="poppins text-h5 text-center">{{ member.username }}</div>
               {{ member.position }}
             </div>
           </v-row>
@@ -32,43 +31,24 @@
 
 <script setup lang="ts">
 import { ref, Ref } from "vue";
-import { TeamMember, TeamCategory } from "~/composables/types";
+import { TeamMember } from "~/composables/types";
 
 const router = useRouter();
 const localePath = useLocalePath();
 const { t } = useI18n();
-const categories: Ref<TeamCategory[]> = ref([]);
+const { getItems } = useDirectusItems();
+const { getThumbnail } = useDirectusFiles();
 
-onMounted(() => {
-  // parse all the members out of the locale
-  let index = 0;
-  const members: TeamMember[] = [];
+const members = ref([] as TeamMember[]);
+// TODO: use i18n / directus
+const roles = ref(["administrator", "content", "moderator"]);
 
-  while (true) {
-    const member = `pages.team.members.${index}`;
-    if (t(`${member}.name`) === `${member}.name`) break;
 
-    members.push({
-      name: t(`${member}.name`),
-      category: t(`${member}.category`),
-      position: t(`${member}.position`),
-    });
-
-    index++;
-  }
-
-  // group them by category
-  categories.value = Object.values(
-    members.reduce((acc: { [key: string]: TeamCategory }, member) => {
-      const key = member.category;
-      if (!acc[key]) {
-        acc[key] = { name: key, members: [] };
-      }
-      acc[key].members.push(member);
-      return acc;
-    }, {}),
-  );
+members.value = await getItems<TeamMember>({
+  collection: "profiles"
 });
+
+const membersOfRole = computed(() => (role: string) => members.value.filter((member) => member.role === role)) 
 
 const style = computed(
   () => (index: number) =>
@@ -82,7 +62,7 @@ const style = computed(
   max-width: 90vw;
   width: 300px;
 
-  img {
+  .v-img {
     width: 300px;
     height: 300px;
     max-height: 90vw;
