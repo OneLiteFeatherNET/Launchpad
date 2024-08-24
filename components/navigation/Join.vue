@@ -1,30 +1,32 @@
 <template>
-  <v-menu class="ml-10">
-    <template #activator="{ props }">
-      <slot :props="props">
-        <v-btn variant="tonal" v-bind="props">
-          <v-icon icon="mdi-human-greeting" class="mr-2" />
-          {{ $t("layout.navigation.item.join") }}
-        </v-btn>
-      </slot>
-    </template>
+  <div>
+    <v-menu>
+      <template #activator="{ props }">
+        <slot :props="props">
+          <v-btn variant="tonal" v-bind="props">
+            <v-icon icon="mdi-human-greeting" class="mr-2" />
+            {{ $t("layout.navigation.item.join") }}
+          </v-btn>
+        </slot>
+      </template>
 
-    <v-list>
-      <v-list-item
-        prepend-icon="mdi-monitor"
-        @click="copyAddress('OneLiteFeather.net')"
-      >
-        <v-list-item-title> Java</v-list-item-title>
-      </v-list-item>
+      <v-list>
+        <v-list-item
+          prepend-icon="mdi-monitor"
+          @click="copyAddress('OneLiteFeather.net')"
+        >
+          <v-list-item-title> Java</v-list-item-title>
+        </v-list-item>
 
-      <v-list-item
-        prepend-icon="mdi-cellphone"
-        @click="copyAddress('OneLiteFeather.com')"
-      >
-        <v-list-item-title> Bedrock</v-list-item-title>
-      </v-list-item>
-    </v-list>
-  </v-menu>
+        <v-list-item
+          prepend-icon="mdi-cellphone"
+          @click="copyAddress('OneLiteFeather.com')"
+        >
+          <v-list-item-title> Bedrock</v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-menu>
+  </div>
 </template>
 
 <script setup lang="ts">

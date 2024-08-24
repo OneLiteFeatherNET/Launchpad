@@ -14,46 +14,25 @@
         "about": "About Us",
         "projects": "Projects",
         "blog": "blog",
-        "join": "Join now!"
+        "join": "Join now!",
+        "team": "Team"
       }
     }
   },
   "pages": {
     "index": {
-      "carousel": {
-        "0": {
-          "title": "OneLiteFeather.NET",
-          "description": "Description"
-        },
-        "1": {
-          "title": "Title",
-          "description": "Description"
-        },
-        "2": {
-          "title": "Title",
-          "description": "Description"
-        }
-      },
       "projects": {
-        "title": "Projects",
-        "0": {
-          "title": "Project",
-          "description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam"
-        },
-        "1": {
-          "title": "Project",
-          "description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam"
-        },
-        "2": {
-          "title": "Project",
-          "description": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam"
-        }
-      },
-      "timeline": {
-        "0": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam",
-        "1": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam",
-        "2": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam "
+        "title": "Our projects"
       }
+    },
+    "team": {
+      "title": "Our Team",
+      "role": {
+        "administrator": "Administrator",
+        "content": "Content",
+        "moderator": "Moderator"
+      },
+      "aboutMe": "About me"
     }
   }
 }

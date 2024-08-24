@@ -6,15 +6,15 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from "#imports";
+import { ref, Ref } from "#imports";
 import { NavigationItem } from "~/composables/types";
 
 const expanded = ref(false);
 
-const items: NavigationItem[] = ref([
+const items: Ref<NavigationItem[]> = ref([
   {
     title: "layout.navigation.item.about",
-    to: "",
+    to: "#timeline",
   },
   {
     title: "layout.navigation.item.projects",
@@ -23,6 +23,10 @@ const items: NavigationItem[] = ref([
   {
     title: "layout.navigation.item.blog",
     to: "https://blog.onelitefeather.net/",
+  },
+  {
+    title: "layout.navigation.item.team",
+    to: "/team",
   },
 ]);
 </script>
