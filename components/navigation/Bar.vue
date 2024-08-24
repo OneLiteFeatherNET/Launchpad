@@ -57,9 +57,9 @@
             </template>
           </v-btn-toggle>
 
-          <NavigationJoin v-if="lg" />
+          <NavigationJoin class="ml-8" v-if="lg" />
 
-          <NavigationThemeSwitcher class="ml-2" />
+          <NavigationThemeSwitcher class="ml-8" />
           <NavigationLocaleSelection class="ml-2" />
         </template>
       </v-row>
