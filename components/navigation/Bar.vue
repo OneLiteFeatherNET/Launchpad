@@ -51,7 +51,7 @@
                 {{ $t(item.title) }}
               </v-btn>
 
-              <v-btn v-else nuxt :href="localePath(item.to)" color="white">
+              <v-btn v-else :to="localePath(item.to)" href color="white">
                 {{ $t(item.title) }}
               </v-btn>
             </template>
