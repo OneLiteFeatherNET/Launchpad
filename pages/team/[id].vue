@@ -8,8 +8,18 @@
 
     <v-col cols="12" class="text-center text-h2 pt-4 pb-10 poppins">
       {{ member.username }}
+
+      <p class="text-h5">
+        {{ $t(`pages.team.role.${member.role}`) }}
+      </p>
     </v-col>
-  </v-row> 
+
+    <v-col cols="12" class="pt-14 mt-14 bg-primary">
+      <v-container>
+        <div class="text-center"  v-html="member.description" />
+      </v-container>
+    </v-col>
+  </v-row>
 </template>
 
 <script setup lang="ts">
