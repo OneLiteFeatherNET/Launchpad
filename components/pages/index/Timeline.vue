@@ -1,5 +1,5 @@
 <template>
-  <v-container style="max-width: 1200px" class="pt-16 mt-16">
+  <v-container id="timeline" style="max-width: 1200px" class="pt-16 mt-16">
     <v-row>
       <v-col cols="12" class="text-center text-h3 pb-16 poppins">
         Timeline

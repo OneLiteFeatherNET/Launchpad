@@ -14,7 +14,7 @@ const expanded = ref(false);
 const items: Ref<NavigationItem[]> = ref([
   {
     title: "layout.navigation.item.about",
-    to: "",
+    to: "#timeline",
   },
   {
     title: "layout.navigation.item.projects",
