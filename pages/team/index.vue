@@ -9,7 +9,7 @@
     <v-container style="max-width: 1300px">
       <v-row cols="12">
         <v-col cols="12" class="text-center text-h3 poppins">
-          {{ role.name }}
+          {{ role[0].toUpperCase() + role.slice(1) }}
         </v-col>
 
         <v-col class="mt-6 d-flex justify-center align-center" cols="12" sm="6" md="4" v-for="member in membersOfRole(role)"
