@@ -14,7 +14,7 @@
       </p>
     </v-col>
 
-    <v-col cols="12" class="pt-14 mt-14 bg-primary">
+    <v-col cols="12" class="pt-14 mt-14 pb-14 bg-primary">
       <v-container>
         <div class="text-center"  v-html="member.description" />
       </v-container>
