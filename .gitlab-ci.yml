@@ -8,3 +8,5 @@ include:
     inputs:
       step_deploy-container_needs:
         - build
+variables:
+  BUILDAH_IMAGE: "${HTL_NEXUS_PROXY}/buildah/stable:v1.37.3"
