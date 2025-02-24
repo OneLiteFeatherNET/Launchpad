@@ -24,10 +24,4 @@ export default defineNuxtConfig({
       autoSubfolderIndex: false
     }
   },
-  content: {
-    database: {
-      type: 'd1',
-      bindingName: 'D1_DATABASE'
-    }
-  }
 })
