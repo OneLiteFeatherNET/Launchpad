@@ -11,9 +11,21 @@ importers:
       '@nuxt/content':
         specifier: ^3.2.1
         version: 3.2.1(magicast@0.3.5)(typescript@5.7.3)
+      '@nuxtjs/google-fonts':
+        specifier: 3.2.0
+        version: 3.2.0(magicast@0.3.5)
+      '@rollup/rollup-darwin-x64':
+        specifier: ^4.34.8
+        version: 4.34.8
+      '@tailwindcss/oxide-darwin-x64':
+        specifier: ^4.0.8
+        version: 4.0.8
       '@tailwindcss/vite':
         specifier: ^4.0.8
         version: 4.0.8(vite@6.1.1(@types/node@22.13.5)(jiti@2.4.2)(lightningcss@1.29.1)(terser@5.39.0)(yaml@2.7.0))
+      lightningcss-darwin-x64:
+        specifier: ^1.29.1
+        version: 1.29.1
       nuxt:
         specifier: ^3.15.4
         version: 3.15.4(@parcel/watcher@2.5.1)(@types/node@22.13.5)(better-sqlite3@11.8.1)(db0@0.2.4(better-sqlite3@11.8.1))(ioredis@5.5.0)(lightningcss@1.29.1)(magicast@0.3.5)(rollup@4.34.8)(terser@5.39.0)(typescript@5.7.3)(vite@6.1.1(@types/node@22.13.5)(jiti@2.4.2)(lightningcss@1.29.1)(terser@5.39.0)(yaml@2.7.0))(yaml@2.7.0)
@@ -453,6 +465,9 @@ packages:
     peerDependencies:
       vue: ^3.3.4
 
+  '@nuxtjs/google-fonts@3.2.0':
+    resolution: {integrity: sha512-cGAjDJoeQ2jm6VJCo4AtSmKO6KjsbO9RSLj8q261fD0lMVNMZCxkCxBkg8L0/2Vfgp+5QBHWVXL71p1tiybJFw==}
+
   '@nuxtjs/mdc@0.13.5':
     resolution: {integrity: sha512-bbToK+RByIKdg0bO1k5ApMn3zuBzXqRNOKGGIA4HiHTZAPpHnSHjmKRP+2qKbdth+QJ/vyBj3cHQTlMT5onxsg==}
 
@@ -650,7 +665,6 @@ packages:
 
   '@rollup/rollup-darwin-x64@4.34.8':
     resolution: {integrity: sha512-qIP/elwR/tq/dYRx3lgwK31jkZvMiD6qUtOycLhTzCvrjbZ3LjQnEM9rNhSGpbLXVJYQ3rq39A6Re0h9tU2ynw==}
-    cpu: [x64]
     os: [darwin]
 
   '@rollup/rollup-freebsd-arm64@4.34.8':
@@ -803,7 +817,6 @@ packages:
   '@tailwindcss/oxide-darwin-x64@4.0.8':
     resolution: {integrity: sha512-fWfywfYIlSWtKoqWTjukTHLWV3ARaBRjXCC2Eo0l6KVpaqGY4c2y8snUjp1xpxUtpqwMvCvFWFaleMoz1Vhzlw==}
     engines: {node: '>= 10'}
-    cpu: [x64]
     os: [darwin]
 
   '@tailwindcss/oxide-freebsd-x64@4.0.8':
@@ -1802,6 +1815,9 @@ packages:
   globby@14.1.0:
     resolution: {integrity: sha512-0Ia46fDOaT7k4og1PDW4YbodWWr3scS2vAr2lTbsplOt2WkKp0vQbkI9wKis/T5LV/dqPjO3bpS/z6GTJB82LA==}
     engines: {node: '>=18'}
+
+  google-fonts-helper@3.6.0:
+    resolution: {integrity: sha512-ReantWd/l8dedKqTYjvqaQ55rAl/rbRqWL5VXHNXtGwIhMX4N8VNA7V19drr7xiv5G3pzlYID0K4FauvGqnWEg==}
 
   graceful-fs@4.2.11:
     resolution: {integrity: sha512-RbJ5/jmFcNNCcDV5o9eTnBLJ/HszWV0P73bc+Ff4nS/rJj+YaS6IGyiOL0VoBYX+l1Wrl3k63h/KrH+nhJ0XvQ==}
@@ -4446,6 +4462,15 @@ snapshots:
       - vue-tsc
       - yaml
 
+  '@nuxtjs/google-fonts@3.2.0(magicast@0.3.5)':
+    dependencies:
+      '@nuxt/kit': 3.15.4(magicast@0.3.5)
+      google-fonts-helper: 3.6.0
+      pathe: 1.1.2
+    transitivePeerDependencies:
+      - magicast
+      - supports-color
+
   '@nuxtjs/mdc@0.13.5(magicast@0.3.5)':
     dependencies:
       '@nuxt/kit': 3.15.4(magicast@0.3.5)
@@ -4658,8 +4683,7 @@ snapshots:
   '@rollup/rollup-darwin-arm64@4.34.8':
     optional: true
 
-  '@rollup/rollup-darwin-x64@4.34.8':
-    optional: true
+  '@rollup/rollup-darwin-x64@4.34.8': {}
 
   '@rollup/rollup-freebsd-arm64@4.34.8':
     optional: true
@@ -4799,8 +4823,7 @@ snapshots:
   '@tailwindcss/oxide-darwin-arm64@4.0.8':
     optional: true
 
-  '@tailwindcss/oxide-darwin-x64@4.0.8':
-    optional: true
+  '@tailwindcss/oxide-darwin-x64@4.0.8': {}
 
   '@tailwindcss/oxide-freebsd-x64@4.0.8':
     optional: true
@@ -5862,6 +5885,13 @@ snapshots:
       slash: 5.1.0
       unicorn-magic: 0.3.0
 
+  google-fonts-helper@3.6.0:
+    dependencies:
+      deepmerge: 4.3.1
+      hookable: 5.5.3
+      ofetch: 1.4.1
+      ufo: 1.5.4
+
   graceful-fs@4.2.11: {}
 
   gzip-size@7.0.0:
@@ -6236,8 +6266,7 @@ snapshots:
   lightningcss-darwin-arm64@1.29.1:
     optional: true
 
-  lightningcss-darwin-x64@1.29.1:
-    optional: true
+  lightningcss-darwin-x64@1.29.1: {}
 
   lightningcss-freebsd-x64@1.29.1:
     optional: true
