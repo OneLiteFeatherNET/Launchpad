@@ -22,5 +22,11 @@ export default defineNuxtConfig({
     prerender: {
       autoSubfolderIndex: false
     }
+  },
+  content: {
+    database: {
+      type: 'd1',
+      bindingName: 'D1_DATABASE'
+    }
   }
 })
