@@ -1,9 +1,7 @@
 <script setup lang="ts">
 const localePath = useLocalePath();
 const today = new Date();
-const { t } = useI18n({
-  useScope: 'local'
-});
+const { t } = useI18n();
 </script>
 
 <template>

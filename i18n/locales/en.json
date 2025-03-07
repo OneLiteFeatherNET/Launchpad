@@ -1,0 +1,10 @@
+{
+  "link": {
+    "home": "Startseite",
+    "projects" : "Projekte",
+    "blog" : "Blog",
+    "discord" : "Discord",
+    "imprint": "Impressum",
+    "data-policy": "Datenschutz"
+  }
+}

@@ -7,13 +7,17 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: [
     '@nuxtjs/seo',
+    '@nuxtjs/sitemap',
     '@nuxt/content',
     '@nuxtjs/google-fonts',
     '@nuxtjs/i18n',
     '@nuxt/image',
     'nuxt-schema-org',
   ],
-  css: ['~/assets/css/main.css'],
+  css: [
+      'tailwindcss',
+      '@/assets/css/main.css'
+  ],
   googleFonts: {
     download: true,
     families: {
@@ -25,21 +29,27 @@ export default defineNuxtConfig({
     plugins: [tailwindcss()]
   },
   i18n: {
-    baseUrl: 'https://onelitefeather.net',
-    locales: [
-      { code: 'en', language: 'en-US' },
-      { code: 'de', language: 'de-DE' }
-    ],
-    defaultLocale: 'en',
+    defaultLocale: "en",
     detectBrowserLanguage: {
+      alwaysRedirect: false,
+      cookieKey: "lang",
+      fallbackLocale: "en",
+      redirectOn: "root",
       useCookie: true,
-      cookieKey: 'i18n_redirected',
-      redirectOn: 'root' // recommended
-    }
+    },
+    lazy: true,
+    locales: [{ code: "en", file: "en.json", iso: "en-US" }, { code: "de", file: "de.json", iso: "de-DE" }],
   },
   nitro: {
     prerender: {
       autoSubfolderIndex: false
     }
   },
+  site: {
+    name: 'OneLiteFeather Network',
+    description: 'OneLiteFeather Network is a open-source project for everyone.',
+    themeColor: '#F7931D',
+    twitter: '@onelitefeathernet',
+    image: '/og-image.png'
+  }
 })
