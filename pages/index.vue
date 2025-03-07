@@ -4,8 +4,8 @@ const { data: home } = await useAsyncData(() => queryCollection('content').path(
 const { t } = useI18n();
 
 useSeoMeta({
-  title: home.value?.title,
-  description: home.value?.description
+  title: t('seo.title'),
+  description: t('seo.description'),
 })
 useSchemaOrg([
   defineOrganization({
@@ -26,6 +26,10 @@ useSchemaOrg([
     name: 'OneLiteFeather',
     url: 'https://onelitefeather.net',
     description: t('seo.description'),
+    publisher: {
+      "@type": 'Organization',
+      name: 'OneLiteFeather',
+    }
   })
 ])
 </script>
