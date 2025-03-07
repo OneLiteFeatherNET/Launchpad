@@ -10,7 +10,7 @@ const localePath = useLocalePath();
         <img src="@/assets/logo.svg" alt="onelitefeather brand logo" class="h-25 w-25" width="150" height="150"/>
       </div>
       <div class="flex items-center mx-2 ">
-        <NuxtLink class="px-2" :to="localePath('home')">{{ t('link.home') }}</NuxtLink>
+        <NuxtLink class="px-2" :to="localePath('')">{{ t('link.home') }}</NuxtLink>
         <NuxtLink class="px-2" :to="localePath('projects')">{{ t('link.projects') }}</NuxtLink>
         <NuxtLink class="px-2" :to="localePath('blog')">{{ t('link.blog') }}</NuxtLink>
         <NuxtLink class="px-2" to="https://discord.gg/onelitefeather" target="_blank">{{ t('link.discord') }}</NuxtLink>

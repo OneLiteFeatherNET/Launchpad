@@ -6,5 +6,8 @@
     "discord" : "Discord",
     "imprint": "Impressum",
     "data-policy": "Datenschutz"
+  },
+  "seo": {
+    "description": "OneLiteFeather ist ein Open Source Minecraft Netzwerk mit dem Fokus Studenten, Auszubildene und Jugendlichen eine Perspektive zu geben."
   }
 }

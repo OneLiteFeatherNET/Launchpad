@@ -7,12 +7,12 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: [
     '@nuxtjs/seo',
+    'nuxt-schema-org',
     '@nuxtjs/sitemap',
     '@nuxt/content',
     '@nuxtjs/google-fonts',
     '@nuxtjs/i18n',
     '@nuxt/image',
-    'nuxt-schema-org',
   ],
   css: [
       'tailwindcss',
@@ -51,5 +51,9 @@ export default defineNuxtConfig({
     themeColor: '#F7931D',
     twitter: '@onelitefeathernet',
     image: '/og-image.png'
+  },
+  robots: {
+    blockNonSeoBots: true,
+    blockAiBots: true
   }
 })
