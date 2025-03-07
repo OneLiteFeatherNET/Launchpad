@@ -8,7 +8,7 @@ const { t } = useI18n({
 
 <template>
   <footer class="grid dark:text-slate-100 text-slate-400 justify-items-center mb-4">
-    &copy; {today.getFullYear()} OneLiteFeather. All rights reserved.
+    &copy; {{today.getFullYear()}} OneLiteFeather. All rights reserved.
     <div class="my-2">
       <a href="https://github.com/OneLiteFeatherNET/Launchpad" target="_blank">
         <span class="sr-only">Go to OneLiteFeather's GitHub repo</span>
