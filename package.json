@@ -27,7 +27,7 @@
     "vue-router": "latest",
     "wrangler": "^3.111.0"
   },
-  "packageManager": "pnpm@10.6.1",
+  "packageManager": "pnpm@10.6.3",
   "pnpm": {
     "onlyBuiltDependencies": [
       "@parcel/watcher",
