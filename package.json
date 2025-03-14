@@ -13,7 +13,7 @@
     "@nuxt/content": "^3.2.2",
     "@nuxt/image": "1.9.0",
     "@nuxtjs/google-fonts": "3.2.0",
-    "@nuxtjs/i18n": "9.3.0",
+    "@nuxtjs/i18n": "9.3.1",
     "@nuxtjs/seo": "3.0.1",
     "@nuxtjs/sitemap": "7.2.9",
     "@rollup/rollup-darwin-x64": "^4.34.8",
