@@ -35,13 +35,13 @@ const carouselEntries: CarouselEntry[] = [
     id: 0,
     title: "OneLiteFeather Survival Spawn",
     description: "Gemeinsam erreichen wir alles",
-    image: "img/carousel/primary_survival_spawn.png",
+    image: "img/carousel/primary_survival_spawn.webp",
   },
   {
     id: 1,
     title: "OneLiteFeather GameModus",
     description: "OneLiteFeather GameModus",
-    image: "img/carousel/spawn_tempel.png",
+    image: "img/carousel/spawn_tempel.webp",
   },
 ];
 

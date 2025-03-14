@@ -48,17 +48,17 @@ interface TimelineEntry {
 // new Date(time).format("YYYY-MM-DD")
 const timelineEntries: TimelineEntry[] = [
   {
-    header: "img/carousel/primary_survival_spawn.png",
+    header: "img/carousel/primary_survival_spawn.webp",
     color: "primary",
     date: "2021-01-01"
   },
   {
-    header: "img/carousel/primary_survival_spawn.png",
+    header: "img/carousel/primary_survival_spawn.webp",
     color: "primary",
     date: "2022-01-01"
   },
   {
-    header: "img/carousel/spawn_tempel.png",
+    header: "img/carousel/spawn_tempel.webp",
     color: "primary",
     date: "2025-03-13"
   },
