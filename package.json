@@ -1,5 +1,5 @@
 {
-  "name": "launch-pad",
+  "name": "launchpad",
   "private": true,
   "scripts": {
     "build": "nuxi build",
