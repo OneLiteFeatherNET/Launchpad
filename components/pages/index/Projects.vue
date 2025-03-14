@@ -16,7 +16,6 @@
 </template>
 
 <script lang="ts" setup>
-const { getItems } = useDirectusItems();
 
 interface Project {
   id?: string | number;
@@ -26,9 +25,7 @@ interface Project {
   header: string;
 }
 
-const projects = await getItems<Project>({
-  collection: "projects"
-});
+const projects = [] as Project[];
 </script>
 
 <style lang="sass" scoped>

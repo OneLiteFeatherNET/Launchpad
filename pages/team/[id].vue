@@ -2,7 +2,7 @@
   <v-row class="pt-14">
     <v-col class="justify-center d-flex" cols="12">
      <v-avatar size="300">
-        <v-img cover :src="getThumbnail(member.profile, { format: 'auto' })" />
+        <v-img cover :src="member.profile" />
       </v-avatar> 
     </v-col>
 
@@ -28,15 +28,9 @@
 
 <script setup lang="ts">
 import { TeamMember } from "~/composables/types";
-
-const { getItemById } = useDirectusItems();
-const { getThumbnail } = useDirectusFiles();
 const { t } = useI18n();
 const route = useRoute();
 const member: Ref<TeamMember | undefined> = ref(undefined as TeamMember | undefined);
 
-member.value = await getItemById<TeamMember>({
-  collection: "profiles",
-  id: route.params.id as string
-});
+member.value = {} as TeamMember;
 </script>

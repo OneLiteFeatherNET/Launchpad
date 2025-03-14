@@ -9,7 +9,7 @@
       <v-icon name="mdi-chevron-right" size="x-large" v-bind="props" @click="pauseOnManual(props.onClick)" />
     </template>
 
-    <v-carousel-item v-for="(entry, i) in carouselEntries" :key="i" cover :src="getThumbnail(entry.image, {format: 'auto'})">
+    <v-carousel-item v-for="(entry, i) in carouselEntries" :key="i" cover :src="entry.image">
       <div class="carousel-item-title poppins text-white">
         {{ entry.title }}
       </div>
@@ -28,14 +28,9 @@ interface CarouselEntry {
   description: string;
   image: string;
 }
-
-const { getItems } = useDirectusItems();
-const { getThumbnail } = useDirectusFiles();
 const cycle = ref(true);
 
-const carouselEntries = await getItems<CarouselEntry>({
-  collection: "carousel"
-});
+const carouselEntries = [] as CarouselEntry[];
 
 
 const pauseOnManual = (callback: any) => {

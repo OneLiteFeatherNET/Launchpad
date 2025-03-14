@@ -17,7 +17,7 @@
           <NuxtLink class="member ml-4 mr-4 pt-4" :to="localePath(`/team/${member.id}`)">
             <v-row class="elevation-2 justify-center flex-direction-column">
               <v-img 
-                :src="getThumbnail(member.profile, {format: 'auto'})" />
+                :src="member.profile" />
 
               <div class="pt-4 pl-4 pr-4 pb-4 text-center bg-accent">
                 <div class="poppins text-h5 text-center">{{ member.username }}</div>
@@ -38,15 +38,11 @@ import { TeamMember } from "~/composables/types";
 const router = useRouter();
 const localePath = useLocalePath();
 const { t } = useI18n();
-const { getItems } = useDirectusItems();
-const { getThumbnail } = useDirectusFiles();
 
 const members = ref([] as TeamMember[]);
 const roles = ref(["administrator", "content", "moderator"]);
 
-members.value = await getItems<TeamMember>({
-  collection: "profiles"
-});
+members.value = [] as TeamMember[];
 
 const membersOfRole = computed(() => (role: string) => members.value.filter((member) => member.role === role)) 
 

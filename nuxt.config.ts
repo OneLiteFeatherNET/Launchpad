@@ -39,20 +39,9 @@ export default defineNuxtConfig({
     locales: [{ code: "en", file: "en.json", iso: "en-US" }, { code: "de", file: "de.json", iso: "de-DE" }],
   },
   runtimeConfig: {
-    public: {
-      directus: {
-        url: "https://cms.onelitefeather.dev/"
-      },
-      IMGPROXY_URL: process.env.NUXT_IMGPROXY_URL ?? 'https://imgproxy.onelitefeather.dev/',
-      IMGPROXY_KEY: process.env.NUXT_IMGPROXY_KEY,
-      IMGPROXY_SALT: process.env.NUXT_IMGPROXY_SALT,
-    },
     markdownit: {
       runtime: true
     },
-  },
-  directus: {
-    devtools: true
   },
   modules: [
     "@nuxtjs/i18n",

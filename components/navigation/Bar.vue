@@ -16,7 +16,7 @@
             <v-avatar size="60" class="ml-3">
               <v-img
                 height="45"
-                :src="getThumbnail('5924a3d0-613e-4e51-a3ab-de3dca3619b2' , {format: 'auto'})"
+                src="logo.svg"
                 alt="onelitefeather-logo"
               />
             </v-avatar>
@@ -31,7 +31,7 @@
 
             <v-avatar>
               <v-img
-                :src="getThumbnail('5924a3d0-613e-4e51-a3ab-de3dca3619b2', {format: 'auto'})"
+                  src="logo.svg"
                 alt="onelitefeather-logo"
               />
             </v-avatar>
@@ -67,7 +67,6 @@
 </template>
 
 <script setup lang="ts">
-const { getThumbnail } = useDirectusFiles();
 import { useLocalePath, isXs, lg } from "#imports";
 import { NavigationItem } from "~/composables/types";
 

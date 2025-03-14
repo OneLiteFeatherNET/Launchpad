@@ -22,7 +22,7 @@
           </v-col>
         </v-row>
 
-        <PagesIndexTimelineCard class="mt-5" :image="getThumbnail(item.header, { format: 'auto' })"
+        <PagesIndexTimelineCard class="mt-5" :image="item.header"
           :id="`content-card-${i}`">
           {{ $t(`pages.index.timeline.${i}`) }}
         </PagesIndexTimelineCard>
@@ -38,8 +38,6 @@
 </template>
 
 <script setup lang="ts">
-const { getThumbnail } = useDirectusFiles();
-const { getItems } = useDirectusItems();
 
 interface TimelineEntry {
   id?: string | number;
@@ -50,10 +48,5 @@ interface TimelineEntry {
 }
 
 // new Date(time).format("YYYY-MM-DD")
-const timelineEntries = await getItems<TimelineEntry>({
-  collection: "timeline",
-  params: {
-    limit: 3,
-  }
-});
+const timelineEntries = [] as TimelineEntry[];
 </script>

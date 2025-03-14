@@ -7,7 +7,7 @@ const localePath = useLocalePath();
   <header class="shadow fixed w-full z-10 backdrop-blur-sm">
     <nav class="container mx-auto relative flex items-center justify-between flex-row px-4">
       <div class="flex items-center">
-        <img src="@/assets/logo.svg" alt="onelitefeather brand logo" class="h-25 w-25" width="150" height="150"/>
+        <img src="../public/logo.svg" alt="onelitefeather brand logo" class="h-25 w-25" width="150" height="150"/>
       </div>
       <div class="flex items-center mx-2 ">
         <NuxtLink class="px-2" :to="localePath('')">{{ t('link.home') }}</NuxtLink>

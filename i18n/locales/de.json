@@ -1,14 +1,38 @@
 {
-  "link": {
-    "home": "Startseite",
-    "projects" : "Projekte",
-    "blog" : "Blog",
-    "discord" : "Discord",
-    "imprint": "Impressum",
-    "data-policy": "Datenschutz"
+  "layout": {
+    "footer": {
+      "legal": {
+        "title": "Rechtliches",
+        "imprint": "Impressum",
+        "privacy": "Datenschutz"
+      },
+      "association": "KEIN OFFIZIELLES MINECRAFT [PRODUKT/DIENSTLEISTUNG/EVENT/etc.]. NICHT LIZENSIERT NOCH ASSOZIIERT MIT MOJANG ODER MICROSOFT"
+    },
+    "navigation": {
+      "copy": "Adresse kopiert",
+      "item": {
+        "about": "Über uns",
+        "projects": "Projekte",
+        "blog": "Blog",
+        "join": "Joine jetzt!",
+        "team": "Team"
+      }
+    }
   },
-  "seo": {
-    "title": "OneLiteFeather - Open Source Minecraft Netzwerk",
-    "description": "OneLiteFeather ist ein Open Source Minecraft Netzwerk mit dem Fokus Studenten, Auszubildene und Jugendlichen eine Perspektive zu geben."
+  "pages": {
+    "index": {
+      "projects": {
+        "title": "Unsere Porjekte"
+      }
+    },
+    "team": {
+      "title": "Unser Team",
+      "role": {
+        "administrator": "Administrator",
+        "content": "Content",
+        "moderator": "Moderator"
+      },
+      "aboutMe": "Über mich"
+    }
   }
 }

@@ -1,6 +1,6 @@
 <template>
   <v-card class="mx-auto flex-fill fill-height elevation-4">
-    <v-img :src="getThumbnail(header, { format: 'auto' })" alt="" height="275px" cover>
+    <v-img :src="header" alt="" height="275px" cover>
       <v-card-title class="text-center poppins bg-secondary" color="secondary">
         {{ name }}
       </v-card-title>
@@ -18,7 +18,6 @@
 </template>
 
 <script lang="ts" setup>
-const { getThumbnail } = useDirectusFiles();
 
 defineProps({
   description: { required: true, type: String },
