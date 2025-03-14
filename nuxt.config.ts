@@ -54,12 +54,6 @@ export default defineNuxtConfig({
     lazy: true,
     locales: [{ code: "en", file: "en.json", iso: "en-US" }, { code: "de", file: "de.json", iso: "de-DE" }],
   },
-
-  runtimeConfig: {
-    markdownit: {
-      runtime: true
-    },
-  },
   site: {
     name: 'OneLiteFeather Network',
     description: 'OneLiteFeather Network is a open-source project for everyone.',
