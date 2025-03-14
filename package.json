@@ -42,6 +42,7 @@
   "packageManager": "pnpm@10.6.3",
   "pnpm": {
     "onlyBuiltDependencies": [
+      "@parcel/watcher",
       "better-sqlite3",
       "esbuild",
       "sharp",
