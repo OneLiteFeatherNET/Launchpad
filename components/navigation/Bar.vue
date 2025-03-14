@@ -68,7 +68,7 @@
 
 <script setup lang="ts">
 import { useLocalePath, isXs, lg } from "#imports";
-import { NavigationItem } from "~/composables/types";
+import { type NavigationItem } from "~/composables/types";
 
 interface NavigationBarProps {
   items: NavigationItem[];

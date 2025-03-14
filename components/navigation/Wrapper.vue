@@ -6,8 +6,8 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, Ref } from "#imports";
-import { NavigationItem } from "~/composables/types";
+import { ref } from "#imports";
+import { type NavigationItem } from "~/composables/types";
 
 const expanded = ref(false);
 

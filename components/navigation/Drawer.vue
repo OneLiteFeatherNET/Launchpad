@@ -50,7 +50,7 @@
 
 <script setup lang="ts">
 import { useLocalePath } from "#imports";
-import { NavigationItem } from "~/composables/types";
+import { type NavigationItem } from "~/composables/types";
 
 interface NavigationDrawerProps {
   items: NavigationItem[];

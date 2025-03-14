@@ -25,6 +25,12 @@
         "title": "Our projects"
       }
     },
+    "timeline" : {
+      "title": "Our history",
+      "0": "OneLiteFeather foundation",
+      "1": "Expansion of the team with the development management",
+      "2": "Sponsoring of Hetzner",
+    },
     "team": {
       "title": "Our Team",
       "role": {

@@ -10,21 +10,32 @@ export default defineNuxtConfig({
       viewport: "width=device-width, initial-scale=1",
     },
   },
+
   build: {
     transpile: ["vuetify"],
   },
+
   css: [
     "vuetify/styles",
     "@mdi/font/css/materialdesignicons.min.css",
     "@/assets/main.sass",
   ],
+
   devtools: { enabled: true },
+
   googleFonts: {
     download: true,
     families: {
-      Poppins: [600],
-    },
+      Roboto: true,
+      Montserrat: true
+    }
   },
+  image: {
+    format: ['webp'],
+    inject: true,
+    quality: 80
+  },
+
   i18n: {
     defaultLocale: "en",
     detectBrowserLanguage: {
@@ -38,11 +49,13 @@ export default defineNuxtConfig({
     lazy: true,
     locales: [{ code: "en", file: "en.json", iso: "en-US" }, { code: "de", file: "de.json", iso: "de-DE" }],
   },
+
   runtimeConfig: {
     markdownit: {
       runtime: true
     },
   },
+
   modules: [
     "@nuxtjs/i18n",
     "@vueuse/nuxt",
@@ -50,6 +63,11 @@ export default defineNuxtConfig({
     "nuxt-icon",
     "@pinia/nuxt",
     "@nuxtjs/google-fonts",
-    "nuxt-directus"
+    '@nuxt/image',
+    'nuxt-schema-org',
+    '@nuxtjs/robots',
+    'nuxt-og-image',
   ],
+
+  compatibilityDate: "2025-03-14",
 });

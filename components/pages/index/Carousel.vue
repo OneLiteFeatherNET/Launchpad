@@ -1,6 +1,6 @@
 <template>
   <v-carousel id="carousel" height="calc(100vh - 64px)" hide-delimiter-background show-arrows color="white" progress
-    :cycle="cycle">
+    :cycle="cycle" interval="12000">
     <template v-slot:prev="{ props }">
       <v-icon name="mdi-chevron-left" size="x-large" v-bind="props" @click="pauseOnManual(props.onClick)" />
     </template>
@@ -9,11 +9,10 @@
       <v-icon name="mdi-chevron-right" size="x-large" v-bind="props" @click="pauseOnManual(props.onClick)" />
     </template>
 
-    <v-carousel-item v-for="(entry, i) in carouselEntries" :key="i" cover :src="entry.image">
+    <v-carousel-item v-for="(entry, i) in carouselEntries" :key="i" cover :src="getOptimizedImage(entry.image)">
       <div class="carousel-item-title poppins text-white">
         {{ entry.title }}
       </div>
-
       <div class="carousel-item-description text-white" v-html="$mdRenderer.render(entry.description)" />
     </v-carousel-item>
   </v-carousel>
@@ -21,6 +20,7 @@
 
 <script setup lang="ts">
 import {ref} from "#imports";
+const img = useImage();
 
 interface CarouselEntry {
   id?: string | number;
@@ -44,6 +44,12 @@ const carouselEntries: CarouselEntry[] = [
     image: "img/carousel/spawn_tempel.png",
   },
 ];
+
+
+
+const getOptimizedImage = ((source: string) => {
+  return img(source, { format: 'webp', quality: 80 });
+});
 
 
 const pauseOnManual = (callback: any) => {
