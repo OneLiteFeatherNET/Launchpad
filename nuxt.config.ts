@@ -55,6 +55,17 @@ export default defineNuxtConfig({
       runtime: true
     },
   },
+  site: {
+    name: 'OneLiteFeather Network',
+    description: 'OneLiteFeather Network is a open-source project for everyone.',
+    themeColor: '#F7931D',
+    twitter: '@onelitefeathernet',
+    image: '/og-image.png'
+  },
+  robots: {
+    blockNonSeoBots: true,
+    blockAiBots: true
+  },
 
   modules: [
     "@nuxtjs/i18n",
