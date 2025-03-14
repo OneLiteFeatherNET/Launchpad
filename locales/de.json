@@ -22,7 +22,13 @@
   "pages": {
     "index": {
       "projects": {
-        "title": "Unsere Porjekte"
+        "title": "Unsere Projekte"
+      },
+      "timeline" : {
+        "title": "Unsere Geschichte",
+        "0": "OneLiteFeather Gründung",
+        "1": "Erweiterung des Teams mit der Entwicklungsleitung",
+        "2": "Sponsoring von Hetzner",
       }
     },
     "team": {

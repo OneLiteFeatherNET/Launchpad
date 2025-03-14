@@ -30,7 +30,20 @@ interface CarouselEntry {
 }
 const cycle = ref(true);
 
-const carouselEntries = [] as CarouselEntry[];
+const carouselEntries: CarouselEntry[] = [
+  {
+    id: 0,
+    title: "OneLiteFeather Survival Spawn",
+    description: "Gemeinsam erreichen wir alles",
+    image: "img/carousel/primary_survival_spawn.png",
+  },
+  {
+    id: 1,
+    title: "OneLiteFeather GameModus",
+    description: "OneLiteFeather GameModus",
+    image: "img/carousel/spawn_tempel.png",
+  },
+];
 
 
 const pauseOnManual = (callback: any) => {
