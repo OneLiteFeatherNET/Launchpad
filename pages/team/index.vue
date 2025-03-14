@@ -14,14 +14,14 @@
 
         <v-col class="mt-6 d-flex justify-center align-center" cols="12" sm="6" md="4" v-for="member in membersOfRole(role)"
           :key="member.id">
-          <NuxtLink class="member ml-4 mr-4 pt-4" :to="localePath(`/team/${member.id}`)">
+          <NuxtLink class="member ml-4 mr-4 pt-4" :to="localePath(`/team/${member.username}`)">
             <v-row class="elevation-2 justify-center flex-direction-column">
               <v-img 
                 :src="member.profile" />
 
               <div class="pt-4 pl-4 pr-4 pb-4 text-center bg-accent">
                 <div class="poppins text-h5 text-center">{{ member.username }}</div>
-                {{ member.position }}
+                {{ member.role }}
               </div>
             </v-row>
           </NuxtLink>
@@ -35,14 +35,17 @@
 import { ref, Ref } from "vue";
 import { TeamMember } from "~/composables/types";
 
-const router = useRouter();
 const localePath = useLocalePath();
-const { t } = useI18n();
 
 const members = ref([] as TeamMember[]);
 const roles = ref(["administrator", "content", "moderator"]);
 
-members.value = [] as TeamMember[];
+members.value = [{
+  description: "Administrator",
+  profile: "https://cdn.discordapp.com/avatars/1234567890/1234567890.png",
+  role: "administrator",
+  username: "Administrator",
+}];
 
 const membersOfRole = computed(() => (role: string) => members.value.filter((member) => member.role === role)) 
 
