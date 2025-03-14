@@ -41,5 +41,13 @@
     "sass": "^1.66.1",
     "vuetify": "^3.3.14"
   },
-  "packageManager": "pnpm@9.4.0+sha1.9217c800d4ab947a7aee520242a7b70d64fc7638"
+  "packageManager": "pnpm@10.6.3",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "better-sqlite3",
+      "esbuild",
+      "sharp",
+      "vue-demi"
+    ]
+  }
 }
