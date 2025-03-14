@@ -1,29 +1,61 @@
-<script setup lang="ts">
-const localePath = useLocalePath();
-const today = new Date();
-const { t } = useI18n();
-</script>
-
 <template>
-  <footer class="grid dark:text-slate-100 text-slate-400 justify-items-center mb-4">
-    &copy; {{today.getFullYear()}} OneLiteFeather. All rights reserved.
-    <div class="my-2">
-      <a href="https://github.com/OneLiteFeatherNET/Launchpad" target="_blank">
-        <span class="sr-only">Go to OneLiteFeather's GitHub repo</span>
-        <svg viewBox="0 0 16 16" aria-hidden="true" width="32" height="32"
-        ><path
-            fill="currentColor"
-            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-        ></path></svg>
-      </a>
-    </div>
-    <div>
-      <NuxtLink :to="localePath('imprint')">{{ t('link.imprint') }}</NuxtLink>
-      <NuxtLink :to="localePath('data-policy')">{{ t('link.data-policy') }}</NuxtLink>
-    </div>
-  </footer>
+  <v-footer color="footer" class="pt-12 pb-4">
+    <v-row>
+      <v-container>
+        <v-row>
+          <v-col cols="12" md="5" sm="5">
+            OneLiteFeather.net &copy; {{ new Date().getFullYear() }}
+
+            <p class="mt-4">
+              {{ $t("layout.footer.association") }}
+            </p>
+          </v-col>
+
+          <v-col cols="12" md="2" sm="2" />
+
+          <v-col class="text-center poppins" cols="12" md="5" sm="5">
+            {{ $t("layout.footer.legal.title") }}
+            <v-row class="mt-2">
+              <v-col cols="12" md="6" sm="6">
+                <v-btn
+                  width="100%"
+                  style="border-radius: 8px"
+                  variant="elevated"
+                  class="rounded-sm"
+                  color="surface"
+                  nuxt 
+                  to="/impressum"
+                >
+                  {{ $t("layout.footer.legal.imprint") }}
+                </v-btn>
+              </v-col>
+
+              <v-col cols="12" md="6" sm="6">
+                <v-btn
+                  width="100%"
+                  style="border-radius: 8px"
+                  variant="elevated"
+                  class="rounded-sm"
+                  color="surface"
+                  nuxt 
+                  to="/datenschutz"
+                >
+                  {{ $t("layout.footer.legal.privacy") }}
+                </v-btn>
+              </v-col>
+            </v-row>
+          </v-col>
+        </v-row>
+      </v-container>
+
+      <v-col cols="12">
+        <v-divider />
+
+        <v-container class="text-grey-darken-3">
+          Made by
+          <a href="https://github.com/randoooom" target="_blank"> Random </a>
+        </v-container>
+      </v-col>
+    </v-row>
+  </v-footer>
 </template>
-
-<style scoped>
-
-</style>

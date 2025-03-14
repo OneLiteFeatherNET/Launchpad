@@ -1,0 +1,38 @@
+{
+  "layout": {
+    "footer": {
+      "legal": {
+        "title": "Rechtliches",
+        "imprint": "Impressum",
+        "privacy": "Datenschutz"
+      },
+      "association": "KEIN OFFIZIELLES MINECRAFT [PRODUKT/DIENSTLEISTUNG/EVENT/etc.]. NICHT LIZENSIERT NOCH ASSOZIIERT MIT MOJANG ODER MICROSOFT"
+    },
+    "navigation": {
+      "copy": "Adresse kopiert",
+      "item": {
+        "about": "Über uns",
+        "projects": "Projekte",
+        "blog": "Blog",
+        "join": "Joine jetzt!",
+        "team": "Team"
+      }
+    }
+  },
+  "pages": {
+    "index": {
+      "projects": {
+        "title": "Unsere Porjekte"
+      }
+    },
+    "team": {
+      "title": "Unser Team",
+      "role": {
+        "administrator": "Administrator",
+        "content": "Content",
+        "moderator": "Moderator"
+      },
+      "aboutMe": "Über mich"
+    }
+  }
+}

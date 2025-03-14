@@ -1,32 +1,29 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-
-import tailwindcss from "@tailwindcss/vite";
-
 export default defineNuxtConfig({
-  compatibilityDate: '2024-11-01',
-  devtools: { enabled: true },
-  modules: [
-    '@nuxtjs/seo',
-    'nuxt-schema-org',
-    '@nuxtjs/sitemap',
-    '@nuxt/content',
-    '@nuxtjs/google-fonts',
-    '@nuxtjs/i18n',
-    '@nuxt/image',
-  ],
+  app: {
+    head: {
+      charset: "utf-8",
+      meta: [{ content: "telephone=no", name: "format-detection" }],
+      script: [],
+      style: [],
+      title: "OneLiteFeather",
+      viewport: "width=device-width, initial-scale=1",
+    },
+  },
+  build: {
+    transpile: ["vuetify"],
+  },
   css: [
-      'tailwindcss',
-      '@/assets/css/main.css'
+    "vuetify/styles",
+    "@mdi/font/css/materialdesignicons.min.css",
+    "@/assets/main.sass",
   ],
+  devtools: { enabled: true },
   googleFonts: {
     download: true,
     families: {
-      Roboto: true,
-      Montserrat: true
-    }
-  },
-  vite: {
-    plugins: [tailwindcss()]
+      Poppins: [600],
+    },
   },
   i18n: {
     defaultLocale: "en",
@@ -37,23 +34,33 @@ export default defineNuxtConfig({
       redirectOn: "root",
       useCookie: true,
     },
+    langDir: "./locales",
     lazy: true,
     locales: [{ code: "en", file: "en.json", iso: "en-US" }, { code: "de", file: "de.json", iso: "de-DE" }],
   },
-  nitro: {
-    prerender: {
-      autoSubfolderIndex: false
-    }
+  runtimeConfig: {
+    public: {
+      directus: {
+        url: "https://cms.onelitefeather.dev/"
+      },
+      IMGPROXY_URL: process.env.NUXT_IMGPROXY_URL ?? 'https://imgproxy.onelitefeather.dev/',
+      IMGPROXY_KEY: process.env.NUXT_IMGPROXY_KEY,
+      IMGPROXY_SALT: process.env.NUXT_IMGPROXY_SALT,
+    },
+    markdownit: {
+      runtime: true
+    },
   },
-  site: {
-    name: 'OneLiteFeather Network',
-    description: 'OneLiteFeather Network is a open-source project for everyone.',
-    themeColor: '#F7931D',
-    twitter: '@onelitefeathernet',
-    image: '/og-image.png'
+  directus: {
+    devtools: true
   },
-  robots: {
-    blockNonSeoBots: true,
-    blockAiBots: true
-  }
-})
+  modules: [
+    "@nuxtjs/i18n",
+    "@vueuse/nuxt",
+    "@nuxtjs/color-mode",
+    "nuxt-icon",
+    "@pinia/nuxt",
+    "@nuxtjs/google-fonts",
+    "nuxt-directus"
+  ],
+});
