@@ -36,29 +36,11 @@ definePageMeta({
 //   ]
 // });
 
-// Fetch carousel data
-const { data: carouselData } = await useAsyncData('carousel', () => {
-  const collection = locale.value === 'de' ? 'carousel_de' : 'carousel_en';
-  return queryCollection(collection).first();
-});
-
-// Fetch history data
-const { data: historyData } = await useAsyncData('history', () => {
-  const collection = locale.value === 'de' ? 'history_de' : 'history_en';
-  return queryCollection(collection).first();
-});
-
-// Fetch activities data
-const { data: activitiesData } = await useAsyncData('activities', () => {
-  const collection = locale.value === 'de' ? 'activities_de' : 'activities_en';
-  return queryCollection(collection).first();
-});
-
-// Fetch projects data for featured projects
-const { data: projectsData } = await useAsyncData('projects-featured', () => {
-  const collection = locale.value === 'de' ? 'projects_de' : 'projects_en';
-  return queryCollection(collection).first();
-});
+// Use the localized content composable to fetch data
+const { data: carouselData } = await useLocalizedContent('carousel');
+const { data: historyData } = await useLocalizedContent('history');
+const { data: activitiesData } = await useLocalizedContent('activities');
+const { data: projectsData } = await useLocalizedContent('projects');
 
 const slides = computed(() => isUnmounted.value ? [] : carouselData.value?.slides || []);
 const historyTitle = computed(() => isUnmounted.value ? '' : historyData.value?.title || '');

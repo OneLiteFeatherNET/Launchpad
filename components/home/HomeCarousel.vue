@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, onBeforeUnmount } from 'vue';
+import { computed } from 'vue';
 
 const props = defineProps({
   slides: {
@@ -9,38 +9,8 @@ const props = defineProps({
   }
 });
 
-const current = ref(0);
-let interval: ReturnType<typeof setInterval> | null = null;
-
-const goToSlide = (index: number) => {
-  current.value = index;
-  resetInterval();
-};
-
-const nextSlide = () => {
-  current.value = (current.value + 1) % props.slides.length;
-  resetInterval();
-};
-
-const prevSlide = () => {
-  current.value = (current.value - 1 + props.slides.length) % props.slides.length;
-  resetInterval();
-};
-
-const resetInterval = () => {
-  if (interval) clearInterval(interval);
-  interval = setInterval(() => {
-    current.value = (current.value + 1) % props.slides.length;
-  }, 5000);
-};
-
-onMounted(() => {
-  resetInterval();
-});
-
-onBeforeUnmount(() => {
-  if (interval) clearInterval(interval);
-});
+// Use the carousel composable for slide management
+const { current, goToSlide, nextSlide, prevSlide } = useCarousel(computed(() => props.slides.length));
 </script>
 
 <template>
@@ -68,10 +38,16 @@ onBeforeUnmount(() => {
               :aria-label="`Slide ${idx + 1} of ${slides.length}: ${slide.title}`"
           >
             <div class="relative h-full w-full">
-              <img 
+              <NuxtImg 
                 :src="slide.image" 
                 :alt="`${slide.title} - ${slide.subtitle}`"
                 class="h-full w-full object-cover brightness-75"
+                sizes="xs:100vw sm:100vw md:100vw lg:100vw xl:100vw"
+                width="1920"
+                height="1080"
+                format="webp"
+                quality="80"
+                loading="eager"
               />
               <div class="absolute inset-0 flex flex-col items-center justify-center text-center p-8 bg-black bg-opacity-40">
                 <h2 class="text-white text-4xl md:text-5xl font-bold mb-4">{{ slide.title }}</h2>

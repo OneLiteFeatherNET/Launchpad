@@ -5,109 +5,82 @@ import BlogAuthors from "~/components/blog/BlogAuthors.vue";
 const { locale, t, locales } = useI18n()
 const route = useRoute()
 const config = useRuntimeConfig()
-const {getFeatureFlag } = usePostHogFeatureFlag();
+const { getFeatureFlag } = usePostHogFeatureFlag()
+const seoHelper = useSeoHelper({ defaultLocale: 'de' })
 
 definePageMeta({
   layout: 'blog-entry',
 });
 
-const pathParts = route.path.split('/');
-const { data: article} = await useAsyncData(route.path, () => {
-  // @ts-ignore
-  return queryCollection('blog_'+locale?.value || 'blog_de').where("slug", "=", pathParts.at(3)).first();
-});
+// Get the slug from the route path
+const pathParts = route.path.split('/')
+const slug = pathParts.at(3)
+
+// Fetch the article using the localized content composable
+const { data: article } = await useLocalizedContent('blog', { slug })
 
 // Find translations in other languages if translationKey exists
-const alternateLanguages = ref<{locale: string, url: string}[]>([]);
+const alternateLanguages = ref<{locale: string, url: string}[]>([])
 if (article.value?.translationKey) {
-  const otherLocales = (locales.value || []).filter(l => typeof l === 'object' && l.code !== locale.value);
+  const otherLocales = (locales.value || []).filter(l => typeof l === 'object' && l.code !== locale.value)
 
   for (const otherLocale of otherLocales) {
     if (typeof otherLocale === 'object') {
-      const { data: translatedArticle } = await useAsyncData(`${route.path}_${otherLocale.code}`, () => {
-        // @ts-ignore
-        return queryCollection(`blog_${otherLocale.code}`).where("translationKey", "=", article.value?.translationKey).first();
-      });
+      // Fetch the translated article
+      const { data: translatedArticle } = await useAsyncData(
+        `${route.path}_${otherLocale.code}`, 
+        () => queryCollection(`blog_${otherLocale.code}`)
+          .where("translationKey", "=", article.value?.translationKey)
+          .first()
+      )
 
       if (translatedArticle.value) {
-        const baseUrl = config.public.siteUrl || 'https://blog.onelitefeather.net';
+        const baseUrl = config.public.siteUrl || 'https://blog.onelitefeather.net'
         alternateLanguages.value.push({
           locale: otherLocale.code,
           url: `${baseUrl}/${otherLocale.code}/${translatedArticle.value.slug}`
-        });
+        })
       }
     }
   }
 }
-useSeoMeta(article.value?.seo || {
-})
-const img = useImage()
-const previewSocial = img(article.value?.headerImage || 'logo.svg', {
-  width: 1200,
-  height: 630,
-  format: 'webp',
-  quality: 80,
-});
-useSeoMeta({
-  twitterTitle: article?.value?.seo?.title || article?.value?.title || '',
-  twitterDescription: article?.value?.seo?.description || '',
-  ogImage: previewSocial,
-  twitterImage: previewSocial
-})
 
-// Prepare link array for head
-const headLinks = [
-  {
-    rel: 'icon',
-    type: 'image/png',
-    href: '/favicon.png'
-  }
-];
-
-// Add canonical URL
+// Set up SEO metadata
 if (article.value) {
-  const baseUrl = config.public.siteUrl || 'https://blog.onelitefeather.net';
-  const canonicalUrl = `${baseUrl}/${locale.value}/${article.value.slug}`;
-
-  headLinks.push({
-    rel: 'canonical',
-    href: canonicalUrl
-  });
-
-  // Add alternate language links
-  for (const alt of alternateLanguages.value) {
-    headLinks.push({
-      rel: 'alternate',
-      hreflang: alt.locale,
-      href: alt.url
-    });
+  // Apply any custom SEO metadata from the article
+  if (article.value.seo) {
+    useSeoMeta(article.value.seo)
   }
 
-  // Add x-default hreflang (pointing to the default locale version)
-  const defaultLocale = 'de'; // As specified in nuxt.config.ts
-  if (locale.value === defaultLocale) {
-    headLinks.push({
-      rel: 'alternate',
-      hreflang: 'x-default',
-      href: canonicalUrl
-    });
-  } else {
-    // Find the default locale URL in alternateLanguages
-    const defaultLocaleUrl = alternateLanguages.value.find(alt => alt.locale === defaultLocale)?.url;
-    if (defaultLocaleUrl) {
-      headLinks.push({
-        rel: 'alternate',
-        hreflang: 'x-default',
-        href: defaultLocaleUrl
-      });
-    }
+  // Generate social media preview image
+  const img = useImage()
+  const previewSocial = img(article.value.headerImage || 'logo.svg', {
+    width: 1200,
+    height: 630,
+    format: 'webp',
+    quality: 80,
+  })
+
+  // Set basic SEO metadata
+  seoHelper.setBasicSeo({
+    title: article.value.title || '',
+    description: article.value.description || '',
+    image: previewSocial,
+    type: 'article'
+  })
+
+  // Set canonical and alternate language links
+  seoHelper.setCanonicalAndAlternates(
+    `/${article.value.slug}`,
+    article.value.translationKey,
+    alternateLanguages.value
+  )
+
+  // Apply any custom head settings from the article
+  if (article.value.head) {
+    useHead(article.value.head)
   }
 }
-
-useHead({
-  link: headLinks
-})
-useHead(article?.value?.head || {})
 
 const title = computed(() => {
   if (getFeatureFlag('alternative-title-conversion').value === 'test') {
