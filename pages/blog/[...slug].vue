@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import {definePageMeta} from "#imports";
 import SocialMediaShare from "~/components/blog/SocialMediaShare.vue";
+import BlogAuthors from "~/components/blog/BlogAuthors.vue";
 const { locale, t, locales } = useI18n()
 const route = useRoute()
 const config = useRuntimeConfig()
@@ -133,18 +134,22 @@ const title = computed(() => {
       <div class="p-4">
         <h1 class="text-3xl font-bold text-gray-900 dark:text-white">{{ title }}</h1>
         <time v-if="article?.pubDate" class="text-sm text-gray-500 dark:text-gray-400"><i18n-d :value="article?.pubDate"></i18n-d></time>
+
+
         <ContentRenderer class="text-gray-700 dark:text-gray-300 mt-2" :value="article">
         </ContentRenderer>
 
         <!-- Social Media Sharing Buttons -->
         <div class="mt-6">
-          <SocialMediaShare 
-            :url="config.public.siteUrl + '/' + locale + '/' + article.slug"
-            :title="article.title" 
-            :description="article.description || ''" 
-            :is-large-page="['alles-was-man-ueber-ethanol-wissen-sollte', 'riding-the-rollercoaster-of-automation-with-proxmox-and-ansible', 'plugins-open-for-adoption', 'effizientes-logging-in-paper-plugins', 'dev-blog-1'].includes(article.slug)"
+          <SocialMediaShare
+          :url="config.public.siteUrl + '/' + locale + '/' + article.slug"
+          :title="article.title"
+          :description="article.description || ''"
+          :is-large-page="['alles-was-man-ueber-ethanol-wissen-sollte', 'riding-the-rollercoaster-of-automation-with-proxmox-and-ansible', 'plugins-open-for-adoption', 'effizientes-logging-in-paper-plugins', 'dev-blog-1'].includes(article.slug)"
           />
         </div>
+        <!-- Author display -->
+        <BlogAuthors v-if="article.authors && article.authors.length > 0" :authors="article.authors" />
       </div>
     </article>
   </div>

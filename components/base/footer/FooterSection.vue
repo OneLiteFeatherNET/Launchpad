@@ -17,6 +17,7 @@
         <ul>
           <li><NuxtLinkLocale to="/imprint" v-posthog-capture="'imprint-click'">{{ $t('footer.imprint') }}</NuxtLinkLocale></li>
           <li><NuxtLinkLocale to="/privacy" v-posthog-capture="'imprint-privacy'">{{ $t('footer.privacy_policy') }}</NuxtLinkLocale></li>
+          <li><NuxtLinkLocale to="/authors" v-posthog-capture="'authors-click'">{{ $t('footer.authors') }}</NuxtLinkLocale></li>
         </ul>
       </div>
       <div>
