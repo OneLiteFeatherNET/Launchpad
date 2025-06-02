@@ -4,6 +4,7 @@
     "blog": "Blog",
     "team": "Team",
     "projects": "Projects",
+    "authors": "Authors",
     "toggle_mobile_menu": "Toggle mobile menu",
     "select_language": "Select language"
   },
@@ -36,6 +37,10 @@
       "title": "Project Details",
       "description": "Learn more about this OneLiteFeather project."
     },
+    "authors": {
+      "title": "Our Authors",
+      "description": "Meet the authors who contribute to OneLiteFeather projects and blog posts."
+    },
     "privacy": {
       "title": "Privacy",
       "description": "Here you can find our privacy policy."
@@ -43,7 +48,8 @@
     "imprint": {
       "title": "Imprint",
       "description": "Here you can find our imprint."
-    }
+    },
+    "authors": "Authors"
   },
   "footer": {
     "social_media": "Social Media",
@@ -54,6 +60,7 @@
     "opencollective_aria": "OpenCollective (opens in a new tab)",
     "imprint": "Imprint",
     "privacy_policy": "Privacy Policy",
+    "authors": "Authors",
     "all_rights_reserved": "All rights reserved",
     "made_with_love": "Made with love by the OneLiteFeather Team and contributors",
     "love": "love"
@@ -80,6 +87,15 @@
       "blog_posts": "Blog Posts"
     }
   },
+  "author": {
+    "not_found": "Author not found",
+    "not_found_description": "The author you are looking for could not be found.",
+    "meta_description": "Information about {name}, author at OneLiteFeather",
+    "view_on_github": "View {name}'s profile on GitHub",
+    "view_on_twitter": "View {name}'s profile on Twitter",
+    "back_to_team": "Back to team",
+    "view_profile_of": "View profile of {name}"
+  },
   "carousel": {
     "previous_slide": "Previous Slide",
     "next_slide": "Next Slide",
@@ -94,6 +110,8 @@
   },
   "projects": {
     "view_on_github": "View on GitHub",
+    "view_project_on_github": "View {name} on GitHub",
+    "project_image_of": "Project image of {name}",
     "authors": "Authors",
     "and_more": "and {count} more",
     "view_profile": "View Profile",
@@ -102,6 +120,18 @@
     "statistics": "Statistics",
     "servers_using": "Servers Using This Plugin",
     "players_using": "Players Using This Plugin",
-    "view_on_bstats": "View on bStats"
+    "view_on_bstats": "View on bStats",
+    "about_project": "About the Project",
+    "description": "Description",
+    "current_status": "Current Status",
+    "status": {
+      "active": "Active",
+      "completed": "Completed",
+      "in_development": "In Development",
+      "in_progress": "In Progress",
+      "planned": "Planned",
+      "paused": "Paused"
+    },
+    "status_indicator": "Status indicator for"
   }
 }

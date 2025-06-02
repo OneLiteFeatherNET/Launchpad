@@ -3,6 +3,49 @@ import { asSchemaOrgCollection } from 'nuxt-schema-org/content'
 import { asSitemapCollection } from '@nuxtjs/sitemap/content'
 
 
+// Unified schema for both team members and standalone authors
+const personSchema = z.object({
+    name: z.string(),
+    slug: z.string(),
+    minecraftUsername: z.string().optional(),
+    profileImage: z.string().optional(),
+    role: z.string().optional(),
+    about: z.string().optional(),
+    bio: z.string().optional(), // Alias for about, used in team members
+    github: z.string().optional(),
+    twitter: z.string().optional(),
+    title: z.string().optional(),
+    avatar: z.string().optional(),
+    quote: z.string().optional(), // Used in team members
+    joinDate: z.string().optional(), // Used in team members
+    onProbation: z.boolean().optional(), // Used in team members
+});
+
+// Use the unified personSchema for authors
+const authorSchema = personSchema;
+
+const projectSchema = z.object({
+    name: z.string(),
+    slug: z.string(),
+    description: z.string(),
+    status: z.string(),
+    featured: z.boolean().optional(),
+    image: z.string().optional(),
+    github: z.string().optional(),
+    authors: z.array(authorSchema).optional(),
+    features: z.array(z.string()).optional(),
+    roadmap: z.array(z.object({
+        title: z.string(),
+        description: z.string(),
+        status: z.string()
+    })).optional(),
+    bstats: z.object({
+        pluginId: z.string(),
+        showServers: z.boolean().optional(),
+        showPlayers: z.boolean().optional()
+    }).optional()
+});
+
 const carouselSchema = z.object({
     slides: z.array(z.object({
         title: z.string(),
@@ -36,13 +79,7 @@ const teamSchema = z.object({
     ranks: z.array(z.object({
         name: z.string(),
         description: z.string().optional(),
-        members: z.array(z.object({
-            name: z.string(),
-            minecraftUsername: z.string(),
-            quote: z.string().optional(),
-            joinDate: z.string().optional(),
-            onProbation: z.boolean().optional(),
-        }))
+        members: z.array(personSchema) // Use the unified personSchema for team members
     })),
     rankExplanations: z.array(z.object({
         rank: z.string(),
@@ -120,6 +157,30 @@ export default defineContentConfig({
             type: 'page',
             source: 'blog/en/**/*.md',
             schema: blogSchema
-        })))
+        }))),
+        projects_de: defineCollection({
+            type: 'data',
+            source: 'projects/de/**/*.json',
+            schema: z.object({
+                projects: z.array(projectSchema)
+            })
+        }),
+        projects_en: defineCollection({
+            type: 'data',
+            source: 'projects/en/**/*.json',
+            schema: z.object({
+                projects: z.array(projectSchema)
+            })
+        }),
+        authors_de: defineCollection({
+            type: 'data',
+            source: 'authors/de/**/*.json',
+            schema: authorSchema
+        }),
+        authors_en: defineCollection({
+            type: 'data',
+            source: 'authors/en/**/*.json',
+            schema: authorSchema
+        })
     }
 })

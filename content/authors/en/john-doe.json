@@ -1,0 +1,9 @@
+{
+  "name": "John Doe",
+  "slug": "john-doe",
+  "minecraftUsername": "johndoe123",
+  "role": "Developer",
+  "about": "John is an experienced developer with a focus on Minecraft plugins.",
+  "github": "johndoe",
+  "twitter": "johndoe"
+}

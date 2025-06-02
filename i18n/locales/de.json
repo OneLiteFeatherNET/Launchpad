@@ -4,6 +4,7 @@
     "blog": "Blog",
     "team": "Team",
     "projects": "Projekte",
+    "authors": "Autoren",
     "toggle_mobile_menu": "Mobile Menü umschalten",
     "select_language": "Sprache auswählen"
   },
@@ -36,6 +37,10 @@
       "title": "Projektdetails",
       "description": "Erfahre mehr über dieses OneLiteFeather-Projekt."
     },
+    "authors": {
+      "title": "Unsere Autoren",
+      "description": "Lerne die Autoren kennen, die zu OneLiteFeather-Projekten und Blogbeiträgen beitragen."
+    },
     "privacy": {
       "title": "Datenschutz",
       "description": "Hier findest du unsere Datenschutzrichtlinien."
@@ -43,7 +48,8 @@
     "imprint": {
       "title": "Impressum",
       "description": "Hier findest du unser Impressum."
-    }
+    },
+    "authors": "Autoren"
   },
   "footer": {
     "social_media": "Social Media",
@@ -54,6 +60,7 @@
     "opencollective_aria": "OpenCollective (öffnet in einem neuen Tab)",
     "imprint": "Impressum",
     "privacy_policy": "Datenschutz",
+    "authors": "Autoren",
     "all_rights_reserved": "Alle Rechte vorbehalten",
     "made_with_love": "Mit Liebe erstellt vom OneLiteFeather Team und Mitwirkenden",
     "love": "Liebe"
@@ -80,6 +87,15 @@
       "blog_posts": "Blog-Beiträge"
     }
   },
+  "author": {
+    "not_found": "Autor nicht gefunden",
+    "not_found_description": "Der gesuchte Autor wurde nicht gefunden.",
+    "meta_description": "Informationen über {name}, Autor bei OneLiteFeather",
+    "view_on_github": "Profil von {name} auf GitHub ansehen",
+    "view_on_twitter": "Profil von {name} auf Twitter ansehen",
+    "back_to_team": "Zurück zum Team",
+    "view_profile_of": "Profil von {name} ansehen"
+  },
   "carousel": {
     "previous_slide": "Vorherige Folie",
     "next_slide": "Nächste Folie",
@@ -94,6 +110,8 @@
   },
   "projects": {
     "view_on_github": "Auf GitHub ansehen",
+    "view_project_on_github": "{name} auf GitHub ansehen",
+    "project_image_of": "Projektbild von {name}",
     "authors": "Autoren",
     "and_more": "und {count} weitere",
     "view_profile": "Profil ansehen",
@@ -102,6 +120,18 @@
     "statistics": "Statistiken",
     "servers_using": "Server, die dieses Plugin nutzen",
     "players_using": "Spieler, die dieses Plugin nutzen",
-    "view_on_bstats": "Auf bStats ansehen"
+    "view_on_bstats": "Auf bStats ansehen",
+    "about_project": "Über das Projekt",
+    "description": "Beschreibung",
+    "current_status": "Aktueller Status",
+    "status": {
+      "active": "Aktiv",
+      "completed": "Abgeschlossen",
+      "in_development": "In Entwicklung",
+      "in_progress": "In Bearbeitung",
+      "planned": "Geplant",
+      "paused": "Pausiert"
+    },
+    "status_indicator": "Status-Indikator für"
   }
 }
