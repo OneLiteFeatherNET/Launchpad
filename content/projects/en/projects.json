@@ -13,11 +13,13 @@
       "authors": [
         {
           "name": "Max Mustermann",
+          "slug": "max-mustermann",
           "minecraftUsername": "MaxAdmin",
           "role": "Project Lead"
         },
         {
           "name": "Anna Schmidt",
+          "slug": "anna-schmidt",
           "minecraftUsername": "AnnaAdmin",
           "role": "Developer"
         }
@@ -61,6 +63,7 @@
       "authors": [
         {
           "name": "Tom Weber",
+          "slug": "tom-weber",
           "minecraftUsername": "TomMod",
           "role": "Developer"
         }

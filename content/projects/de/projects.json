@@ -9,15 +9,17 @@
       "status": "Aktiv",
       "github": "https://github.com/onelitefeather/beispielprojekt-1",
       "featured": true,
-      "image": "/images/projects/beispielprojekt-1.webp",
+      "image": "/images/blog/dev-blog-1.webp",
       "authors": [
         {
           "name": "Max Mustermann",
+          "slug": "max-mustermann",
           "minecraftUsername": "MaxAdmin",
           "role": "Projektleiter"
         },
         {
           "name": "Anna Schmidt",
+          "slug": "anna-schmidt",
           "minecraftUsername": "AnnaAdmin",
           "role": "Entwicklerin"
         }
@@ -57,10 +59,11 @@
       "status": "In Entwicklung",
       "github": "https://github.com/onelitefeather/beispielprojekt-2",
       "featured": false,
-      "image": "/images/projects/beispielprojekt-2.webp",
+      "image": "/images/blog/dev-blog-1.webp",
       "authors": [
         {
           "name": "Tom Weber",
+          "slug": "tom-weber",
           "minecraftUsername": "TomMod",
           "role": "Entwickler"
         }
