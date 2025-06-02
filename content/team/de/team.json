@@ -8,15 +8,21 @@
       "members": [
         {
           "name": "Max Mustermann",
+          "slug": "max-mustermann",
           "minecraftUsername": "MaxAdmin",
           "quote": "Gemeinsam bauen wir eine großartige Community auf!",
-          "joinDate": "2020-01-15"
+          "joinDate": "2020-01-15",
+          "bio": "Max ist ein erfahrener Administrator mit einer Leidenschaft für den Aufbau von Communities. Er ist seit Beginn bei OneLiteFeather und hat zu vielen unserer Projekte beigetragen.",
+          "profileImage": ""
         },
         {
           "name": "Anna Schmidt",
+          "slug": "anna-schmidt",
           "minecraftUsername": "AnnaAdmin",
           "quote": "Kreativität und Zusammenarbeit sind der Schlüssel zum Erfolg.",
-          "joinDate": "2020-03-20"
+          "joinDate": "2020-03-20",
+          "bio": "Anna ist eine kreative Entwicklerin, die es liebt, mit anderen zusammenzuarbeiten. Sie war maßgeblich an der Entwicklung vieler unserer Kernfunktionen beteiligt.",
+          "profileImage": ""
         }
       ]
     },
@@ -26,15 +32,21 @@
       "members": [
         {
           "name": "Tom Weber",
+          "slug": "tom-weber",
           "minecraftUsername": "TomMod",
           "quote": "Ich helfe gerne, wo ich kann!",
-          "joinDate": "2021-02-10"
+          "joinDate": "2021-02-10",
+          "bio": "Tom ist ein engagierter Moderator, der immer bereit ist, Mitgliedern der Community zu helfen. Er hat ein Auge fürs Detail und sorgt dafür, dass unsere Community-Richtlinien eingehalten werden.",
+          "profileImage": ""
         },
         {
           "name": "Lisa Müller",
+          "slug": "lisa-muller",
           "minecraftUsername": "LisaMod",
           "joinDate": "2021-05-05",
-          "onProbation": true
+          "onProbation": true,
+          "bio": "Lisa ist unsere neueste Moderatorin und befindet sich derzeit in der Probezeit. Sie bringt frische Perspektiven ein und lernt die Grundlagen des Community-Managements.",
+          "profileImage": ""
         }
       ]
     },
@@ -44,14 +56,20 @@
       "members": [
         {
           "name": "Jan Becker",
+          "slug": "jan-becker",
           "minecraftUsername": "JanBuilder",
           "quote": "Jedes Gebäude erzählt eine Geschichte.",
-          "joinDate": "2021-07-15"
+          "joinDate": "2021-07-15",
+          "bio": "Jan ist ein talentierter Builder mit einem Auge fürs Detail. Er ist spezialisiert auf die Erstellung immersiver Umgebungen, die durch Architektur und Design eine Geschichte erzählen.",
+          "profileImage": ""
         },
         {
           "name": "Sophie Klein",
+          "slug": "sophie-klein",
           "minecraftUsername": "SophieBuilder",
-          "joinDate": "2022-01-10"
+          "joinDate": "2022-01-10",
+          "bio": "Sophie ist eine kreative Builderin, die es liebt, mit verschiedenen Stilen und Techniken zu experimentieren. Sie hat zu einigen unserer visuell beeindruckendsten Projekte beigetragen.",
+          "profileImage": ""
         }
       ]
     }

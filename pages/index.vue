@@ -2,6 +2,7 @@
 import HomeCarousel from '~/components/home/HomeCarousel.vue';
 import HomeTimeline from '~/components/home/HomeTimeline.vue';
 import HomeActivities from '~/components/home/HomeActivities.vue';
+import HomeFeaturedProjects from '~/components/home/HomeFeaturedProjects.vue';
 
 const { locale, t } = useI18n();
 const isUnmounted = ref(false);
@@ -53,11 +54,22 @@ const { data: activitiesData } = await useAsyncData('activities', () => {
   return queryCollection(collection).first();
 });
 
+// Fetch projects data for featured projects
+const { data: projectsData } = await useAsyncData('projects-featured', () => {
+  const collection = locale.value === 'de' ? 'projects_de' : 'projects_en';
+  return queryCollection(collection).first();
+});
+
 const slides = computed(() => isUnmounted.value ? [] : carouselData.value?.slides || []);
 const historyTitle = computed(() => isUnmounted.value ? '' : historyData.value?.title || '');
 const timeline = computed(() => isUnmounted.value ? [] : historyData.value?.timeline || []);
 const activitiesTitle = computed(() => isUnmounted.value ? '' : activitiesData.value?.title || '');
 const activities = computed(() => isUnmounted.value ? [] : activitiesData.value?.activities || []);
+const featuredProjects = computed(() => {
+  if (isUnmounted.value) return [];
+  const projects = projectsData.value?.projects || [];
+  return projects.filter(project => project.featured === true);
+});
 </script>
 
 <template>
@@ -70,5 +82,13 @@ const activities = computed(() => isUnmounted.value ? [] : activitiesData.value?
 
     <!-- Activities Component -->
     <HomeActivities :title="activitiesTitle" :activities="activities" />
+
+    <!-- Featured Projects Component -->
+    <HomeFeaturedProjects 
+      v-if="featuredProjects.length > 0" 
+      :title="$t('home.featured_projects')" 
+      :projects="featuredProjects" 
+      :locale="locale" 
+    />
   </div>
 </template>

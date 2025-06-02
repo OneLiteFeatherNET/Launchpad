@@ -8,15 +8,21 @@
       "members": [
         {
           "name": "Max Mustermann",
+          "slug": "max-mustermann",
           "minecraftUsername": "MaxAdmin",
           "quote": "Together we build a great community!",
-          "joinDate": "2020-01-15"
+          "joinDate": "2020-01-15",
+          "bio": "Max is an experienced administrator with a passion for building communities. He has been with OneLiteFeather since the beginning and has contributed to many of our projects.",
+          "profileImage": ""
         },
         {
           "name": "Anna Schmidt",
+          "slug": "anna-schmidt",
           "minecraftUsername": "AnnaAdmin",
           "quote": "Creativity and collaboration are the keys to success.",
-          "joinDate": "2020-03-20"
+          "joinDate": "2020-03-20",
+          "bio": "Anna is a creative developer who loves to collaborate with others. She has been instrumental in developing many of our core features.",
+          "profileImage": ""
         }
       ]
     },
@@ -26,15 +32,21 @@
       "members": [
         {
           "name": "Tom Weber",
+          "slug": "tom-weber",
           "minecraftUsername": "TomMod",
           "quote": "I'm happy to help where I can!",
-          "joinDate": "2021-02-10"
+          "joinDate": "2021-02-10",
+          "bio": "Tom is a dedicated moderator who is always ready to help community members. He has a keen eye for detail and ensures that our community guidelines are followed.",
+          "profileImage": ""
         },
         {
           "name": "Lisa Müller",
+          "slug": "lisa-muller",
           "minecraftUsername": "LisaMod",
           "joinDate": "2021-05-05",
-          "onProbation": true
+          "onProbation": true,
+          "bio": "Lisa is our newest moderator and is currently on probation. She brings fresh perspectives and is learning the ropes of community management.",
+          "profileImage": ""
         }
       ]
     },
@@ -44,14 +56,20 @@
       "members": [
         {
           "name": "Jan Becker",
+          "slug": "jan-becker",
           "minecraftUsername": "JanBuilder",
           "quote": "Every building tells a story.",
-          "joinDate": "2021-07-15"
+          "joinDate": "2021-07-15",
+          "bio": "Jan is a talented builder with an eye for detail. He specializes in creating immersive environments that tell a story through architecture and design.",
+          "profileImage": ""
         },
         {
           "name": "Sophie Klein",
+          "slug": "sophie-klein",
           "minecraftUsername": "SophieBuilder",
-          "joinDate": "2022-01-10"
+          "joinDate": "2022-01-10",
+          "bio": "Sophie is a creative builder who loves to experiment with different styles and techniques. She has contributed to several of our most visually stunning projects.",
+          "profileImage": ""
         }
       ]
     }

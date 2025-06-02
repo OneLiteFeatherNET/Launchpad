@@ -14,6 +14,10 @@ This project serves as the official blog for OneLiteFeather.net, providing artic
 - Content management using Nuxt Content
 - Social media preview images
 - Structured data for better search engine visibility
+- Project showcase with GitHub integration
+- Team member profiles with Minecraft avatar support
+- Cross-referencing between blog posts, projects, and team members
+- BStats integration for Minecraft plugins
 
 ## Roadmap
 
