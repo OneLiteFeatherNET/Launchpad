@@ -2,22 +2,98 @@
 import { defineOrganization } from 'nuxt-schema-org/schema'
 
 export default defineNuxtConfig({
+  // Basic configuration
+  appConfig: {
+    appId: 'OneLiteFeather'
+  },
   compatibilityDate: '2025-05-15',
+
+  // Development tools
   devtools: {
     enabled: true,
-
     timeline: {
       enabled: true
     }
   },
+
+  // Modules
+  modules: [
+    '@nuxt/content',
+    '@nuxt/eslint',
+    '@nuxt/image',
+    '@nuxtjs/i18n',
+    '@nuxtjs/robots',
+    '@nuxtjs/seo',
+    '@nuxtjs/sitemap',
+    '@nuxtjs/tailwindcss',
+    '@vueuse/nuxt',
+    'nuxt-gtag',
+    'nuxt-og-image',
+    'nuxt-posthog',
+    'nuxt-schema-org'
+  ],
+
+  // Module configurations (alphabetically)
+  content: {
+    build: {
+      markdown: {
+        highlight: {
+          langs: ['css', 'html', 'java', 'js', 'json', 'md', 'mdc', 'shell', 'ts', 'vue', 'xml', 'yaml'],
+          theme: {
+            // Default theme (same as single string)
+            default: 'github-light',
+            // Theme used if `html.dark`
+            dark: 'github-dark',
+            // Theme used if `html.sepia`
+            sepia: 'monokai'
+          }
+        }
+      }
+    }
+  },
+  i18n: {
+    baseUrl: 'http://localhost:3000',
+    defaultLocale: 'de',
+    detectBrowserLanguage: {
+      cookieKey: 'i18n_redirected',
+      redirectOn: 'root', // recommended
+      useCookie: true
+    },
+    locales: [
+      { code: 'de', iso: 'de-DE', name: 'Deutsch', file: 'de.json' },
+      { code: 'en', iso: 'en-US', name: 'English', file: 'en.json' }
+    ],
+    strategy: 'prefix'
+  },
+  image: {
+    dir: 'public',
+    // The screen sizes predefined by `@nuxt/image`:
+    screens: {
+      xs: 320,
+      sm: 640,
+      md: 768,
+      lg: 1024,
+      xl: 1280,
+      xxl: 1536,
+      '2xl': 1536
+    }
+  },
+  posthog: {
+    clientOptions: {
+      person_profiles: 'always'
+    },
+    host: 'https://eu.i.posthog.com',
+    proxy: true,
+    publicKey: 'phc_t9nBlYL9LcDj4LDKZfQ97m5nbvFDTugkdQqAAspfdI'
+  },
   schemaOrg: {
     identity: defineOrganization({
       // Basic Information
-      name: 'OneLiteFeather Network',
       alternateName: 'OneLiteFeather.net',
       description: 'OneLiteFeather is a Minecraft Network focusing on the development tools with intention to share with other servers. ',
-      url: 'http://localhost:3000',
       logo: '/logo.svg',
+      name: 'OneLiteFeather Network',
+      url: 'http://localhost:3000',
 
       // Contact Information, if applicable
       email: 'contact@onelitefeather.net',
@@ -34,88 +110,21 @@ export default defineNuxtConfig({
       ]
     })
   },
-  modules: [
-    '@vueuse/nuxt',
-    '@nuxt/eslint',
-    '@nuxtjs/tailwindcss',
-    '@nuxtjs/i18n',
-    '@nuxtjs/seo',
-    '@nuxt/image',
-    '@nuxtjs/sitemap',
-    '@nuxtjs/robots',
-    'nuxt-schema-org',
-    'nuxt-og-image',
-    '@nuxt/content',
-    'nuxt-posthog',
-    'nuxt-gtag'
-  ],
-  i18n: {
-    strategy: 'prefix',
-    defaultLocale: 'de',
-    locales: [
-        { code: 'de', iso: 'de-DE', name: 'Deutsch', file: 'de.json' },
-        { code: 'en', iso: 'en-US', name: 'English', file: 'en.json' }
-    ],
-    detectBrowserLanguage: {
-      useCookie: true,
-      cookieKey: 'i18n_redirected',
-      redirectOn: 'root' // recommended
-    },
-    baseUrl: 'http://localhost:3000',
-  },
-  tailwindcss: {
-    cssPath: [`~/assets/css/tailwind.css`, { injectPosition: "first" }],
-    config: {
-      path: '~/tailwind.config.mts'
-    },
-    viewer: true,
-    exposeConfig: false,
-  },
-  appConfig: {
-    appId: 'OneLiteFeather'
-  },
-  image: {
-    // The screen sizes predefined by `@nuxt/image`:
-    screens: {
-      xs: 320,
-      sm: 640,
-      md: 768,
-      lg: 1024,
-      xl: 1280,
-      xxl: 1536,
-      '2xl': 1536
-    },
-    dir: 'public',
-  },
   site: {
     name: 'OneLiteFeather',
-    url: 'http://localhost:3000',
-  },
-  posthog: {
-    publicKey: 'phc_t9nBlYL9LcDj4LDKZfQ97m5nbvFDTugkdQqAAspfdI',
-    host: 'https://eu.i.posthog.com',
-    proxy: true,
-    clientOptions: {
-      person_profiles: 'always'
-    }
+    url: 'http://localhost:3000'
   },
   sitemap: {
     autoI18n: true,
-    xslColumns: [
-      { label: 'URL', width: '50%' },
-      { label: 'Last Modified', select: 'sitemap:lastmod', width: '25%' },
-      { label: 'Language', select: 'sitemap:hreflang', width: '25%' }
-    ],
-    urls: [],
     defaults: {
       changefreq: 'weekly',
-      priority: 0.8,
-      lastmod: new Date()
+      lastmod: new Date(),
+      priority: 0.8
     },
     // Ensure alternate language versions are properly linked
     i18n: {
-      locales: ['de', 'en'],
-      defaultLocale: 'de'
+      defaultLocale: 'de',
+      locales: ['de', 'en']
     },
     // Process content collections to add alternate links based on translationKey
     transformEntries: async (entries) => {
@@ -142,78 +151,121 @@ export default defineNuxtConfig({
         }
         return entry;
       });
-    }
+    },
+    urls: [],
+    xslColumns: [
+      { label: 'URL', width: '50%' },
+      { label: 'Last Modified', select: 'sitemap:lastmod', width: '25%' },
+      { label: 'Language', select: 'sitemap:hreflang', width: '25%' }
+    ]
   },
-  content: {
-    build: {
-      markdown: {
-        highlight: {
-          langs: ['json', 'java', 'xml', 'js', 'ts', 'html', 'css', 'vue', 'shell', 'mdc', 'md', 'yaml'],
-          theme: {
-            // Default theme (same as single string)
-            default: 'github-light',
-            // Theme used if `html.dark`
-            dark: 'github-dark',
-            // Theme used if `html.sepia`
-            sepia: 'monokai'
-          }
-        }
-      }
-    }
-  },
+
+  // Environment-specific configurations
   $production: {
-    runtimeConfig: {
-      public: {
-        siteUrl: 'https://blog.onelitefeather.net',
-      }
-    },
-    posthog: {
-      publicKey: 'phc_t9nBlYL9LcDj4LDKZfQ97m5nbvFDTugkdQqAAspfdI',
-      host: 'https://eu.i.posthog.com',
-      proxy: true,
-      clientOptions: {
-        person_profiles: 'always'
-      }
-    },
-    site: {
-      url: 'https://blog.onelitefeather.net',
-    },
     gtag: {
-      id: 'AW-16761048144',
       config: {
         anonymize_ip: true,
         send_page_view: true
-      }
+      },
+      id: 'AW-16761048144'
+    },
+    i18n: {
+      baseUrl: 'https://blog.onelitefeather.net'
     },
     image: {
       cloudflare: {
-        baseUrl: 'https://blog.onelitefeather.net',
+        baseUrl: 'https://blog.onelitefeather.net'
       }
     },
-    i18n: {
-      baseUrl: 'https://blog.onelitefeather.net',
-    },
     nitro: {
-      preset: "cloudflare_pages",
       cloudflare: {
         deployConfig: true,
         nodeCompat: true,
         wrangler: {
-          name: 'launchpad',
           d1_databases: [
             {
               binding: 'DB',
-              database_name: 'launchpad',
-              database_id: 'a92127c1-aaa3-4753-82ba-ea59fa9e7140'
+              database_id: 'a92127c1-aaa3-4753-82ba-ea59fa9e7140',
+              database_name: 'launchpad'
             }
           ],
+          name: 'launchpad',
           vars: {
-            "NUXT_IMAGE_PROVIDER": "cloudflare",
+            "NUXT_IMAGE_PROVIDER": "cloudflare"
           }
         }
+      },
+      preset: "cloudflare_pages"
+    },
+    posthog: {
+      clientOptions: {
+        person_profiles: 'always'
+      },
+      host: 'https://eu.i.posthog.com',
+      proxy: true,
+      publicKey: 'phc_t9nBlYL9LcDj4LDKZfQ97m5nbvFDTugkdQqAAspfdI'
+    },
+    runtimeConfig: {
+      public: {
+        siteUrl: 'https://blog.onelitefeather.net'
       }
+    },
+    site: {
+      url: 'https://blog.onelitefeather.net'
     }
   },
+  $test: {
+    gtag: {
+      config: {
+        anonymize_ip: true,
+        send_page_view: true
+      },
+      id: 'AW-16761048144'
+    },
+    i18n: {
+      baseUrl: 'https://blog.onelitefeather.net'
+    },
+    image: {
+      cloudflare: {
+        baseUrl: 'https://blog.onelitefeather.net'
+      }
+    },
+    nitro: {
+      cloudflare: {
+        deployConfig: true,
+        nodeCompat: true,
+        wrangler: {
+          d1_databases: [
+            {
+              binding: 'DB',
+              database_id: 'a92127c1-aaa3-4753-82ba-ea59fa9e7140',
+              database_name: 'launchpad'
+            }
+          ],
+          name: 'launchpad'
+        }
+      },
+      preset: "cloudflare_pages"
+    },
+    posthog: {
+      clientOptions: {
+        person_profiles: 'always'
+      },
+      host: 'https://eu.i.posthog.com',
+      proxy: true,
+      publicKey: 'phc_t9nBlYL9LcDj4LDKZfQ97m5nbvFDTugkdQqAAspfdI'
+    },
+    runtimeConfig: {
+      public: {
+        siteUrl: 'https://blog.onelitefeather.net'
+      }
+    },
+    site: {
+      url: 'https://blog.onelitefeather.net'
+    }
+  },
+
+  // Special configurations
   ogImage: {
     compatibility: {
       runtime: {
