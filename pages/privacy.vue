@@ -1,8 +1,30 @@
 <script setup lang="ts">
 import {definePageMeta} from "#imports";
 
+const { locale, t } = useI18n();
+
 definePageMeta({
   title: 'blog.privacy.title',
+});
+
+// Set additional meta tags for SEO
+useHead({
+  meta: [
+    { name: 'description', content: computed(() => t('blog.privacy.description')) },
+    // Open Graph tags for social media sharing
+    { property: 'og:title', content: computed(() => t('blog.privacy.title')) },
+    { property: 'og:description', content: computed(() => t('blog.privacy.description')) },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:image', content: '/logo.svg' },
+    // Twitter Card tags
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:title', content: computed(() => t('blog.privacy.title')) },
+    { name: 'twitter:description', content: computed(() => t('blog.privacy.description')) },
+    { name: 'twitter:image', content: '/logo.svg' },
+  ],
+  link: [
+    { rel: 'canonical', href: computed(() => `https://blog.onelitefeather.net/${locale.value === 'de' ? '' : locale.value}/privacy`) }
+  ]
 });
 </script>
 

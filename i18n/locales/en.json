@@ -3,7 +3,8 @@
     "overview": "Overview",
     "blog": "Blog",
     "team": "Team",
-    "toggle_mobile_menu": "Toggle mobile menu"
+    "toggle_mobile_menu": "Toggle mobile menu",
+    "select_language": "Select language"
   },
   "layouts": {
     "title": "Title"
@@ -13,6 +14,14 @@
     "overview": {
       "title": "Overview",
       "description": "Find interesting blog posts from OneLiteFeather.net about development, community and more."
+    },
+    "home": {
+      "title": "OneLiteFeather Network",
+      "description": "OneLiteFeather is a Minecraft Network focusing on the development of tools that are shared with other servers."
+    },
+    "team": {
+      "title": "Our Team",
+      "description": "Meet the team behind OneLiteFeather - the people who develop our projects and support the community."
     },
     "privacy": {
       "title": "Privacy",
@@ -51,5 +60,13 @@
     "joined": "Joined",
     "on_probation": "On Probation",
     "rank_explanations": "Rank Explanations"
+  },
+  "carousel": {
+    "previous_slide": "Previous Slide",
+    "next_slide": "Next Slide",
+    "go_to_slide": "Go to Slide {number}"
+  },
+  "timeline": {
+    "label": "Timeline"
   }
 }

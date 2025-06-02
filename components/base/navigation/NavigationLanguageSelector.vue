@@ -23,7 +23,7 @@ onClickOutside(dropdown, () => {
         class="flex items-center ml-4 bg-white dark:text-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 px-4 py-2 rounded-full text-sm transition-all shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-500"
         aria-haspopup="true"
         :aria-expanded="isOpen"
-        aria-label="Select language"
+        :aria-label="$t('navigation.select_language')"
         id="language-menu-button"
     >
       <span>{{ locales.find(l => l.code === locale)?.name }}</span>
@@ -39,7 +39,7 @@ onClickOutside(dropdown, () => {
         class="flex items-center justify-between w-full bg-white dark:text-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 px-4 py-3 rounded-full text-base transition-all shadow-sm focus:outline-none focus:ring-2 focus:ring-primary-500"
         aria-haspopup="true"
         :aria-expanded="isOpen"
-        aria-label="Select language"
+        :aria-label="$t('navigation.select_language')"
         id="mobile-language-menu-button"
     >
       <span>{{ locales.find(l => l.code === locale)?.name }}</span>

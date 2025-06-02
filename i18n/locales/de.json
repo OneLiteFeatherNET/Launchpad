@@ -3,7 +3,8 @@
     "overview": "Übersicht",
     "blog": "Blog",
     "team": "Team",
-    "toggle_mobile_menu": "Mobile Menü umschalten"
+    "toggle_mobile_menu": "Mobile Menü umschalten",
+    "select_language": "Sprache auswählen"
   },
   "layouts": {
     "title": "Titel"
@@ -13,6 +14,14 @@
     "overview": {
       "title": "Übersicht",
       "description": "Finde interessante Blogbeiträge von OneLiteFeather.net rund um Entwicklung, Community und mehr."
+    },
+    "home": {
+      "title": "OneLiteFeather Network",
+      "description": "OneLiteFeather ist ein Minecraft-Netzwerk, das sich auf die Entwicklung von Tools konzentriert, die mit anderen Servern geteilt werden."
+    },
+    "team": {
+      "title": "Unser Team",
+      "description": "Lerne das Team hinter OneLiteFeather kennen - die Menschen, die unsere Projekte entwickeln und die Community unterstützen."
     },
     "privacy": {
       "title": "Datenschutz",
@@ -51,5 +60,13 @@
     "joined": "Beigetreten",
     "on_probation": "Auf Probe",
     "rank_explanations": "Rang-Erläuterungen"
+  },
+  "carousel": {
+    "previous_slide": "Vorherige Folie",
+    "next_slide": "Nächste Folie",
+    "go_to_slide": "Zur Folie {number}"
+  },
+  "timeline": {
+    "label": "Zeitleiste"
   }
 }
