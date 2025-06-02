@@ -4,9 +4,10 @@ import { ref, computed } from 'vue';
 const { locale } = useI18n();
 
 // Fetch team data based on current locale
-const { data: teamData } = await useAsyncData('team', () => 
-  queryContent(`team/${locale.value}/team`).findOne()
-);
+const { data: teamData } = await useAsyncData('team', () => {
+  const collection = locale.value === 'de' ? 'team_de' : 'team_en';
+  return queryCollection(collection).first();
+});
 
 // Computed properties for team data
 const title = computed(() => teamData.value?.title || '');
