@@ -22,7 +22,19 @@
     },
     "team": {
       "title": "Unser Team",
-      "description": "Lerne das Team hinter OneLiteFeather kennen - die Menschen, die unsere Projekte entwickeln und die Community unterstützen."
+      "description": "Lerne das Team hinter OneLiteFeather kennen - die Menschen, die unsere Projekte entwickeln und die Community unterstützen.",
+      "member": {
+        "title": "Teammitglied",
+        "description": "Erfahre mehr über {name}, ein Mitglied des OneLiteFeather-Teams."
+      }
+    },
+    "projects": {
+      "title": "Unsere Projekte",
+      "description": "Entdecke die Projekte, an denen OneLiteFeather arbeitet."
+    },
+    "project": {
+      "title": "Projektdetails",
+      "description": "Erfahre mehr über dieses OneLiteFeather-Projekt."
     },
     "privacy": {
       "title": "Datenschutz",
@@ -60,7 +72,13 @@
   "team": {
     "joined": "Beigetreten",
     "on_probation": "Auf Probe",
-    "rank_explanations": "Rang-Erläuterungen"
+    "rank_explanations": "Rang-Erläuterungen",
+    "member": {
+      "joined": "Beigetreten",
+      "about": "Über",
+      "projects": "Projekte",
+      "blog_posts": "Blog-Beiträge"
+    }
   },
   "carousel": {
     "previous_slide": "Vorherige Folie",
@@ -77,6 +95,13 @@
   "projects": {
     "view_on_github": "Auf GitHub ansehen",
     "authors": "Autoren",
-    "and_more": "und {count} weitere"
+    "and_more": "und {count} weitere",
+    "view_profile": "Profil ansehen",
+    "features": "Funktionen",
+    "roadmap": "Roadmap",
+    "statistics": "Statistiken",
+    "servers_using": "Server, die dieses Plugin nutzen",
+    "players_using": "Spieler, die dieses Plugin nutzen",
+    "view_on_bstats": "Auf bStats ansehen"
   }
 }
