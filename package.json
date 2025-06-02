@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "nuxi build",
+    "build": "if [ \"$CF_PAGES_BRANCH\" != \"main\" ] && [ \"$CF_PAGES_BRANCH\" != \"\" ]; then NODE_ENV=\"test\" nuxi build --envName test; else nuxi build; fi",
     "build:test": "NODE_ENV=\"test\" nuxi build --envName test",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
