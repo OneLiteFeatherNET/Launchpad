@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "nuxi build",
+    "build:test": "nuxi build --envName test",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
