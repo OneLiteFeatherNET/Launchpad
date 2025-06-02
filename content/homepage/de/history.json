@@ -1,0 +1,30 @@
+{
+  "title": "Unsere Geschichte",
+  "timeline": [
+    {
+      "year": "2018",
+      "color": "secondary-pink",
+      "description": "Gründung unseres ersten Minecraft Servers mit einer kleinen Community von Freunden."
+    },
+    {
+      "year": "2019",
+      "color": "secondary-orange",
+      "description": "Erweiterung zu einem öffentlichen Server mit ersten eigenen Plugins und Mods."
+    },
+    {
+      "year": "2020",
+      "color": "secondary-purple",
+      "description": "Aufbau eines Netzwerks mit verschiedenen Spielmodi und einer wachsenden Community."
+    },
+    {
+      "year": "2022",
+      "color": "secondary-blue",
+      "description": "Launch unserer eigenen Website und Discord-Integration für bessere Community-Interaktion."
+    },
+    {
+      "year": "Heute",
+      "color": "secondary-cyan",
+      "description": "Ein etabliertes Netzwerk mit tausenden Spielern und regelmäßigen Events."
+    }
+  ]
+}

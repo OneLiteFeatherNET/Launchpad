@@ -1,6 +1,8 @@
 {
   "navigation": {
     "overview": "Übersicht",
+    "blog": "Blog",
+    "team": "Team",
     "toggle_mobile_menu": "Mobile Menü umschalten"
   },
   "layouts": {
@@ -44,5 +46,10 @@
     "share_on_linkedin": "Auf LinkedIn teilen",
     "share_on_whatsapp": "Auf WhatsApp teilen",
     "share_by_email": "Per E-Mail teilen"
+  },
+  "team": {
+    "joined": "Beigetreten",
+    "on_probation": "Auf Probe",
+    "rank_explanations": "Rang-Erläuterungen"
   }
 }

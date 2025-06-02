@@ -1,0 +1,19 @@
+{
+  "slides": [
+    { 
+      "title": "Willkommen auf unserem Minecraft Server", 
+      "subtitle": "Entdecke eine Welt voller Abenteuer und Kreativität", 
+      "image": "/images/blog/dev-blog-1.webp"
+    },
+    { 
+      "title": "Unser Netzwerk", 
+      "subtitle": "Verbinde dich mit Spielern aus aller Welt", 
+      "image": "/images/blog/riding-the-rollercoaster-of-automation-with-proxmox-and-ansible.webp"
+    },
+    { 
+      "title": "Einzigartige Spielerfahrung", 
+      "subtitle": "Spezielle Plugins und Events warten auf dich", 
+      "image": "/images/blog/cyber-theDigitalArtist-Ethanol-Post.webp"
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "title": "Our Team",
+  "description": "Meet the members of the OneLiteFeather team behind our projects.",
+  "ranks": [
+    {
+      "name": "Administrator",
+      "description": "Responsible for managing and developing the platform.",
+      "members": [
+        {
+          "name": "Max Mustermann",
+          "minecraftUsername": "MaxAdmin",
+          "quote": "Together we build a great community!",
+          "joinDate": "2020-01-15"
+        },
+        {
+          "name": "Anna Schmidt",
+          "minecraftUsername": "AnnaAdmin",
+          "quote": "Creativity and collaboration are the keys to success.",
+          "joinDate": "2020-03-20"
+        }
+      ]
+    },
+    {
+      "name": "Moderator",
+      "description": "Supports the community and ensures a pleasant gaming experience.",
+      "members": [
+        {
+          "name": "Tom Weber",
+          "minecraftUsername": "TomMod",
+          "quote": "I'm happy to help where I can!",
+          "joinDate": "2021-02-10"
+        },
+        {
+          "name": "Lisa Müller",
+          "minecraftUsername": "LisaMod",
+          "joinDate": "2021-05-05",
+          "onProbation": true
+        }
+      ]
+    },
+    {
+      "name": "Builder",
+      "description": "Creative minds who shape our worlds.",
+      "members": [
+        {
+          "name": "Jan Becker",
+          "minecraftUsername": "JanBuilder",
+          "quote": "Every building tells a story.",
+          "joinDate": "2021-07-15"
+        },
+        {
+          "name": "Sophie Klein",
+          "minecraftUsername": "SophieBuilder",
+          "joinDate": "2022-01-10"
+        }
+      ]
+    }
+  ],
+  "rankExplanations": [
+    {
+      "rank": "Administrator",
+      "description": "Administrators have full rights on the server and are responsible for the technical infrastructure, development, and strategic decisions."
+    },
+    {
+      "rank": "Moderator",
+      "description": "Moderators help enforce the rules, resolve conflicts, and ensure a pleasant gaming experience for everyone."
+    },
+    {
+      "rank": "Builder",
+      "description": "Builders are responsible for designing the game worlds and contribute creative ideas to create unique environments."
+    }
+  ]
+}

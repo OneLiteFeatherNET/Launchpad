@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import NavigationBar from "~/components/base/navigation/NavigationBar.vue";
-import FooterSection from "~/components/blog/page/footer/FooterSection.vue";
+import FooterSection from "~/components/base/footer/FooterSection.vue";
 const route = useRoute()
 const { t } = useI18n()
 const head = useLocaleHead()
@@ -20,10 +20,10 @@ const title = computed(() => t(route.meta?.title ?? 'TDB'));
   </Head>
   <Body class="h-full dark:bg-gray-900">
     <NavigationBar />
-    <main class="px-4 mx-auto sm:px-6 lg:px-8 w-full h-full">
+    <main class="px-4 mx-auto sm:px-6 lg:px-8 w-full h-full min-h-screen">
       <slot/>
     </main>
-    <FooterSection />
+    <FooterSection class="bottom-0" />
   </Body>
 </Html>
 </template>

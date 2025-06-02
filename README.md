@@ -41,6 +41,15 @@ This project is intended to become the normal/official site for OneLiteFeather.n
 - `pages/` - Application pages
 - `public/` - Static assets
 - `i18n/` - Internationalization configuration
+- `docs/` - Project documentation
+
+## Documentation
+
+The project includes comprehensive documentation to help developers understand and contribute to the codebase:
+
+- [Component Design Guide](docs/component-design-guide.md) - Guidelines for creating and maintaining components
+- [Accessibility Guide](docs/accessibility-guide.md) - Best practices for ensuring the site is accessible to all users
+- [Canonical URLs Guide](docs/canonical-urls.md) - How to handle multilingual content and canonical URLs
 
 ## Setup
 

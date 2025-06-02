@@ -1,0 +1,73 @@
+{
+  "title": "Unser Team",
+  "description": "Lernen Sie die Mitglieder des OneLiteFeather-Teams kennen, die hinter unseren Projekten stehen.",
+  "ranks": [
+    {
+      "name": "Administrator",
+      "description": "Verantwortlich für die Verwaltung und Entwicklung der Plattform.",
+      "members": [
+        {
+          "name": "Max Mustermann",
+          "minecraftUsername": "MaxAdmin",
+          "quote": "Gemeinsam bauen wir eine großartige Community auf!",
+          "joinDate": "2020-01-15"
+        },
+        {
+          "name": "Anna Schmidt",
+          "minecraftUsername": "AnnaAdmin",
+          "quote": "Kreativität und Zusammenarbeit sind der Schlüssel zum Erfolg.",
+          "joinDate": "2020-03-20"
+        }
+      ]
+    },
+    {
+      "name": "Moderator",
+      "description": "Unterstützt die Community und sorgt für ein angenehmes Spielerlebnis.",
+      "members": [
+        {
+          "name": "Tom Weber",
+          "minecraftUsername": "TomMod",
+          "quote": "Ich helfe gerne, wo ich kann!",
+          "joinDate": "2021-02-10"
+        },
+        {
+          "name": "Lisa Müller",
+          "minecraftUsername": "LisaMod",
+          "joinDate": "2021-05-05",
+          "onProbation": true
+        }
+      ]
+    },
+    {
+      "name": "Builder",
+      "description": "Kreative Köpfe, die unsere Welten gestalten.",
+      "members": [
+        {
+          "name": "Jan Becker",
+          "minecraftUsername": "JanBuilder",
+          "quote": "Jedes Gebäude erzählt eine Geschichte.",
+          "joinDate": "2021-07-15"
+        },
+        {
+          "name": "Sophie Klein",
+          "minecraftUsername": "SophieBuilder",
+          "joinDate": "2022-01-10"
+        }
+      ]
+    }
+  ],
+  "rankExplanations": [
+    {
+      "rank": "Administrator",
+      "description": "Administratoren haben volle Rechte auf dem Server und sind für die technische Infrastruktur, Entwicklung und strategische Entscheidungen verantwortlich."
+    },
+    {
+      "rank": "Moderator",
+      "description": "Moderatoren helfen dabei, die Regeln durchzusetzen, Konflikte zu lösen und ein angenehmes Spielerlebnis für alle zu gewährleisten."
+    },
+    {
+      "rank": "Builder",
+      "description": "Builder sind für die Gestaltung der Spielwelten verantwortlich und bringen kreative Ideen ein, um einzigartige Umgebungen zu schaffen."
+    }
+  ]
+}

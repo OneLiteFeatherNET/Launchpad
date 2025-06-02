@@ -8,7 +8,7 @@ const {blogArticle} = defineProps<{
 
 <template>
   <article class="bg-white dark:bg-gray-800 rounded-xxl shadow-md overflow-hidden xl:mx-80">
-    <NuxtLink :to="`/${locale}/${blogArticle.slug}`">
+    <NuxtLink :to="`/${locale}/blog/${blogArticle.slug}`">
       <NuxtImg v-if="blogArticle.headerImage"
                :src="blogArticle.headerImage"
                :alt="blogArticle.headerImageAlt"
@@ -20,7 +20,7 @@ const {blogArticle} = defineProps<{
                quality='80'
                class="w-full h-96 object-cover rounded-xxl" />
       <div class="p-4">
-        <h1 class="text-xl font-bold text-on-surface dark:text-white">{{ blogArticle.title }}</h1>
+        <h1 class="text-xl font-bold text-secondary dark:text-secondary">{{ blogArticle.title }}</h1>
         <time class="text-sm text-on-surface-variant dark:text-white">
           <i18n-d :value="blogArticle.pubDate"></i18n-d>
         </time>

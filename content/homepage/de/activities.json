@@ -1,0 +1,23 @@
+{
+  "title": "Was wir hauptsächlich machen",
+  "activities": [
+    {
+      "title": "Minecraft Server Hosting",
+      "description": "Wir betreiben mehrere Minecraft Server mit verschiedenen Spielmodi wie Survival, Creative und Minigames.",
+      "image": "/images/blog/dev-blog-1.webp",
+      "color": "secondary-purple"
+    },
+    {
+      "title": "Plugin-Entwicklung",
+      "description": "Wir entwickeln eigene Plugins, um das Spielerlebnis zu verbessern und einzigartige Features anzubieten.",
+      "image": "/images/blog/plugin-adoptation.webp",
+      "color": "secondary"
+    },
+    {
+      "title": "Community Events",
+      "description": "Regelmäßige Events, Turniere und Wettbewerbe bringen unsere Community zusammen und sorgen für Spaß.",
+      "image": "/images/blog/cyber-theDigitalArtist-Ethanol-Post.webp",
+      "color": "secondary-cyan"
+    }
+  ]
+}

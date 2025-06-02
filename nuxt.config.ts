@@ -64,8 +64,10 @@ export default defineNuxtConfig({
     baseUrl: 'http://localhost:3000',
   },
   tailwindcss: {
-    cssPath: [`~/css/tailwind.css`, { injectPosition: "first" }],
-    config: {},
+    cssPath: [`~/assets/css/tailwind.css`, { injectPosition: "first" }],
+    config: {
+      path: '~/tailwind.config.mts'
+    },
     viewer: true,
     exposeConfig: false,
   },

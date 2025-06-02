@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import NavigationBar from "~/components/base/navigation/NavigationBar.vue";
-import FooterSection from "~/components/blog/page/footer/FooterSection.vue";
+import FooterSection from "~/components/base/footer/FooterSection.vue";
 const route = useRoute()
 const head = useLocaleHead()
 const title = computed(() =>route.meta?.title ?? 'TDB');

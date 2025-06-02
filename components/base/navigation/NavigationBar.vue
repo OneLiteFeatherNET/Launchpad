@@ -8,6 +8,8 @@ const localePath = useLocalePath()
 
 const navItems = [
   { textKey: 'navigation.overview', path: localePath('index', locale?.value as Locale) },
+  { textKey: 'navigation.blog', path: localePath('blog', locale?.value as Locale) },
+  { textKey: 'navigation.team', path: localePath('team', locale?.value as Locale) },
 ];
 
 const mobileMenuOpen = ref(false);
@@ -26,7 +28,7 @@ const mobileMenuOpen = ref(false);
                      class="h-15 w-15 rounded-full"
                      format="webp">
             </NuxtImg>
-            <span class="text-xl font-medium dark:text-white ">OneLiteFeather</span>
+            <span class="text-xl font-medium bg-text-gradient text-transparent bg-clip-text">OneLiteFeather</span>
           </NuxtLinkLocale>
         </div>
         <nav class="hidden md:flex items-center space-x-1">
