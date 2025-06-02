@@ -16,24 +16,24 @@ definePageMeta({
 });
 
 // Set additional meta tags for SEO
-useHead({
-  meta: [
-    { name: 'description', content: computed(() => isUnmounted.value ? '' : t('blog.home.description')) },
-    // Open Graph tags for social media sharing
-    { property: 'og:title', content: computed(() => isUnmounted.value ? '' : t('blog.home.title')) },
-    { property: 'og:description', content: computed(() => isUnmounted.value ? '' : t('blog.home.description')) },
-    { property: 'og:type', content: 'website' },
-    { property: 'og:image', content: computed(() => isUnmounted.value ? '/logo.svg' : slides.value[0]?.image || '/logo.svg') },
-    // Twitter Card tags
-    { name: 'twitter:card', content: 'summary_large_image' },
-    { name: 'twitter:title', content: computed(() => isUnmounted.value ? '' : t('blog.home.title')) },
-    { name: 'twitter:description', content: computed(() => isUnmounted.value ? '' : t('blog.home.description')) },
-    { name: 'twitter:image', content: computed(() => isUnmounted.value ? '/logo.svg' : slides.value[0]?.image || '/logo.svg') },
-  ],
-  link: [
-    { rel: 'canonical', href: computed(() => isUnmounted.value ? '' : `https://blog.onelitefeather.net/${locale.value === 'de' ? '' : locale.value}`) }
-  ]
-});
+// useHead({
+//   meta: [
+//     { name: 'description', content: computed(() => isUnmounted.value ? '' : t('blog.home.description')) },
+//     // Open Graph tags for social media sharing
+//     { property: 'og:title', content: computed(() => isUnmounted.value ? '' : t('blog.home.title')) },
+//     { property: 'og:description', content: computed(() => isUnmounted.value ? '' : t('blog.home.description')) },
+//     { property: 'og:type', content: 'website' },
+//     { property: 'og:image', content: computed(() => isUnmounted.value ? '/logo.svg' : slides.value[0]?.image || '/logo.svg') },
+//     // Twitter Card tags
+//     { name: 'twitter:card', content: 'summary_large_image' },
+//     { name: 'twitter:title', content: computed(() => isUnmounted.value ? '' : t('blog.home.title')) },
+//     { name: 'twitter:description', content: computed(() => isUnmounted.value ? '' : t('blog.home.description')) },
+//     { name: 'twitter:image', content: computed(() => isUnmounted.value ? '/logo.svg' : slides.value[0]?.image || '/logo.svg') },
+//   ],
+//   link: [
+//     { rel: 'canonical', href: computed(() => isUnmounted.value ? '' : `https://blog.onelitefeather.net/${locale.value === 'de' ? '' : locale.value}`) }
+//   ]
+// });
 
 // Fetch carousel data
 const { data: carouselData } = await useAsyncData('carousel', () => {
