@@ -4,6 +4,11 @@ import HomeTimeline from '~/components/home/HomeTimeline.vue';
 import HomeActivities from '~/components/home/HomeActivities.vue';
 
 const { locale, t } = useI18n();
+const isUnmounted = ref(false);
+
+onBeforeUnmount(() => {
+  isUnmounted.value = true;
+});
 
 // SEO optimization
 definePageMeta({
@@ -13,20 +18,20 @@ definePageMeta({
 // Set additional meta tags for SEO
 useHead({
   meta: [
-    { name: 'description', content: computed(() => t('blog.home.description')) },
+    { name: 'description', content: computed(() => isUnmounted.value ? '' : t('blog.home.description')) },
     // Open Graph tags for social media sharing
-    { property: 'og:title', content: computed(() => t('blog.home.title')) },
-    { property: 'og:description', content: computed(() => t('blog.home.description')) },
+    { property: 'og:title', content: computed(() => isUnmounted.value ? '' : t('blog.home.title')) },
+    { property: 'og:description', content: computed(() => isUnmounted.value ? '' : t('blog.home.description')) },
     { property: 'og:type', content: 'website' },
-    { property: 'og:image', content: computed(() => slides.value[0]?.image || '/logo.svg') },
+    { property: 'og:image', content: computed(() => isUnmounted.value ? '/logo.svg' : slides.value[0]?.image || '/logo.svg') },
     // Twitter Card tags
     { name: 'twitter:card', content: 'summary_large_image' },
-    { name: 'twitter:title', content: computed(() => t('blog.home.title')) },
-    { name: 'twitter:description', content: computed(() => t('blog.home.description')) },
-    { name: 'twitter:image', content: computed(() => slides.value[0]?.image || '/logo.svg') },
+    { name: 'twitter:title', content: computed(() => isUnmounted.value ? '' : t('blog.home.title')) },
+    { name: 'twitter:description', content: computed(() => isUnmounted.value ? '' : t('blog.home.description')) },
+    { name: 'twitter:image', content: computed(() => isUnmounted.value ? '/logo.svg' : slides.value[0]?.image || '/logo.svg') },
   ],
   link: [
-    { rel: 'canonical', href: computed(() => `https://blog.onelitefeather.net/${locale.value === 'de' ? '' : locale.value}`) }
+    { rel: 'canonical', href: computed(() => isUnmounted.value ? '' : `https://blog.onelitefeather.net/${locale.value === 'de' ? '' : locale.value}`) }
   ]
 });
 
@@ -48,11 +53,11 @@ const { data: activitiesData } = await useAsyncData('activities', () => {
   return queryCollection(collection).first();
 });
 
-const slides = computed(() => carouselData.value?.slides || []);
-const historyTitle = computed(() => historyData.value?.title || '');
-const timeline = computed(() => historyData.value?.timeline || []);
-const activitiesTitle = computed(() => activitiesData.value?.title || '');
-const activities = computed(() => activitiesData.value?.activities || []);
+const slides = computed(() => isUnmounted.value ? [] : carouselData.value?.slides || []);
+const historyTitle = computed(() => isUnmounted.value ? '' : historyData.value?.title || '');
+const timeline = computed(() => isUnmounted.value ? [] : historyData.value?.timeline || []);
+const activitiesTitle = computed(() => isUnmounted.value ? '' : activitiesData.value?.title || '');
+const activities = computed(() => isUnmounted.value ? [] : activitiesData.value?.activities || []);
 </script>
 
 <template>

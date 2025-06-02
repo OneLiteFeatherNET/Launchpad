@@ -30,10 +30,20 @@ defineProps({
               :alt="activity.title" 
               class="h-full w-full object-cover"
             />
-            <div :class="`absolute inset-0 bg-${activity.color}-container bg-opacity-50`"></div>
+            <div :class="[
+              'absolute inset-0 bg-opacity-50',
+              activity.color === 'secondary' 
+                ? 'bg-secondary-container' 
+                : `bg-${activity.color}-container`
+            ]"></div>
           </div>
           <div class="p-6">
-            <h3 :class="`text-xl font-bold text-${activity.color}-color mb-2`">{{ activity.title }}</h3>
+            <h3 :class="[
+              'text-xl font-bold mb-2',
+              activity.color === 'secondary' 
+                ? 'text-secondary' 
+                : `text-${activity.color}-color`
+            ]">{{ activity.title }}</h3>
             <p class="text-on-surface-variant">{{ activity.description }}</p>
           </div>
         </div>

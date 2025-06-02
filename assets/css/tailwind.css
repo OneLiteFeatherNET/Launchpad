@@ -2,4 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
+/* CSS variables for M3 Design System */
+:root {
+    /* Secondary colors */
+    --md-sys-color-secondary: #EC008B;
+    --md-sys-color-secondary-container: rgba(236, 0, 139, 0.12);
+
+    --md-sys-color-secondary-orange: #F7931D;
+    --md-sys-color-secondary-orange-container: rgba(247, 147, 29, 0.12);
+
+    --md-sys-color-secondary-purple: #91268F;
+    --md-sys-color-secondary-purple-container: rgba(145, 38, 143, 0.12);
+
+    --md-sys-color-secondary-blue: #2A388F;
+    --md-sys-color-secondary-blue-container: rgba(42, 56, 143, 0.12);
+
+    --md-sys-color-secondary-cyan: #27A9E1;
+    --md-sys-color-secondary-cyan-container: rgba(39, 169, 225, 0.12);
+}
+
+/* Dark mode variables */
+.dark {
+    --md-sys-color-secondary-container: rgba(236, 0, 139, 0.24);
+    --md-sys-color-secondary-orange-container: rgba(247, 147, 29, 0.24);
+    --md-sys-color-secondary-purple-container: rgba(145, 38, 143, 0.24);
+    --md-sys-color-secondary-blue-container: rgba(42, 56, 143, 0.24);
+    --md-sys-color-secondary-cyan-container: rgba(39, 169, 225, 0.24);
+}
+
 /* Any additional styles that can't be defined in the tailwind.config.mts file */

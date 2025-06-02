@@ -23,11 +23,33 @@ defineProps({
           <div 
             v-for="(item, index) in timeline" 
             :key="index"
-            :class="`timeline-item bg-${item.color}-container p-6 rounded-lg shadow-md min-w-[300px]`"
+            :class="[
+              'timeline-item p-6 rounded-lg shadow-md min-w-[300px] relative overflow-hidden',
+              item.color === 'secondary' 
+                ? 'bg-secondary-container' 
+                : `bg-${item.color}-container`
+            ]"
             role="article"
           >
-            <h3 :class="`text-xl font-bold text-${item.color} mb-2`">{{ item.year }}</h3>
-            <p class="text-on-surface-variant">{{ item.description }}</p>
+            <!-- Background color overlay with higher opacity -->
+            <div 
+              :class="[
+                'absolute inset-0 opacity-30',
+                item.color === 'secondary' 
+                  ? 'bg-secondary' 
+                  : `bg-${item.color}`
+              ]"
+            ></div>
+
+            <div class="relative z-10">
+              <h3 :class="[
+                'text-xl font-bold mb-2',
+                item.color === 'secondary' 
+                  ? 'text-secondary' 
+                  : `text-${item.color}`
+              ]">{{ item.year }}</h3>
+              <p class="text-on-surface-variant">{{ item.description }}</p>
+            </div>
           </div>
         </div>
       </div>
