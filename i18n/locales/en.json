@@ -3,6 +3,7 @@
     "overview": "Overview",
     "blog": "Blog",
     "team": "Team",
+    "projects": "Projects",
     "toggle_mobile_menu": "Toggle mobile menu",
     "select_language": "Select language"
   },
@@ -68,5 +69,14 @@
   },
   "timeline": {
     "label": "Timeline"
+  },
+  "home": {
+    "featured_projects": "Featured Projects",
+    "view_all_projects": "View All Projects"
+  },
+  "projects": {
+    "view_on_github": "View on GitHub",
+    "authors": "Authors",
+    "and_more": "and {count} more"
   }
 }

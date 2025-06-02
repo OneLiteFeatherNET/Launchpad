@@ -10,6 +10,7 @@ const navItems = [
   { textKey: 'navigation.overview', path: localePath('index', locale?.value as Locale) },
   { textKey: 'navigation.blog', path: localePath('blog', locale?.value as Locale) },
   { textKey: 'navigation.team', path: localePath('team', locale?.value as Locale) },
+  { textKey: 'navigation.projects', path: localePath('projects', locale?.value as Locale) },
 ];
 
 const mobileMenuOpen = ref(false);
