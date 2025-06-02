@@ -1,0 +1,86 @@
+{
+  "title": "Unsere Projekte",
+  "description": "Entdecken Sie die Projekte von OneLiteFeather, an denen wir arbeiten.",
+  "projects": [
+    {
+      "name": "Beispielprojekt 1",
+      "slug": "beispielprojekt-1",
+      "description": "Ein Beispielprojekt zur Demonstration der Projektfunktionalität.",
+      "status": "Aktiv",
+      "github": "https://github.com/onelitefeather/beispielprojekt-1",
+      "featured": true,
+      "image": "/images/projects/beispielprojekt-1.webp",
+      "authors": [
+        {
+          "name": "Max Mustermann",
+          "minecraftUsername": "MaxAdmin",
+          "role": "Projektleiter"
+        },
+        {
+          "name": "Anna Schmidt",
+          "minecraftUsername": "AnnaAdmin",
+          "role": "Entwicklerin"
+        }
+      ],
+      "features": [
+        "Feature 1: Beschreibung des ersten Features",
+        "Feature 2: Beschreibung des zweiten Features",
+        "Feature 3: Beschreibung des dritten Features"
+      ],
+      "roadmap": [
+        {
+          "title": "Phase 1",
+          "description": "Beschreibung der ersten Phase",
+          "status": "Abgeschlossen"
+        },
+        {
+          "title": "Phase 2",
+          "description": "Beschreibung der zweiten Phase",
+          "status": "In Bearbeitung"
+        },
+        {
+          "title": "Phase 3",
+          "description": "Beschreibung der dritten Phase",
+          "status": "Geplant"
+        }
+      ],
+      "bstats": {
+        "pluginId": "12345",
+        "showServers": true,
+        "showPlayers": true
+      }
+    },
+    {
+      "name": "Beispielprojekt 2",
+      "slug": "beispielprojekt-2",
+      "description": "Ein weiteres Beispielprojekt zur Demonstration der Projektfunktionalität.",
+      "status": "In Entwicklung",
+      "github": "https://github.com/onelitefeather/beispielprojekt-2",
+      "featured": false,
+      "image": "/images/projects/beispielprojekt-2.webp",
+      "authors": [
+        {
+          "name": "Tom Weber",
+          "minecraftUsername": "TomMod",
+          "role": "Entwickler"
+        }
+      ],
+      "features": [
+        "Feature 1: Beschreibung des ersten Features",
+        "Feature 2: Beschreibung des zweiten Features"
+      ],
+      "roadmap": [
+        {
+          "title": "Phase 1",
+          "description": "Beschreibung der ersten Phase",
+          "status": "In Bearbeitung"
+        },
+        {
+          "title": "Phase 2",
+          "description": "Beschreibung der zweiten Phase",
+          "status": "Geplant"
+        }
+      ]
+    }
+  ]
+}

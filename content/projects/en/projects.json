@@ -1,0 +1,86 @@
+{
+  "title": "Our Projects",
+  "description": "Discover the projects OneLiteFeather is working on.",
+  "projects": [
+    {
+      "name": "Example Project 1",
+      "slug": "example-project-1",
+      "description": "An example project to demonstrate the project functionality.",
+      "status": "Active",
+      "github": "https://github.com/onelitefeather/example-project-1",
+      "featured": true,
+      "image": "/images/projects/example-project-1.webp",
+      "authors": [
+        {
+          "name": "Max Mustermann",
+          "minecraftUsername": "MaxAdmin",
+          "role": "Project Lead"
+        },
+        {
+          "name": "Anna Schmidt",
+          "minecraftUsername": "AnnaAdmin",
+          "role": "Developer"
+        }
+      ],
+      "features": [
+        "Feature 1: Description of the first feature",
+        "Feature 2: Description of the second feature",
+        "Feature 3: Description of the third feature"
+      ],
+      "roadmap": [
+        {
+          "title": "Phase 1",
+          "description": "Description of the first phase",
+          "status": "Completed"
+        },
+        {
+          "title": "Phase 2",
+          "description": "Description of the second phase",
+          "status": "In Progress"
+        },
+        {
+          "title": "Phase 3",
+          "description": "Description of the third phase",
+          "status": "Planned"
+        }
+      ],
+      "bstats": {
+        "pluginId": "12345",
+        "showServers": true,
+        "showPlayers": true
+      }
+    },
+    {
+      "name": "Example Project 2",
+      "slug": "example-project-2",
+      "description": "Another example project to demonstrate the project functionality.",
+      "status": "In Development",
+      "github": "https://github.com/onelitefeather/example-project-2",
+      "featured": false,
+      "image": "/images/projects/example-project-2.webp",
+      "authors": [
+        {
+          "name": "Tom Weber",
+          "minecraftUsername": "TomMod",
+          "role": "Developer"
+        }
+      ],
+      "features": [
+        "Feature 1: Description of the first feature",
+        "Feature 2: Description of the second feature"
+      ],
+      "roadmap": [
+        {
+          "title": "Phase 1",
+          "description": "Description of the first phase",
+          "status": "In Progress"
+        },
+        {
+          "title": "Phase 2",
+          "description": "Description of the second phase",
+          "status": "Planned"
+        }
+      ]
+    }
+  ]
+}
