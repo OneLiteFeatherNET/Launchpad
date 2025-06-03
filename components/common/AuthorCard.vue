@@ -134,10 +134,15 @@ const hasValidSlug = computed(() => {
       :aria-label="$t('author.view_profile_of', { name: author.name })"
     >
       <div :class="[imageSize, 'rounded-full overflow-hidden mr-3']">
-        <img
+        <NuxtImg
           :src="getProfileImageUrl"
           :alt="`${author.name}'s avatar`"
           class="w-full h-full object-cover"
+          sizes="xs:100px sm:100px md:100px lg:100px xl:100px"
+          width="100"
+          height="100"
+          format="webp"
+          quality="80"
           loading="lazy"
         />
       </div>
@@ -154,10 +159,15 @@ const hasValidSlug = computed(() => {
       >
         <div class="p-6 flex flex-col items-center text-center">
           <div :class="[imageSize, 'rounded-full overflow-hidden bg-primary-container dark:bg-primary-container-dark mb-4']">
-            <img 
+            <NuxtImg 
               :src="getProfileImageUrl" 
               :alt="`${author.name}'s profile picture`"
               class="w-full h-full object-cover"
+              sizes="xs:100px sm:100px md:100px lg:100px xl:100px"
+              width="100"
+              height="100"
+              format="webp"
+              quality="80"
               loading="lazy"
             />
           </div>
@@ -184,10 +194,15 @@ const hasValidSlug = computed(() => {
       <!-- Non-linked version for authors without slug -->
       <div v-else class="p-6 flex flex-col items-center text-center">
         <div :class="[imageSize, 'rounded-full overflow-hidden bg-primary-container dark:bg-primary-container-dark mb-4']">
-          <img 
+          <NuxtImg 
             :src="getProfileImageUrl" 
             :alt="`${author.name}'s profile picture`"
             class="w-full h-full object-cover"
+            sizes="xs:100px sm:100px md:100px lg:100px xl:100px"
+            width="100"
+            height="100"
+            format="webp"
+            quality="80"
             loading="lazy"
           />
         </div>
@@ -212,10 +227,15 @@ const hasValidSlug = computed(() => {
       >
         <div class="p-6">
           <div class="flex items-center mb-4">
-            <img
+            <NuxtImg
               :src="getProfileImageUrl"
               :alt="`${author.name}'s profile picture`"
               :class="[imageSize, 'rounded-md mr-4']"
+              sizes="xs:100px sm:100px md:100px lg:100px xl:100px"
+              width="100"
+              height="100"
+              format="webp"
+              quality="80"
               loading="lazy"
             />
             <div>
@@ -255,10 +275,15 @@ const hasValidSlug = computed(() => {
       <!-- Non-linked version for authors without slug -->
       <div v-else class="p-6">
         <div class="flex items-center mb-4">
-          <img
+          <NuxtImg
             :src="getProfileImageUrl"
             :alt="`${author.name}'s profile picture`"
             :class="[imageSize, 'rounded-md mr-4']"
+            sizes="xs:100px sm:100px md:100px lg:100px xl:100px"
+            width="100"
+            height="100"
+            format="webp"
+            quality="80"
             loading="lazy"
           />
           <div>

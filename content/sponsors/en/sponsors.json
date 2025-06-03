@@ -1,0 +1,57 @@
+{
+  "title": "Our Sponsors",
+  "description": "Meet the sponsors who support OneLiteFeather and our projects.",
+  "sponsors": [
+    {
+      "name": "Hetzner",
+      "slug": "hetzner",
+      "namespace": "sponsor",
+      "key": "hetzner",
+      "description": "A leading German web hosting provider and cloud service provider.",
+      "tier": "Platinum",
+      "featured": true,
+      "logo": "/images/sponsors/hetzner.webp",
+      "website": "https://www.hetzner.com/",
+      "since": "2023",
+      "content": "<p>Hetzner is a leading German web hosting provider and cloud service provider offering reliable and cost-effective hosting solutions. As a Platinum sponsor, Hetzner significantly supports our infrastructure and enables us to provide high-quality services to the community.</p>"
+    },
+    {
+      "name": "Crowdin",
+      "slug": "crowdin",
+      "namespace": "sponsor",
+      "key": "crowdin",
+      "description": "A localization management platform that enables us to build i18n capabilities into our projects.",
+      "tier": "Gold",
+      "featured": true,
+      "logo": "/images/sponsors/crowdin.webp",
+      "website": "https://crowdin.com/",
+      "since": "2023",
+      "content": "<p>Crowdin is a cloud-based localization management platform that streamlines the translation process for our projects. Their powerful tools enable us to implement internationalization (i18n) capabilities, making our software accessible to users around the world.</p><p>With Crowdin's support, we can efficiently manage translations, collaborate with translators, and ensure our projects are available in multiple languages.</p>",
+      "projects": [
+        {
+          "namespace": "project",
+          "key": "i18n"
+        }
+      ]
+    },
+    {
+      "name": "Example Sponsor 2",
+      "slug": "example-sponsor-2",
+      "namespace": "sponsor",
+      "key": "example-sponsor-2",
+      "description": "A community-focused organization supporting Minecraft server development.",
+      "tier": "Silver",
+      "featured": true,
+      "logo": "/images/sponsors/example-sponsor-2.webp",
+      "website": "https://example-sponsor2.org",
+      "since": "2022",
+      "content": "<p>Example Sponsor 2 is a community-focused organization dedicated to supporting Minecraft server development. They have been instrumental in helping us create tools and plugins that enhance the Minecraft experience.</p><p>Their support has enabled us to offer our services to a wider audience and improve the quality of our projects.</p>",
+      "projects": [
+        {
+          "namespace": "project",
+          "key": "example-project-2"
+        }
+      ]
+    }
+  ]
+}

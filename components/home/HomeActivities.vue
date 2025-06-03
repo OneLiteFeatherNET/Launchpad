@@ -25,10 +25,16 @@ defineProps({
           class="bg-surface rounded-lg shadow-md overflow-hidden"
         >
           <div class="h-48 relative">
-            <img 
+            <NuxtImg 
               :src="activity.image" 
               :alt="activity.title" 
               class="h-full w-full object-cover"
+              sizes="xs:100vw sm:100vw md:50vw lg:33vw xl:33vw"
+              width="800"
+              height="400"
+              format="webp"
+              quality="80"
+              loading="lazy"
             />
             <div :class="[
               'absolute inset-0 bg-opacity-50',

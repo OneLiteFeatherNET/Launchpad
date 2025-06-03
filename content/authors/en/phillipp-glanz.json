@@ -1,6 +1,8 @@
 {
   "name": "Phillipp Glanz",
   "slug": "phillipp-glanz",
+  "namespace": "author",
+  "key": "themeinerlp",
   "minecraftUsername": "themeinerlp",
   "role": "Software Lead",
   "about": "Phillipp is one of the two development leads and oversees technologies and server architecture in the team.",

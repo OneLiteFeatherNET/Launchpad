@@ -4,6 +4,7 @@
     "blog": "Blog",
     "team": "Team",
     "projects": "Projekte",
+    "sponsors": "Sponsoren",
     "authors": "Autoren",
     "toggle_mobile_menu": "Mobile Menü umschalten",
     "select_language": "Sprache auswählen"
@@ -36,6 +37,14 @@
     "project": {
       "title": "Projektdetails",
       "description": "Erfahre mehr über dieses OneLiteFeather-Projekt."
+    },
+    "sponsors": {
+      "title": "Unsere Sponsoren",
+      "description": "Lerne die Sponsoren kennen, die OneLiteFeather und unsere Projekte unterstützen."
+    },
+    "sponsor": {
+      "title": "Sponsordetails",
+      "description": "Erfahre mehr über diesen OneLiteFeather-Sponsor."
     },
     "authors": {
       "title": "Unsere Autoren",
@@ -106,7 +115,9 @@
   },
   "home": {
     "featured_projects": "Ausgewählte Projekte",
-    "view_all_projects": "Alle Projekte anzeigen"
+    "view_all_projects": "Alle Projekte anzeigen",
+    "sponsors": "Unsere Sponsoren",
+    "view_all_sponsors": "Alle Sponsoren anzeigen"
   },
   "projects": {
     "view_on_github": "Auf GitHub ansehen",
@@ -124,6 +135,7 @@
     "about_project": "Über das Projekt",
     "description": "Beschreibung",
     "current_status": "Aktueller Status",
+    "affiliate_link": "Affiliate-Link",
     "status": {
       "active": "Aktiv",
       "completed": "Abgeschlossen",
@@ -133,5 +145,16 @@
       "paused": "Pausiert"
     },
     "status_indicator": "Status-Indikator für"
+  },
+  "sponsors": {
+    "visit_website": "Website besuchen",
+    "sponsor_since": "Sponsor seit",
+    "supported_projects": "Unterstützte Projekte",
+    "tier": {
+      "platinum": "Platin",
+      "gold": "Gold",
+      "silver": "Silber",
+      "bronze": "Bronze"
+    }
   }
 }

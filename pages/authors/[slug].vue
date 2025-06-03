@@ -113,13 +113,17 @@ if (!author.value) {
       <div class="bg-surface dark:bg-surface-dark rounded-lg shadow-md p-6 mb-8">
         <div class="flex flex-col md:flex-row items-center md:items-start gap-6">
           <div class="flex-shrink-0">
-            <img
+            <NuxtImg
               v-if="author.avatar"
               :src="author.avatar"
               :alt="author.name"
               class="w-32 h-32 rounded-full object-cover"
+              sizes="xs:128px sm:128px md:128px lg:128px xl:128px"
               width="128"
               height="128"
+              format="webp"
+              quality="80"
+              loading="eager"
             />
             <div v-else class="w-32 h-32 rounded-full bg-surface-variant dark:bg-surface-variant-dark flex items-center justify-center">
               <span class="text-4xl text-on-surface-variant dark:text-on-surface-variant-dark">
@@ -181,14 +185,18 @@ if (!author.value) {
         </h2>
 
         <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <li v-for="project in authorProjects" :key="project.slug" class="border border-outline dark:border-outline-dark rounded-lg p-4">
-            <NuxtLink :to="localePath(`/projects/${project.slug}`)" class="block hover:underline">
+          <li v-for="project in authorProjects" :key="project.namespace + ':' + project.key" class="border border-outline dark:border-outline-dark rounded-lg p-4">
+            <NuxtLink :to="localePath(`/projects/${project.namespace}:${project.key}`)" class="block hover:underline">
               <h3 class="text-xl font-semibold text-on-surface dark:text-on-surface-dark">
                 {{ project.name }}
               </h3>
               <p class="text-sm text-on-surface-variant dark:text-on-surface-variant-dark mt-2">
                 {{ project.description }}
               </p>
+              <!-- Affiliate link disclaimer -->
+              <div v-if="project.isAffiliate" class="mt-2 text-sm text-warning dark:text-warning-dark">
+                {{ $t('projects.affiliate_link') }}
+              </div>
             </NuxtLink>
           </li>
         </ul>

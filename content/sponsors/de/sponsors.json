@@ -1,0 +1,54 @@
+{
+  "title": "Unsere Sponsoren",
+  "description": "Lernen Sie die Sponsoren kennen, die OneLiteFeather und unsere Projekte unterstützen.",
+  "sponsors": [
+    {
+      "name": "Hetzner",
+      "slug": "hetzner",
+      "description": "Ein führender deutscher Webhosting-Provider und Cloud-Anbieter.",
+      "tier": "Platinum",
+      "featured": true,
+      "logo": "/images/sponsors/hetzner.webp",
+      "website": "https://www.hetzner.com/",
+      "since": "2023",
+      "content": "<p>Hetzner ist ein führender deutscher Webhosting-Provider und Cloud-Anbieter, der zuverlässige und kostengünstige Hosting-Lösungen anbietet. Als Platinum-Sponsor unterstützt Hetzner maßgeblich unsere Infrastruktur und ermöglicht es uns, hochwertige Dienste für die Community bereitzustellen.</p>"
+    },
+    {
+      "name": "Crowdin",
+      "slug": "crowdin",
+      "description": "Eine Lokalisierungsmanagement-Plattform, die es uns ermöglicht, i18n-Fähigkeiten in unsere Projekte einzubauen.",
+      "tier": "Gold",
+      "featured": true,
+      "logo": "/images/sponsors/crowdin.webp",
+      "website": "https://crowdin.com/",
+      "since": "2023",
+      "content": "<p>Crowdin ist eine cloudbasierte Lokalisierungsmanagement-Plattform, die den Übersetzungsprozess für unsere Projekte optimiert. Ihre leistungsstarken Tools ermöglichen es uns, Internationalisierungsfunktionen (i18n) zu implementieren und unsere Software für Benutzer auf der ganzen Welt zugänglich zu machen.</p><p>Mit der Unterstützung von Crowdin können wir Übersetzungen effizient verwalten, mit Übersetzern zusammenarbeiten und sicherstellen, dass unsere Projekte in mehreren Sprachen verfügbar sind.</p>",
+      "projects": [
+        {
+          "name": "Internationalisierung",
+          "namespace": "onelitefeather",
+          "key": "i18n",
+          "description": "Mehrsprachige Unterstützung für alle unsere Projekte"
+        }
+      ]
+    },
+    {
+      "name": "Beispiel Sponsor 2",
+      "slug": "example-sponsor-2",
+      "description": "Eine gemeinschaftsorientierte Organisation, die die Entwicklung von Minecraft-Servern unterstützt.",
+      "tier": "Silver",
+      "featured": true,
+      "logo": "/images/sponsors/example-sponsor-2.webp",
+      "website": "https://example-sponsor2.org",
+      "since": "2022",
+      "content": "<p>Beispiel Sponsor 2 ist eine gemeinschaftsorientierte Organisation, die sich der Unterstützung der Entwicklung von Minecraft-Servern widmet. Sie haben maßgeblich dazu beigetragen, Tools und Plugins zu erstellen, die das Minecraft-Erlebnis verbessern.</p><p>Ihre Unterstützung hat es uns ermöglicht, unsere Dienste einem breiteren Publikum anzubieten und die Qualität unserer Projekte zu verbessern.</p>",
+      "projects": [
+        {
+          "name": "Beispiel Projekt 2",
+          "slug": "example-project-2",
+          "description": "Gesponsert seit 2022"
+        }
+      ]
+    }
+  ]
+}

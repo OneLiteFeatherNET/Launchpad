@@ -48,7 +48,7 @@ const getProfileImageUrl = (author: any) => {
   if (author.profileImage) {
     return author.profileImage;
   }
-  
+
   // Otherwise use Minecraft head
   return getMinecraftHeadUrl(author.minecraftUsername);
 };
@@ -97,18 +97,24 @@ const getStatusColor = (status: string) => {
           :key="index"
           class="bg-surface dark:bg-surface-dark rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105"
         >
-          <NuxtLinkLocale :to="`/projects/${project.slug}`" class="block">
+          <NuxtLinkLocale :to="`/projects/${project.namespace}:${project.key}`" class="block">
             <div class="relative h-48 overflow-hidden">
-              <img 
+              <NuxtImg 
                 v-if="project.image" 
                 :src="project.image" 
                 :alt="project.name"
                 class="w-full h-full object-cover"
+                sizes="xs:100vw sm:100vw md:50vw lg:33vw xl:33vw"
+                width="800"
+                height="400"
+                format="webp"
+                quality="80"
+                loading="lazy"
               />
               <div v-else class="w-full h-full bg-primary-container dark:bg-primary-container-dark flex items-center justify-center">
                 <span class="text-2xl font-bold text-on-primary-container dark:text-on-primary-container-dark">{{ project.name }}</span>
               </div>
-              
+
               <!-- Status badge -->
               <div 
                 :class="[
@@ -119,12 +125,20 @@ const getStatusColor = (status: string) => {
               >
                 {{ project.status }}
               </div>
+
+              <!-- Affiliate badge if applicable -->
+              <div 
+                v-if="project.isAffiliate"
+                class="absolute top-4 left-4 px-3 py-1 rounded-full text-sm font-medium bg-warning-container dark:bg-warning-container-dark text-on-warning-container dark:text-on-warning-container-dark"
+              >
+                {{ $t('projects.affiliate_link') }}
+              </div>
             </div>
-            
+
             <div class="p-6">
               <h3 class="text-xl font-bold text-on-surface dark:text-on-surface-dark mb-2">{{ project.name }}</h3>
               <p class="text-on-surface-variant dark:text-on-surface-variant-dark mb-4">{{ project.description }}</p>
-              
+
               <!-- GitHub link -->
               <div v-if="project.github" class="mb-4">
                 <a :href="project.github" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-primary dark:text-primary-dark hover:underline">
@@ -134,7 +148,7 @@ const getStatusColor = (status: string) => {
                   {{ $t('projects.view_on_github') }}
                 </a>
               </div>
-              
+
               <!-- Authors -->
               <div v-if="project.authors && project.authors.length > 0" class="mt-4">
                 <h4 class="text-sm font-medium text-on-surface-variant dark:text-on-surface-variant-dark mb-2">{{ $t('projects.authors') }}:</h4>
@@ -144,10 +158,16 @@ const getStatusColor = (status: string) => {
                     :key="authorIndex"
                     class="flex items-center"
                   >
-                    <img 
+                    <NuxtImg 
                       :src="getProfileImageUrl(author)" 
                       :alt="`${author.name}'s profile picture`"
                       class="w-6 h-6 rounded-full mr-1"
+                      sizes="24px"
+                      width="24"
+                      height="24"
+                      format="webp"
+                      quality="80"
+                      loading="lazy"
                     />
                     <span class="text-sm text-on-surface-variant dark:text-on-surface-variant-dark">{{ author.name }}</span>
                     <span v-if="authorIndex < project.authors.length - 1 && authorIndex < 2" class="mx-1 text-on-surface-variant dark:text-on-surface-variant-dark">,</span>

@@ -5,7 +5,12 @@ pubDate: 'Oct 21 2023'
 headerImage: 'images/blog/dev-blog-1.webp'
 headerImageAlt: 'Title image for DevBlog #1'
 slug: 'dev-blog-1-what-we-using'
+namespace: 'blog'
+key: 'dev-blog-1'
 translationKey: 'dev-blog-1-what-we-using'
+author:
+  namespace: 'author'
+  key: 'themeinerlp'
 schemaOrg:
   - type: "BlogPosting"
     headline: "Today I would like to present you the active used technologies from our team and which advantages these offer to us..."

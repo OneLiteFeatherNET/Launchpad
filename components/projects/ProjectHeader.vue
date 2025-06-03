@@ -19,11 +19,17 @@ defineProps({
       role="img"
       :aria-label="$t('projects.project_image_of', { name: project.name })"
     >
-      <img 
+      <NuxtImg 
         v-if="project.image" 
         :src="project.image" 
         :alt="`${project.name} - ${project.description}`"
         class="w-full h-full object-cover"
+        sizes="xs:100vw sm:100vw md:100vw lg:100vw xl:100vw"
+        width="1920"
+        height="1080"
+        format="webp"
+        quality="80"
+        loading="eager"
       />
       <div v-else class="w-full h-full flex items-center justify-center">
         <span class="text-4xl font-bold text-on-primary-container dark:text-on-primary-container-dark">{{ project.name }}</span>

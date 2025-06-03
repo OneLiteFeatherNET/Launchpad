@@ -3,6 +3,7 @@ import HomeCarousel from '~/components/home/HomeCarousel.vue';
 import HomeTimeline from '~/components/home/HomeTimeline.vue';
 import HomeActivities from '~/components/home/HomeActivities.vue';
 import HomeFeaturedProjects from '~/components/home/HomeFeaturedProjects.vue';
+import HomeSponsors from '~/components/home/HomeSponsors.vue';
 
 const { locale, t } = useI18n();
 const isUnmounted = ref(false);
@@ -41,6 +42,7 @@ const { data: carouselData } = await useLocalizedContent('carousel');
 const { data: historyData } = await useLocalizedContent('history');
 const { data: activitiesData } = await useLocalizedContent('activities');
 const { data: projectsData } = await useLocalizedContent('projects');
+const { data: sponsorsData } = await useLocalizedContent('sponsors');
 
 const slides = computed(() => isUnmounted.value ? [] : carouselData.value?.slides || []);
 const historyTitle = computed(() => isUnmounted.value ? '' : historyData.value?.title || '');
@@ -51,6 +53,11 @@ const featuredProjects = computed(() => {
   if (isUnmounted.value) return [];
   const projects = projectsData.value?.projects || [];
   return projects.filter(project => project.featured === true);
+});
+const featuredSponsors = computed(() => {
+  if (isUnmounted.value) return [];
+  const sponsors = sponsorsData.value?.sponsors || [];
+  return sponsors.filter(sponsor => sponsor.featured === true);
 });
 </script>
 
@@ -71,6 +78,14 @@ const featuredProjects = computed(() => {
       :title="$t('home.featured_projects')" 
       :projects="featuredProjects" 
       :locale="locale" 
+    />
+
+    <!-- Sponsors Component -->
+    <HomeSponsors
+      v-if="featuredSponsors.length > 0"
+      :title="$t('home.sponsors')"
+      :sponsors="featuredSponsors"
+      :locale="locale"
     />
   </div>
 </template>

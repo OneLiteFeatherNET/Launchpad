@@ -71,12 +71,12 @@ if (!teamMember.value) {
 // Function to get profile image URL
 const getProfileImageUrl = computed(() => {
   if (!teamMember.value) return '';
-  
+
   // If profileImage is provided, use it
   if (teamMember.value.profileImage) {
     return teamMember.value.profileImage;
   }
-  
+
   // Otherwise use Minecraft head
   return `https://mc-heads.net/avatar/${teamMember.value.minecraftUsername}/200`;
 });
@@ -110,9 +110,19 @@ useHead({
         <div class="flex flex-col md:flex-row items-center md:items-start gap-8">
           <!-- Profile Image -->
           <div class="w-48 h-48 rounded-full overflow-hidden bg-surface dark:bg-surface-dark shadow-lg">
-            <img :src="getProfileImageUrl" :alt="teamMember.name" class="w-full h-full object-cover" />
+            <NuxtImg 
+              :src="getProfileImageUrl" 
+              :alt="teamMember.name" 
+              class="w-full h-full object-cover"
+              sizes="xs:192px sm:192px md:192px lg:192px xl:192px"
+              width="200"
+              height="200"
+              format="webp"
+              quality="80"
+              loading="eager"
+            />
           </div>
-          
+
           <!-- Member Info -->
           <div class="text-center md:text-left">
             <h1 class="text-3xl font-bold text-on-primary-container dark:text-on-primary-container-dark">
@@ -158,16 +168,30 @@ useHead({
             :key="index"
             class="bg-surface dark:bg-surface-dark rounded-lg shadow-md overflow-hidden"
           >
-            <NuxtLinkLocale :to="`/projects/${project.slug}`" class="block">
+            <NuxtLinkLocale :to="`/projects/${project.namespace}:${project.key}`" class="block">
               <div class="h-40 bg-primary-container dark:bg-primary-container-dark relative">
-                <img 
+                <NuxtImg 
                   v-if="project.image" 
                   :src="project.image" 
                   :alt="project.name"
                   class="w-full h-full object-cover"
+                  sizes="xs:100vw sm:100vw md:50vw lg:33vw xl:33vw"
+                  width="800"
+                  height="400"
+                  format="webp"
+                  quality="80"
+                  loading="lazy"
                 />
                 <div v-else class="w-full h-full flex items-center justify-center">
                   <span class="text-xl font-bold text-on-primary-container dark:text-on-primary-container-dark">{{ project.name }}</span>
+                </div>
+
+                <!-- Affiliate badge if applicable -->
+                <div 
+                  v-if="project.isAffiliate"
+                  class="absolute top-2 left-2 px-2 py-1 rounded-full text-xs font-medium bg-warning-container dark:bg-warning-container-dark text-on-warning-container dark:text-on-warning-container-dark"
+                >
+                  {{ $t('projects.affiliate_link') }}
                 </div>
               </div>
               <div class="p-4">
@@ -194,11 +218,17 @@ useHead({
           >
             <NuxtLinkLocale :to="`/blog/${post.slug}`" class="block">
               <div class="h-40 bg-primary-container dark:bg-primary-container-dark relative">
-                <img 
+                <NuxtImg 
                   v-if="post.headerImage" 
                   :src="post.headerImage" 
                   :alt="post.title"
                   class="w-full h-full object-cover"
+                  sizes="xs:100vw sm:100vw md:50vw lg:33vw xl:33vw"
+                  width="800"
+                  height="400"
+                  format="webp"
+                  quality="80"
+                  loading="lazy"
                 />
                 <div v-else class="w-full h-full flex items-center justify-center">
                   <span class="text-xl font-bold text-on-primary-container dark:text-on-primary-container-dark">{{ post.title }}</span>

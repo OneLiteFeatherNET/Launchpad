@@ -2,27 +2,30 @@
 const props = defineProps({
   bstats: {
     type: Object,
-    required: true
+    required: false,
+    default: () => ({})
   }
 });
 
 // Computed property to determine if we should show servers chart
-const showServers = computed(() => props.bstats.showServers !== false);
+const showServers = computed(() => props.bstats?.showServers !== false && props.bstats?.pluginId);
 
 // Computed property to determine if we should show players chart
-const showPlayers = computed(() => props.bstats.showPlayers !== false);
+const showPlayers = computed(() => props.bstats?.showPlayers !== false && props.bstats?.pluginId);
 
 // Computed property to get the plugin ID
-const pluginId = computed(() => props.bstats.pluginId);
+const pluginId = computed(() => props.bstats?.pluginId || '');
 
 // Computed property to get the iframe URLs
-const serversChartUrl = computed(() => 
-  `https://bstats.org/api/v1/plugins/${pluginId.value}/charts/servers/data/line?maxElements=30&width=1000&height=300`
-);
+const serversChartUrl = computed(() => {
+  if (!pluginId.value) return '';
+  return `https://bstats.org/api/v1/plugins/${pluginId.value}/charts/servers/data/line?maxElements=30&width=1000&height=300`;
+});
 
-const playersChartUrl = computed(() => 
-  `https://bstats.org/api/v1/plugins/${pluginId.value}/charts/players/data/line?maxElements=30&width=1000&height=300`
-);
+const playersChartUrl = computed(() => {
+  if (!pluginId.value) return '';
+  return `https://bstats.org/api/v1/plugins/${pluginId.value}/charts/players/data/line?maxElements=30&width=1000&height=300`;
+});
 </script>
 
 <template>
@@ -31,7 +34,7 @@ const playersChartUrl = computed(() =>
       <h2 class="text-2xl font-bold text-on-surface dark:text-on-surface-dark mb-8">
         {{ $t('projects.statistics') }}
       </h2>
-      
+
       <div class="space-y-8">
         <!-- Servers Chart -->
         <div v-if="showServers" class="bg-surface-variant dark:bg-surface-variant-dark rounded-lg shadow-md p-6">
@@ -40,13 +43,17 @@ const playersChartUrl = computed(() =>
           </h3>
           <div class="aspect-w-16 aspect-h-9 bg-surface dark:bg-surface-dark rounded-lg overflow-hidden">
             <iframe 
+              v-if="pluginId"
               :src="`https://bstats.org/signatures/${pluginId}/servers.svg`" 
               width="100%" 
               height="300" 
               frameborder="0"
             ></iframe>
+            <div v-else class="flex items-center justify-center h-[300px] bg-gray-100 dark:bg-gray-800 rounded-lg">
+              {{ $t('projects.no_stats_available') }}
+            </div>
           </div>
-          <div class="mt-4 text-center">
+          <div v-if="pluginId" class="mt-4 text-center">
             <a 
               :href="`https://bstats.org/plugin/${pluginId}`" 
               target="_blank" 
@@ -61,7 +68,7 @@ const playersChartUrl = computed(() =>
             </a>
           </div>
         </div>
-        
+
         <!-- Players Chart -->
         <div v-if="showPlayers" class="bg-surface-variant dark:bg-surface-variant-dark rounded-lg shadow-md p-6">
           <h3 class="text-xl font-bold text-on-surface-variant dark:text-on-surface-variant-dark mb-4">
@@ -69,11 +76,15 @@ const playersChartUrl = computed(() =>
           </h3>
           <div class="aspect-w-16 aspect-h-9 bg-surface dark:bg-surface-dark rounded-lg overflow-hidden">
             <iframe 
+              v-if="pluginId"
               :src="`https://bstats.org/signatures/${pluginId}/players.svg`" 
               width="100%" 
               height="300" 
               frameborder="0"
             ></iframe>
+            <div v-else class="flex items-center justify-center h-[300px] bg-gray-100 dark:bg-gray-800 rounded-lg">
+              {{ $t('projects.no_stats_available') }}
+            </div>
           </div>
         </div>
       </div>

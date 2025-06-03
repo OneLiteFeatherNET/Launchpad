@@ -23,10 +23,15 @@ const getMinecraftHeadUrl = (username: string) => {
     <div class="bg-surface-variant dark:bg-surface-variant-dark rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105">
       <div class="p-6">
         <div class="flex items-center mb-4">
-          <img
+          <NuxtImg
             :src="getMinecraftHeadUrl(member.minecraftUsername)"
             :alt="`${member.name}'s Minecraft head`"
             class="w-16 h-16 rounded-md mr-4"
+            sizes="xs:64px sm:64px md:64px lg:64px xl:64px"
+            width="64"
+            height="64"
+            format="webp"
+            quality="80"
             loading="lazy"
           />
           <div>
@@ -60,4 +65,3 @@ const getMinecraftHeadUrl = (username: string) => {
     </div>
   </NuxtLinkLocale>
 </template>
-

@@ -9,7 +9,7 @@ import ProjectAuthors from '~/components/projects/ProjectAuthors.vue';
 
 const { locale, t } = useI18n();
 const route = useRoute();
-const slug = route.params.slug as string;
+const slugParam = route.params.slug as string;
 
 // SEO optimization
 definePageMeta({
@@ -17,15 +17,25 @@ definePageMeta({
 });
 
 // Fetch projects data based on current locale
-const { data: projectsData } = await useAsyncData(`projects-${slug}`, () => {
+const { data: projectsData } = await useAsyncData(`projects-${slugParam}`, () => {
   const collection = locale.value === 'de' ? 'projects_de' : 'projects_en';
   return queryCollection(collection).first();
 });
 
-// Find the current project by slug
+// Parse the slug parameter which should be in the format "namespace:key"
+const [namespace, key] = slugParam.includes(':') ? slugParam.split(':') : [null, null];
+
+// Find the current project by namespace and key, or fall back to slug for backward compatibility
 const project = computed(() => {
   const projects = projectsData.value?.projects || [];
-  return projects.find(p => p.slug === slug) || null;
+
+  // First try to find by namespace and key
+  if (namespace && key) {
+    return projects.find(p => p.namespace === namespace && p.key === key) || null;
+  }
+
+  // Fall back to slug for backward compatibility
+  return projects.find(p => p.slug === slugParam) || null;
 });
 
 // Redirect if project not found
