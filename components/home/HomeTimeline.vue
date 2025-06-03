@@ -18,17 +18,18 @@ defineProps({
       <h2 class="text-3xl font-bold text-center text-secondary dark:text-secondary mb-12">{{ title }}</h2>
 
       <div class="relative overflow-y-auto pb-8" role="region" :aria-label="$t('timeline.label')" tabindex="0">
-        <div class="timeline-container relative">
+        <div class="relative py-5">
           <!-- Vertical line in the middle -->
-          <div class="timeline-line"></div>
+          <div class="absolute top-0 bottom-0 left-1/2 md:left-1/2 w-1 bg-secondary dark:bg-secondary dark:opacity-80 transform -translate-x-1/2 md:-translate-x-1/2 left-5 sm:left-5"></div>
 
           <!-- Timeline Items -->
           <div 
             v-for="(item, index) in timeline" 
             :key="index"
             :class="[
-              'timeline-item p-6 rounded-lg shadow-md relative overflow-hidden',
-              index % 2 === 0 ? 'timeline-left' : 'timeline-right',
+              'p-6 md:p-6 sm:p-3 rounded-lg shadow-md relative overflow-hidden md:w-[45%] w-[calc(100%-40px)] mb-8 md:mb-8 sm:mb-6',
+              index % 2 === 0 ? 'md:mr-auto md:ml-0' : 'md:ml-auto md:mr-0',
+              'ml-10 sm:ml-8',
               item.color === 'secondary' 
                 ? 'bg-secondary-container dark:bg-secondary-container-dark' 
                 : `bg-${item.color}-container dark:bg-${item.color}-container-dark`
@@ -36,7 +37,14 @@ defineProps({
             role="article"
           >
             <!-- Timeline dot -->
-            <div class="timeline-dot"></div>
+            <div 
+              :class="[
+                'absolute w-4 h-4 sm:w-3 sm:h-3 bg-secondary dark:bg-secondary dark:opacity-90 rounded-full top-5 z-10',
+                index % 2 === 0 ? 'md:right-[-38px] md:left-auto' : 'md:left-[-38px] md:right-auto',
+                'left-[-30px] sm:left-[-22px]',
+                'dark:shadow-[0_0_5px_rgba(255,255,255,0.3)]'
+              ]"
+            ></div>
 
             <!-- Background color overlay with higher opacity -->
             <div 
@@ -68,150 +76,4 @@ defineProps({
 </template>
 
 <style scoped>
-/* For vertical scrolling on timeline */
-.overflow-y-auto {
-  scrollbar-width: thin;
-  scrollbar-color: var(--md-sys-color-secondary) transparent;
-}
-
-.overflow-y-auto::-webkit-scrollbar {
-  width: 8px;
-}
-
-.overflow-y-auto::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.overflow-y-auto::-webkit-scrollbar-thumb {
-  background-color: var(--md-sys-color-secondary);
-  border-radius: 20px;
-}
-
-/* Dark mode scrollbar styles */
-:global(.dark) .overflow-y-auto {
-  scrollbar-color: var(--md-sys-color-secondary) rgba(0, 0, 0, 0.2);
-}
-
-:global(.dark) .overflow-y-auto::-webkit-scrollbar-thumb {
-  background-color: var(--md-sys-color-secondary);
-  opacity: 0.8;
-}
-
-:global(.dark) .overflow-y-auto::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.2);
-}
-
-/* Timeline styling */
-.timeline-container {
-  position: relative;
-  padding: 20px 0;
-}
-
-.timeline-line {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  width: 4px;
-  background-color: var(--md-sys-color-secondary);
-  transform: translateX(-50%);
-}
-
-/* Dark mode styles for timeline line */
-:global(.dark) .timeline-line {
-  background-color: var(--md-sys-color-secondary);
-  opacity: 0.8;
-}
-
-.timeline-item {
-  width: 45%;
-  margin-bottom: 30px;
-  position: relative;
-}
-
-.timeline-left {
-  margin-right: auto;
-}
-
-.timeline-right {
-  margin-left: auto;
-}
-
-.timeline-dot {
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  background-color: var(--md-sys-color-secondary);
-  border-radius: 50%;
-  top: 20px;
-  z-index: 10;
-}
-
-/* Dark mode styles for timeline dots */
-:global(.dark) .timeline-dot {
-  background-color: var(--md-sys-color-secondary);
-  opacity: 0.9;
-  box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
-}
-
-.timeline-left .timeline-dot {
-  right: -38px;
-}
-
-.timeline-right .timeline-dot {
-  left: -38px;
-}
-
-/* Responsive styles for tablet and mobile */
-@media (max-width: 768px) {
-  .timeline-line {
-    left: 20px;
-  }
-
-  .timeline-item {
-    width: calc(100% - 40px);
-    margin-left: 40px;
-    margin-right: 0;
-  }
-
-  .timeline-left .timeline-dot,
-  .timeline-right .timeline-dot {
-    left: -30px;
-    right: auto;
-  }
-
-  /* Adjust the max height for better mobile experience */
-  .overflow-y-auto {
-    max-height: 500px;
-  }
-}
-
-/* Additional adjustments for very small screens */
-@media (max-width: 480px) {
-  .timeline-item {
-    width: calc(100% - 30px);
-    margin-left: 30px;
-    padding: 12px;
-  }
-
-  .timeline-line {
-    left: 15px;
-  }
-
-  .timeline-left .timeline-dot,
-  .timeline-right .timeline-dot {
-    left: -22px;
-    width: 12px;
-    height: 12px;
-  }
-
-  /* Reduce text size on very small screens */
-  h3 {
-    font-size: 1rem;
-  }
-
-  p {
-    font-size: 0.875rem;
-  }
-}
 </style>

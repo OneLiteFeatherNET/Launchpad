@@ -129,4 +129,36 @@ Check out the [deployment documentation](https://nuxt.com/docs/getting-started/d
 
 ## Testing
 
-This project is tested with BrowserStack.
+### End-to-End Testing
+
+This project uses Playwright for end-to-end testing. The tests are located in the `tests/e2e` directory and cover the main user flows:
+
+- Homepage navigation
+- Blog post viewing
+- Projects page navigation
+- Team member viewing
+
+To run the tests:
+
+```bash
+# Install Playwright browsers (first time only)
+npx playwright install
+
+# Run all tests
+pnpm test
+
+# Run tests with UI
+pnpm test:ui
+
+# Run tests in debug mode
+pnpm test:debug
+
+# Show test report after running tests
+pnpm test:report
+```
+
+The tests are configured to run against a local development server, which will be automatically started when the tests run.
+
+### Browser Compatibility
+
+This project is also tested with BrowserStack for cross-browser compatibility.
