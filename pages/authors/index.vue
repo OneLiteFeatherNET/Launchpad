@@ -29,47 +29,64 @@ useHead({
   ]
 });
 
-// Fetch team members
-const { data: teamData } = await useAsyncData('team-members', async () => {
-  try {
-    const result = await queryContent(`/team/${locale.value}/team`).find();
-    if (result && result.length > 0 && result[0]?.ranks) {
-      return result[0].ranks.flatMap(rank => rank.members) || [];
-    }
-    return [];
-  } catch (error) {
-    console.error('Error fetching team members:', error);
-    return [];
+// Fetch team members using the content service
+const { data: teamData } = await useLocalizedContent('team', {}, 'nuxtContent');
+
+// Extract team members from the team data
+const teamMembers = computed(() => {
+  if (teamData.value && teamData.value.ranks) {
+    return teamData.value.ranks.flatMap(rank => rank.members) || [];
   }
+  return [];
 });
 
-// Fetch standalone authors
-const { data: standaloneAuthors } = await useAsyncData('standalone-authors', async () => {
-  try {
-    const authorCollection = locale.value === 'de' ? 'authors_de' : 'authors_en';
-    return await queryCollection(authorCollection).find();
-  } catch (error) {
-    console.error('Error fetching standalone authors:', error);
-    return [];
-  }
-});
+// Fetch standalone authors using the content service
+const { data: standaloneAuthors } = await useLocalizedContentList('authors', {}, 'nuxtContent');
 
 // Combine team members and standalone authors, removing duplicates
 const allAuthors = computed(() => {
-  const teamMembers = teamData.value || [];
+  const members = teamMembers.value || [];
   const authors = standaloneAuthors.value || [];
 
   // Create a map of authors by slug to remove duplicates
   const authorMap = new Map();
 
-  // Add team members to the map
-  teamMembers.forEach(member => {
+  // Create a map to link standalone authors with team members
+  // We'll use the minecraftUsername or key from standalone authors to match with team member names
+  const linkMap = new Map();
+
+  // First, process standalone authors to build the link map
+  authors.forEach(author => {
+    // Use key or minecraftUsername as the linking field
+    const linkKey = author.key || author.minecraftUsername;
+    if (linkKey) {
+      linkMap.set(linkKey.toLowerCase(), author.slug);
+    }
+  });
+
+  // Add team members to the map, but skip if they match a standalone author
+  members.forEach(member => {
     if (member.slug) {
+      // Extract username from name if it contains parentheses
+      // e.g., "TheMeinerLP (Phillipp Glanz)" -> "themeinerlp"
+      let username = member.name;
+      const match = member.name.match(/^([^\s(]+)/);
+      if (match) {
+        username = match[1];
+      }
+
+      // Check if this team member matches a standalone author
+      if (linkMap.has(username.toLowerCase())) {
+        // Skip this team member as we'll use the standalone author instead
+        return;
+      }
+
+      // Add the team member to the map
       authorMap.set(member.slug, member);
     }
   });
 
-  // Add standalone authors to the map, overwriting team members if they exist
+  // Add standalone authors to the map
   authors.forEach(author => {
     if (author.slug) {
       authorMap.set(author.slug, author);

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n';
 import BackButton from '~/components/common/BackButton.vue';
+import { useContentService } from '~/composables/content/useContentService';
 
 const { t, locale } = useI18n();
 const route = useRoute();
@@ -9,20 +10,21 @@ const slug = route.params.slug as string;
 // Fetch author data
 const { data: author } = await useAsyncData(`author-${slug}`, async () => {
   try {
+    const contentService = useContentService('nuxtContent');
+
     // First try to find the author in the standalone authors collection
-    const authorCollection = locale.value === 'de' ? 'authors_de' : 'authors_en';
-    const standaloneAuthor = await queryCollection(authorCollection)
-      .where({ slug: slug })
-      .findOne();
+    const authorCollection = `authors_${locale.value}`;
+    const standaloneAuthor = await contentService.findBySlug(authorCollection, slug);
 
     if (standaloneAuthor) {
       return standaloneAuthor;
     }
 
     // If not found, try to find the author in the team collection
-    const teamData = await queryContent(`/team/${locale.value}/team`).find();
-    if (teamData && teamData.length > 0) {
-      const allMembers = teamData[0]?.ranks?.flatMap(rank => rank.members) || [];
+    const teamCollection = `team_${locale.value}`;
+    const teamData = await contentService.queryFirst(teamCollection);
+    if (teamData && teamData.ranks) {
+      const allMembers = teamData.ranks.flatMap(rank => rank.members) || [];
       const teamMember = allMembers.find((member: any) => member.slug === slug);
       if (teamMember) {
         return teamMember;
@@ -39,12 +41,24 @@ const { data: author } = await useAsyncData(`author-${slug}`, async () => {
 // Fetch projects the author is involved in
 const { data: authorProjects } = await useAsyncData(`author-projects-${slug}`, async () => {
   try {
-    const projectCollection = locale.value === 'de' ? 'projects_de' : 'projects_en';
-    const projectsData = await queryCollection(projectCollection).first();
+    const contentService = useContentService('nuxtContent');
+    const projectCollection = `projects_${locale.value}`;
+    const projectsData = await contentService.queryFirst(projectCollection);
     const allProjects = projectsData?.projects || [];
 
+    // Get the author's namespace and key
+    const authorNamespace = author.value?.namespace || 'author';
+    const authorKey = author.value?.key;
+
+    if (!authorKey) {
+      console.warn(`Author ${slug} does not have a key, cannot fetch projects`);
+      return [];
+    }
+
     return allProjects.filter((project: any) => {
-      return project.authors && project.authors.some((a: any) => a.slug === slug);
+      return project.authors && project.authors.some((a: any) => 
+        a.namespace === authorNamespace && a.key === authorKey
+      );
     });
   } catch (error) {
     console.error(`Error fetching projects for author ${slug}:`, error);
@@ -55,30 +69,27 @@ const { data: authorProjects } = await useAsyncData(`author-projects-${slug}`, a
 // Fetch blog posts by the author
 const { data: authorPosts } = await useAsyncData(`author-posts-${slug}`, async () => {
   try {
-    // First try to find posts where the author is referenced by slug in the authors array
-    const postsBySlug = await queryContent(`/blog/${locale.value}`)
-      .where({ authors: { $contains: slug } })
-      .find();
+    const contentService = useContentService('nuxtContent');
+    const blogCollection = `blog_${locale.value}`;
 
-    // Then try to find posts where the author is referenced by name in the schemaOrg field
-    const authorName = author.value?.name;
-    if (authorName) {
-      const postsByName = await queryContent(`/blog/${locale.value}`)
-        .where({ 'schemaOrg.0.author.name': { $eq: authorName } })
-        .find();
+    // Get the author's namespace and key
+    const authorNamespace = author.value?.namespace || 'author';
+    const authorKey = author.value?.key;
 
-      // Combine the results, removing duplicates
-      const allPosts = [...postsBySlug];
-      postsByName.forEach(post => {
-        if (!allPosts.some(p => p._path === post._path)) {
-          allPosts.push(post);
-        }
-      });
-
-      return allPosts;
+    if (!authorKey) {
+      console.warn(`Author ${slug} does not have a key, cannot fetch blog posts`);
+      return [];
     }
 
-    return postsBySlug;
+    // Query posts where the author reference matches the current author's namespace and key
+    const allPosts = await contentService.queryAll(blogCollection);
+    const posts = allPosts.filter((post: any) => 
+      post.author && 
+      post.author.namespace === authorNamespace && 
+      post.author.key === authorKey
+    );
+
+    return posts;
   } catch (error) {
     console.error(`Error fetching blog posts for author ${slug}:`, error);
     return [];
