@@ -70,6 +70,29 @@ const titleDescriptionSchema = z.object({
   description: commonFields.description,
 })
 
+// Schema for server rules
+const rulesSchema = z.object({
+  title: commonFields.title,
+  description: commonFields.description,
+  generalRules: z.array(z.object({
+    title: commonFields.title,
+    description: commonFields.description,
+  })).optional(),
+  sections: z.array(z.object({
+    title: commonFields.title,
+    description: commonFields.description,
+    rules: z.array(z.object({
+      title: commonFields.title,
+      description: commonFields.description,
+    })),
+  })).optional(),
+  // For backward compatibility
+  rules: z.array(z.object({
+    title: commonFields.title,
+    description: commonFields.description,
+  })).optional(),
+})
+
 // Reusable schema for items with color
 const coloredItemSchema = z.object({
   title: commonFields.title,
@@ -245,6 +268,31 @@ const blogSchema = z.object({
   }),
 });
 
+// Create a namespace/key schema for tutorials
+const tutorialNamespaceKeySchema = createNamespaceKeySchema({ defaultNamespace: "tutorial" });
+
+// Tutorial schema similar to blog schema
+const tutorialSchema = z.object({
+  title: commonFields.title,
+  alternativeTitle: z.string().optional(),
+  description: commonFields.description,
+  slug: commonFields.slug,
+  ...tutorialNamespaceKeySchema.shape,
+  // Transform string to Date object
+  pubDate: z.coerce.date(),
+  updatedDate: z.coerce.date().optional(),
+  headerImage: z.string().optional(),
+  headerImageAlt: z.string().optional(),
+  // Link to the same tutorial in other languages
+  translationKey: z.string().optional(),
+  // Reference to the author by namespace and key
+  author: referenceSchema.optional(),
+  excerpt: z.object({
+    type: z.string(),
+    children: z.any(),
+  }),
+});
+
 
 // Helper function to create localized collections
 const createLocalizedCollections = (
@@ -264,7 +312,7 @@ const createLocalizedCollections = (
       if (baseName === 'carousel' || baseName === 'history' || baseName === 'activities') {
         return `homepage/${lang}/${baseName}.json`
       }
-      return `${baseName}/${lang}/**/*.${baseName === 'blog' ? 'md' : 'json'}`
+      return `${baseName}/${lang}/**/*.${baseName === 'blog' || baseName === 'tutorials' ? 'md' : 'json'}`
     },
     getSchema = (baseName) => {
       // Map base names to their schemas
@@ -277,7 +325,9 @@ const createLocalizedCollections = (
         'authors': authorSchema,
         'sponsors': sponsorsSchema,
         'projects': z.object({ projects: z.array(projectSchema) }),
-        'timeline': timelineDetailSchema
+        'timeline': timelineDetailSchema,
+        'rules': rulesSchema,
+        'tutorials': tutorialSchema
       }
       return schemaMap[baseName]
     },
@@ -322,8 +372,10 @@ export default defineContentConfig({
     'projects',
     'authors',
     'sponsors',
-    'timeline'
+    'timeline',
+    'rules',
+    'tutorials'
   ], ['de', 'en'], {
-    getType: (baseName) => ['blog', 'timeline'].includes(baseName) ? 'page' : 'data'
+    getType: (baseName) => ['blog', 'timeline', 'tutorials'].includes(baseName) ? 'page' : 'data'
   })
 })
