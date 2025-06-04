@@ -14,7 +14,7 @@ const resolvedAuthors = ref([]);
 const isLoading = ref(true);
 
 // Function to fetch author data by namespace and key
-const fetchAuthorData = async (namespace, key) => {
+const fetchAuthorData = async (namespace, key, authorRef) => {
   try {
     // First try to find the author in the standalone authors collection
     const authorCollection = locale.value === 'de' ? 'authors_de' : 'authors_en';
@@ -27,9 +27,10 @@ const fetchAuthorData = async (namespace, key) => {
     }
 
     // If not found, try to find the author in the team collection
-    const teamData = await queryContent(`/team/${locale.value}/team`).find();
-    if (teamData && teamData.length > 0) {
-      const allMembers = teamData[0]?.ranks?.flatMap(rank => rank.members) || [];
+    const teamCollection = locale.value === 'de' ? 'team_de' : 'team_en';
+    const teamData = await queryCollection(teamCollection).first();
+    if (teamData && teamData.ranks) {
+      const allMembers = teamData.ranks.flatMap(rank => rank.members) || [];
       const teamMember = allMembers.find((member) => member.namespace === namespace && member.key === key);
       if (teamMember) {
         return teamMember;
@@ -40,14 +41,16 @@ const fetchAuthorData = async (namespace, key) => {
     return {
       name: `${namespace}:${key}`,
       namespace,
-      key
+      key,
+      slug: authorRef.slug // Preserve the slug from the author reference
     };
   } catch (error) {
     console.error(`Error fetching author data for ${namespace}:${key}:`, error);
     return {
       name: `${namespace}:${key}`,
       namespace,
-      key
+      key,
+      slug: authorRef.slug // Preserve the slug from the author reference
     };
   }
 };
@@ -59,7 +62,7 @@ onMounted(async () => {
 
     for (const authorRef of props.authors) {
       if (authorRef.namespace && authorRef.key) {
-        const authorData = await fetchAuthorData(authorRef.namespace, authorRef.key);
+        const authorData = await fetchAuthorData(authorRef.namespace, authorRef.key, authorRef);
         authors.push(authorData);
       } else {
         // If it's already a full author object, use it as is

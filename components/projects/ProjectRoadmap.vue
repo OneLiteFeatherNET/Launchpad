@@ -1,31 +1,15 @@
 <script setup lang="ts">
+import type { RoadmapItem } from '~/types/project';
+
 const props = defineProps({
   roadmap: {
-    type: Array,
+    type: Array as () => RoadmapItem[],
     required: true
   }
 });
 
-// Status color mapping
-const statusColorMap = {
-  'Aktiv': 'success',
-  'Active': 'success',
-  'In Entwicklung': 'info',
-  'In Development': 'info',
-  'In Progress': 'info',
-  'In Bearbeitung': 'info',
-  'Geplant': 'warning',
-  'Planned': 'warning',
-  'Abgeschlossen': 'success',
-  'Completed': 'success',
-  'Pausiert': 'error',
-  'Paused': 'error'
-};
-
-// Get status color
-const getStatusColor = (status: string) => {
-  return statusColorMap[status] || 'primary';
-};
+// Use the project status composable
+const { getStatusColor } = useProjectStatus();
 </script>
 
 <template>
@@ -34,13 +18,13 @@ const getStatusColor = (status: string) => {
       <h2 class="text-2xl font-bold text-on-surface-variant dark:text-on-surface-variant-dark mb-8">
         {{ $t('projects.roadmap') }}
       </h2>
-      
-      <div class="relative">
+
+      <div class="relative overflow-y-auto max-h-[500px] pb-8" role="region" :aria-label="$t('projects.roadmap')" tabindex="0">
         <!-- Timeline Line -->
         <div class="absolute left-0 md:left-1/2 h-full w-0.5 bg-outline dark:bg-outline-dark transform -translate-x-1/2"></div>
-        
+
         <!-- Timeline Items -->
-        <div class="space-y-12">
+        <div class="space-y-12 relative z-1">
           <div 
             v-for="(phase, index) in roadmap" 
             :key="index"
@@ -54,7 +38,7 @@ const getStatusColor = (status: string) => {
                 `border-2 border-${getStatusColor(phase.status)} dark:border-${getStatusColor(phase.status)}-dark`
               ]"
             ></div>
-            
+
             <!-- Timeline Content -->
             <div 
               :class="[
@@ -62,7 +46,7 @@ const getStatusColor = (status: string) => {
                 index % 2 === 0 ? 'md:pr-8 md:mr-auto' : 'md:pl-8 md:ml-auto'
               ]"
             >
-              <div class="bg-surface dark:bg-surface-dark rounded-lg shadow-md p-6">
+              <div class="bg-surface dark:bg-surface-dark rounded-lg shadow-md p-6 relative z-1">
                 <div class="flex justify-between items-center mb-4">
                   <h3 class="text-xl font-bold text-on-surface dark:text-on-surface-dark">
                     {{ phase.title }}

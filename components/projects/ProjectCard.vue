@@ -19,18 +19,18 @@ const getMinecraftHeadUrl = (username?: string) => {
 
 // Status color mapping
 const statusColorMap = {
-  'Aktiv': 'success',
-  'Active': 'success',
-  'In Entwicklung': 'info',
-  'In Development': 'info',
-  'In Progress': 'info',
-  'In Bearbeitung': 'info',
-  'Geplant': 'warning',
-  'Planned': 'warning',
-  'Abgeschlossen': 'success',
-  'Completed': 'success',
-  'Pausiert': 'error',
-  'Paused': 'error'
+  'Evaluierung': 'info',
+  'Evaluation': 'info',
+  'Prototypen': 'warning',
+  'Prototype': 'warning',
+  'Entwicklung': 'success',
+  'Development': 'success',
+  'Wartung': 'primary',
+  'Maintenance': 'primary',
+  'Archiviert': 'secondary',
+  'Archived': 'secondary',
+  'Aufgegeben': 'error',
+  'Abandoned': 'error'
 };
 
 // Get status color

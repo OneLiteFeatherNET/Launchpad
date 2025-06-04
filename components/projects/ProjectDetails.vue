@@ -1,30 +1,15 @@
 <script setup lang="ts">
+import type { Project } from '~/types/project';
+
 defineProps({
   project: {
-    type: Object,
+    type: Object as () => Project,
     required: true
   }
 });
 
-// Funktion zum Ermitteln des korrekten Übersetzungsschlüssels basierend auf dem Status
-const getStatusKey = (status: string) => {
-  const statusMap: Record<string, string> = {
-    'Aktiv': 'active',
-    'Active': 'active',
-    'Abgeschlossen': 'completed',
-    'Completed': 'completed',
-    'In Entwicklung': 'in_development',
-    'In Development': 'in_development',
-    'In Progress': 'in_progress',
-    'In Bearbeitung': 'in_progress',
-    'Geplant': 'planned',
-    'Planned': 'planned',
-    'Pausiert': 'paused',
-    'Paused': 'paused'
-  };
-
-  return statusMap[status] || 'active';
-};
+// Use the project status composable
+const { getStatusTranslationKey, getStatusColor } = useProjectStatus();
 </script>
 
 <template>
@@ -40,25 +25,19 @@ const getStatusKey = (status: string) => {
           <h3 class="text-xl font-semibold text-on-surface dark:text-on-surface-dark mb-4">{{ $t('projects.description') }}</h3>
           <p class="text-on-surface-variant dark:text-on-surface-variant-dark">{{ project.description }}</p>
         </div>
-        
+
         <!-- Project Status -->
         <div class="bg-surface dark:bg-surface-dark rounded-lg shadow-md p-6">
           <h3 class="text-xl font-semibold text-on-surface dark:text-on-surface-dark mb-4">{{ $t('projects.current_status') }}</h3>
           <div class="flex items-center">
             <div
               class="w-3 h-3 rounded-full mr-2"
-              :class="{
-                'bg-success': ['Aktiv', 'Active', 'Abgeschlossen', 'Completed'].includes(project.status),
-                'bg-info': ['In Entwicklung', 'In Development', 'In Progress', 'In Bearbeitung'].includes(project.status),
-                'bg-warning': ['Geplant', 'Planned'].includes(project.status),
-                'bg-error': ['Pausiert', 'Paused'].includes(project.status),
-                'bg-primary': !['Aktiv', 'Active', 'Abgeschlossen', 'Completed', 'In Entwicklung', 'In Development', 'In Progress', 'In Bearbeitung', 'Geplant', 'Planned', 'Pausiert', 'Paused'].includes(project.status)
-              }"
+              :class="`bg-${getStatusColor(project.status)}`"
               role="img"
-              :aria-label="$t('projects.status_indicator') + ' ' + $t(`projects.status.${getStatusKey(project.status)}`)"
+              :aria-label="$t('projects.status_indicator') + ' ' + $t(`projects.status.${getStatusTranslationKey(project.status)}`)"
             ></div>
             <span class="text-on-surface-variant dark:text-on-surface-variant-dark">
-              {{ $t(`projects.status.${getStatusKey(project.status)}`) }}
+              {{ $t(`projects.status.${getStatusTranslationKey(project.status)}`) }}
             </span>
           </div>
         </div>
@@ -66,4 +45,3 @@ const getStatusKey = (status: string) => {
     </div>
   </section>
 </template>
-
