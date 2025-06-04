@@ -2,16 +2,40 @@
 import { ref } from '#imports';
 import NavigationSimpleButton from "~/components/base/navigation/NavigationSimpleButton.vue";
 import NavigationLanguageSelector from "~/components/base/navigation/NavigationLanguageSelector.vue";
+import NavigationDropdown from "~/components/base/navigation/NavigationDropdown.vue";
 const locale = useCookieLocale();
 const localePath = useLocalePath()
 
-
-const navItems = [
+// Single navigation items
+const singleNavItems = [
   { textKey: 'navigation.overview', path: localePath('index', locale?.value as Locale) },
+];
+
+// Content dropdown items
+const contentItems = [
   { textKey: 'navigation.blog', path: localePath('blog', locale?.value as Locale) },
+  { textKey: 'navigation.tutorials', path: localePath('tutorials', locale?.value as Locale) },
+];
+
+// About dropdown items
+const aboutItems = [
   { textKey: 'navigation.team', path: localePath('team', locale?.value as Locale) },
   { textKey: 'navigation.projects', path: localePath('projects', locale?.value as Locale) },
   { textKey: 'navigation.sponsors', path: localePath('sponsors', locale?.value as Locale) },
+];
+
+// Resources dropdown items
+const resourcesItems = [
+  { textKey: 'navigation.authors', path: localePath('authors', locale?.value as Locale) },
+  { textKey: 'navigation.rules', path: localePath('rules', locale?.value as Locale) },
+];
+
+// All items for mobile menu
+const allNavItems = [
+  ...singleNavItems,
+  ...contentItems,
+  ...aboutItems,
+  ...resourcesItems
 ];
 
 const mobileMenuOpen = ref(false);
@@ -33,11 +57,30 @@ const mobileMenuOpen = ref(false);
             <span class="text-xl font-medium bg-text-gradient text-transparent bg-clip-text">OneLiteFeather</span>
           </NuxtLinkLocale>
         </div>
-        <nav class="hidden md:flex items-center space-x-1">
+        <nav class="hidden md:flex items-center space-x-2">
+          <!-- Single navigation items -->
           <NavigationSimpleButton
-              v-for="item in navItems"
+              v-for="item in singleNavItems"
+              :key="item.path"
               :text-key="item.textKey"
               :path="item.path" />
+
+          <!-- Content dropdown -->
+          <NavigationDropdown
+              textKey="navigation.content"
+              :items="contentItems" />
+
+          <!-- About dropdown -->
+          <NavigationDropdown
+              textKey="navigation.about"
+              :items="aboutItems" />
+
+          <!-- Resources dropdown -->
+          <NavigationDropdown
+              textKey="navigation.resources"
+              :items="resourcesItems" />
+
+          <!-- Language selector -->
           <NavigationLanguageSelector />
         </nav>
         <div class="md:hidden flex items-center">
@@ -57,13 +100,37 @@ const mobileMenuOpen = ref(false);
       </div>
     </div>
     <div class="md:hidden" v-show="mobileMenuOpen" role="menu" aria-labelledby="mobile-menu-button">
-      <div class="pt-2 pb-4 space-y-1 px-4">
+      <div class="pt-2 pb-4 space-y-2 px-4">
+        <!-- Single navigation items -->
         <NavigationSimpleButton
-            v-for="item in navItems"
+            v-for="item in singleNavItems"
+            :key="item.path"
             :text-key="item.textKey"
             :path="item.path"
             :mobile="true"
             @clickMobile="mobileMenuOpen = false"/>
+
+        <!-- Content dropdown -->
+        <NavigationDropdown
+            textKey="navigation.content"
+            :items="contentItems"
+            :mobile="true"
+            @clickMobile="mobileMenuOpen = false" />
+
+        <!-- About dropdown -->
+        <NavigationDropdown
+            textKey="navigation.about"
+            :items="aboutItems"
+            :mobile="true"
+            @clickMobile="mobileMenuOpen = false" />
+
+        <!-- Resources dropdown -->
+        <NavigationDropdown
+            textKey="navigation.resources"
+            :items="resourcesItems"
+            :mobile="true"
+            @clickMobile="mobileMenuOpen = false" />
+
         <div class="py-2">
           <NavigationLanguageSelector :mobile="true" />
         </div>
