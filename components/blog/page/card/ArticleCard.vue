@@ -31,7 +31,7 @@ const title = computed(() => {
                class="w-full h-48 object-cover rounded-xxl" />
       <div class="p-4">
         <h2 class="text-xl font-semibold text-secondary-blue-color dark:text-secondary-blue-color">{{ title }}</h2>
-        <time class="text-sm text-gray-500 dark:text-gray-400"><i18n-d :value="blogArticle.pubDate"></i18n-d></time>
+        <time class="text-sm text-gray-500 dark:text-gray-400"><i18n-d :value="new Date(blogArticle.pubDate)"></i18n-d></time>
         <ContentRenderer class="text-gray-700 dark:text-gray-300 mt-2" :value="blogArticle" :excerpt="true">
         </ContentRenderer>
       </div>

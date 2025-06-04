@@ -13,8 +13,8 @@ const props = defineProps({
 });
 
 // Function to get Minecraft head URL
-const getMinecraftHeadUrl = (username: string) => {
-  return `https://mc-heads.net/avatar/${username}/100`;
+const getMinecraftHeadUrl = (username?: string) => {
+  return username ? `https://mc-heads.net/avatar/${username}/100` : '/images/authors/placeholder.svg';
 };
 
 // Status color mapping
@@ -44,8 +44,7 @@ const statusColor = computed(() => {
     <NuxtLinkLocale :to="`/projects/${project.namespace}:${project.key}`" class="block">
       <div class="relative h-48 overflow-hidden">
         <NuxtImg 
-          v-if="project.image" 
-          :src="project.image" 
+          :src="project.image || '/images/projects/placeholder.svg'" 
           :alt="project.name"
           class="w-full h-full object-cover"
           sizes="xs:100vw sm:100vw md:50vw lg:33vw xl:33vw"
@@ -55,9 +54,6 @@ const statusColor = computed(() => {
           quality="80"
           loading="lazy"
         />
-        <div v-else class="w-full h-full bg-primary-container dark:bg-primary-container-dark flex items-center justify-center">
-          <span class="text-2xl font-bold text-on-primary-container dark:text-on-primary-container-dark">{{ project.name }}</span>
-        </div>
 
         <!-- Status badge -->
         <div 
@@ -104,7 +100,7 @@ const statusColor = computed(() => {
             >
               <NuxtImg 
                 :src="getMinecraftHeadUrl(author.minecraftUsername)" 
-                :alt="`${author.name}'s Minecraft head`"
+                :alt="`${author.name}'s avatar`"
                 class="w-6 h-6 rounded-full mr-2"
                 sizes="24px"
                 width="24"

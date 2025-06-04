@@ -3,297 +3,311 @@ import { asSchemaOrgCollection } from 'nuxt-schema-org/content'
 import { asSitemapCollection } from '@nuxtjs/sitemap/content'
 import { SponsorTierEnum } from './composables/useSponsorTier'
 
-// Generic schema for namespace and key fields (optional)
-const namespaceKeySchema = z.object({
-    namespace: z.string().regex(/^[a-z][a-z0-9-]*$/, {
-        message: "Namespace must start with a lowercase letter and can only contain lowercase letters, numbers, and hyphens"
-    }).optional(),
-    key: z.string().regex(/^[a-z][a-z0-9-]*$/, {
-        message: "Key must start with a lowercase letter and can only contain lowercase letters, numbers, and hyphens"
-    }).optional(),
-});
+// Base namespace/key regex pattern
+const namespaceKeyPattern = /^[a-z][a-z0-9-]*$/
+const namespaceKeyMessage = "Must start with a lowercase letter and can only contain lowercase letters, numbers, and hyphens"
 
-// Author-specific namespace schema
-const authorNamespaceKeySchema = z.object({
-    namespace: z.string().regex(/^[a-z][a-z0-9-]*$/, {
-        message: "Namespace must start with a lowercase letter and can only contain lowercase letters, numbers, and hyphens"
-    }).default("author"),
-    key: z.string().regex(/^[a-z][a-z0-9-]*$/, {
-        message: "Key must start with a lowercase letter and can only contain lowercase letters, numbers, and hyphens"
-    }).optional(),
-});
+// Create a reusable function to generate namespace/key schemas with different configurations
+const createNamespaceKeySchema = (options: { 
+  namespaceRequired?: boolean, 
+  keyRequired?: boolean,
+  defaultNamespace?: string 
+} = {}) => {
+  const { namespaceRequired = false, keyRequired = false, defaultNamespace } = options
 
-// Blog-specific namespace schema
-const blogNamespaceKeySchema = z.object({
-    namespace: z.string().regex(/^[a-z][a-z0-9-]*$/, {
-        message: "Namespace must start with a lowercase letter and can only contain lowercase letters, numbers, and hyphens"
-    }).default("blog"),
-    key: z.string().regex(/^[a-z][a-z0-9-]*$/, {
-        message: "Key must start with a lowercase letter and can only contain lowercase letters, numbers, and hyphens"
-    }).optional(),
-});
+  const namespaceSchema = z.string().regex(namespaceKeyPattern, { message: namespaceKeyMessage })
+  const keySchema = z.string().regex(namespaceKeyPattern, { message: namespaceKeyMessage })
 
-// Sponsor-specific namespace schema
-const sponsorNamespaceKeySchema = z.object({
-    namespace: z.string().regex(/^[a-z][a-z0-9-]*$/, {
-        message: "Namespace must start with a lowercase letter and can only contain lowercase letters, numbers, and hyphens"
-    }).default("sponsor"),
-    key: z.string().regex(/^[a-z][a-z0-9-]*$/, {
-        message: "Key must start with a lowercase letter and can only contain lowercase letters, numbers, and hyphens"
-    }).optional(),
-});
+  // Apply optional/required and default values based on options
+  const finalNamespaceSchema = defaultNamespace 
+    ? namespaceSchema.default(defaultNamespace)
+    : namespaceRequired 
+      ? namespaceSchema 
+      : namespaceSchema.optional()
 
-// Generic schema for namespace and key fields (required)
-const requiredNamespaceKeySchema = z.object({
-    namespace: z.string().regex(/^[a-z][a-z0-9-]*$/, {
-        message: "Namespace must start with a lowercase letter and can only contain lowercase letters, numbers, and hyphens"
-    }),
-    key: z.string().regex(/^[a-z][a-z0-9-]*$/, {
-        message: "Key must start with a lowercase letter and can only contain lowercase letters, numbers, and hyphens"
-    }),
-});
+  const finalKeySchema = keyRequired 
+    ? keySchema 
+    : keySchema.optional()
 
-// Project-specific namespace schema
-const projectNamespaceKeySchema = z.object({
-    namespace: z.string().regex(/^[a-z][a-z0-9-]*$/, {
-        message: "Namespace must start with a lowercase letter and can only contain lowercase letters, numbers, and hyphens"
-    }).default("project"),
-    key: z.string().regex(/^[a-z][a-z0-9-]*$/, {
-        message: "Key must start with a lowercase letter and can only contain lowercase letters, numbers, and hyphens"
-    }),
-});
+  return z.object({
+    namespace: finalNamespaceSchema,
+    key: finalKeySchema
+  })
+}
+
+// Define all schema variants using the factory function
+const namespaceKeySchema = createNamespaceKeySchema()
+const authorNamespaceKeySchema = createNamespaceKeySchema({ defaultNamespace: "author" })
+const blogNamespaceKeySchema = createNamespaceKeySchema({ defaultNamespace: "blog" })
+const sponsorNamespaceKeySchema = createNamespaceKeySchema({ defaultNamespace: "sponsor" })
+const requiredNamespaceKeySchema = createNamespaceKeySchema({ namespaceRequired: true, keyRequired: true })
+const projectNamespaceKeySchema = createNamespaceKeySchema({ defaultNamespace: "project", keyRequired: true })
 
 // Schema for referencing entities by namespace and key
-const referenceSchema = z.object({
-    namespace: z.string().regex(/^[a-z][a-z0-9-]*$/, {
-        message: "Namespace must start with a lowercase letter and can only contain lowercase letters, numbers, and hyphens"
-    }),
-    key: z.string().regex(/^[a-z][a-z0-9-]*$/, {
-        message: "Key must start with a lowercase letter and can only contain lowercase letters, numbers, and hyphens"
-    }),
-});
+const referenceSchema = createNamespaceKeySchema({ namespaceRequired: true, keyRequired: true });
 
+
+// Common field schemas for reuse
+const commonFields = {
+  title: z.string(),
+  description: z.string(),
+  name: z.string(),
+  slug: z.string(),
+  image: z.string().optional(),
+  featured: z.boolean().optional(),
+}
+
+// Common social media fields
+const socialFields = {
+  github: z.string().optional(),
+  twitter: z.string().optional(),
+  website: z.string().optional(),
+}
+
+// Reusable schema for title-description pairs
+const titleDescriptionSchema = z.object({
+  title: commonFields.title,
+  description: commonFields.description,
+})
+
+// Reusable schema for items with color
+const coloredItemSchema = z.object({
+  title: commonFields.title,
+  description: commonFields.description,
+  color: z.string(),
+})
 
 // Unified schema for both team members and standalone authors
 const personSchema = z.object({
-    name: z.string(),
-    slug: z.string(),
-    ...authorNamespaceKeySchema.shape,
-    minecraftUsername: z.string().optional(),
-    profileImage: z.string().optional(),
-    role: z.string().optional(),
-    about: z.string().optional(),
-    bio: z.string().optional(), // Alias for about, used in team members
-    github: z.string().optional(),
-    twitter: z.string().optional(),
-    title: z.string().optional(),
-    avatar: z.string().optional(),
-    quote: z.string().optional(), // Used in team members
-    joinDate: z.string().optional(), // Used in team members
-    onProbation: z.boolean().optional(), // Used in team members
+  name: commonFields.name,
+  slug: commonFields.slug,
+  ...authorNamespaceKeySchema.shape,
+  minecraftUsername: z.string().optional(),
+  profileImage: z.string().optional(),
+  avatar: z.string().optional(), // Alternative to profileImage
+  role: z.string().optional(),
+  about: z.string().optional(),
+  bio: z.string().optional(), // Alias for about, used in team members
+  ...socialFields,
+  title: z.string().optional(),
+  quote: z.string().optional(), // Used in team members
+  joinDate: z.string().optional(), // Used in team members
+  onProbation: z.boolean().optional(), // Used in team members
 });
 
 // Use the unified personSchema for authors
 const authorSchema = personSchema;
 
+// Reusable roadmap item schema
+const roadmapItemSchema = z.object({
+  title: commonFields.title,
+  description: commonFields.description,
+  status: z.string(),
+});
+
+// Reusable bstats schema
+const bstatsSchema = z.object({
+  pluginId: z.string(),
+  showServers: z.boolean().optional(),
+  showPlayers: z.boolean().optional(),
+});
+
 const projectSchema = z.object({
-    name: z.string(),
-    ...projectNamespaceKeySchema.shape,
-    description: z.string(),
-    status: z.string(),
-    featured: z.boolean().optional(),
-    image: z.string().optional(),
-    github: z.string().optional(),
-    // Reference to authors by namespace and key
-    authors: z.array(referenceSchema).optional(),
-    features: z.array(z.string()).optional(),
-    roadmap: z.array(z.object({
-        title: z.string(),
-        description: z.string(),
-        status: z.string()
-    })).optional(),
-    bstats: z.object({
-        pluginId: z.string(),
-        showServers: z.boolean().optional(),
-        showPlayers: z.boolean().optional()
-    }).optional(),
-    // For backward compatibility
-    slug: z.string().optional(),
-    // Flag to indicate if this is an affiliate link
-    isAffiliate: z.boolean().optional(),
+  name: commonFields.name,
+  ...projectNamespaceKeySchema.shape,
+  description: commonFields.description,
+  status: z.string(),
+  featured: commonFields.featured,
+  image: commonFields.image,
+  ...socialFields,
+  // Reference to authors by namespace and key
+  authors: z.array(referenceSchema).optional(),
+  features: z.array(z.string()).optional(),
+  roadmap: z.array(roadmapItemSchema).optional(),
+  bstats: bstatsSchema.optional(),
+  // For backward compatibility
+  slug: z.string().optional(),
+  // Flag to indicate if this is an affiliate link
+  isAffiliate: z.boolean().optional(),
+});
+
+// Slide schema for carousel
+const slideSchema = z.object({
+  title: commonFields.title,
+  subtitle: z.string(),
+  image: commonFields.image,
 });
 
 const carouselSchema = z.object({
-    slides: z.array(z.object({
-        title: z.string(),
-        subtitle: z.string(),
-        image: z.string()
-    }))
+  slides: z.array(slideSchema),
+});
+
+// Timeline item schema for history
+const timelineItemSchema = z.object({
+  year: z.string(),
+  color: z.string(),
+  description: commonFields.description,
 });
 
 const historySchema = z.object({
-    title: z.string(),
-    timeline: z.array(z.object({
-        year: z.string(),
-        color: z.string(),
-        description: z.string()
-    }))
+  title: commonFields.title,
+  timeline: z.array(timelineItemSchema),
+});
+
+// Activity item schema
+const activityItemSchema = z.object({
+  title: commonFields.title,
+  description: commonFields.description,
+  image: commonFields.image,
+  color: z.string(),
 });
 
 const activitiesSchema = z.object({
-    title: z.string(),
-    activities: z.array(z.object({
-        title: z.string(),
-        description: z.string(),
-        image: z.string(),
-        color: z.string()
-    }))
+  title: commonFields.title,
+  activities: z.array(activityItemSchema),
+});
+
+// Rank schema for team
+const rankSchema = z.object({
+  name: commonFields.name,
+  description: commonFields.description.optional(),
+  members: z.array(personSchema), // Use the unified personSchema for team members
+});
+
+// Rank explanation schema
+const rankExplanationSchema = z.object({
+  rank: z.string(),
+  description: commonFields.description,
 });
 
 const teamSchema = z.object({
-    title: z.string(),
-    description: z.string().optional(),
-    ranks: z.array(z.object({
-        name: z.string(),
-        description: z.string().optional(),
-        members: z.array(personSchema) // Use the unified personSchema for team members
-    })),
-    rankExplanations: z.array(z.object({
-        rank: z.string(),
-        description: z.string()
-    })).optional()
+  title: commonFields.title,
+  description: commonFields.description.optional(),
+  ranks: z.array(rankSchema),
+  rankExplanations: z.array(rankExplanationSchema).optional(),
 });
 
 // Use reference schema directly for sponsor projects
 const sponsorProjectSchema = referenceSchema;
 
 const sponsorSchema = z.object({
-    name: z.string(),
-    slug: z.string(),
-    ...sponsorNamespaceKeySchema.shape,
-    description: z.string(),
-    tier: SponsorTierEnum.optional(),
-    featured: z.boolean().optional(),
-    logo: z.string().optional(),
-    website: z.string().optional(),
-    since: z.string().optional(),
-    content: z.string().optional(),
-    projects: z.array(sponsorProjectSchema).optional(),
+  name: commonFields.name,
+  slug: commonFields.slug,
+  ...sponsorNamespaceKeySchema.shape,
+  description: commonFields.description,
+  tier: SponsorTierEnum.optional(),
+  featured: commonFields.featured,
+  logo: z.string().optional(), // Similar to image but specific for sponsors
+  ...socialFields,
+  since: z.string().optional(),
+  content: z.string().optional(),
+  projects: z.array(sponsorProjectSchema).optional(),
 });
 
 const sponsorsSchema = z.object({
-    title: z.string(),
-    description: z.string(),
-    sponsors: z.array(sponsorSchema),
+  title: commonFields.title,
+  description: commonFields.description,
+  sponsors: z.array(sponsorSchema),
 });
 
 const blogSchema = z.object({
-    title: z.string(),
-    alternativeTitle: z.string().optional(),
-    description: z.string(),
-    slug: z.string(),
-    ...blogNamespaceKeySchema.shape,
-    // Transform string to Date object
-    pubDate: z.coerce.date(),
-    updatedDate: z.coerce.date().optional(),
-    headerImage: z.string().optional(),
-    headerImageAlt: z.string().optional(),
-    // Link to the same article in other languages
-    translationKey: z.string().optional(),
-    // Reference to the author by namespace and key
-    author: referenceSchema.optional(),
-    excerpt: z.object({
-        type: z.string(),
-        children: z.any(),
-    }),
+  title: commonFields.title,
+  alternativeTitle: z.string().optional(),
+  description: commonFields.description,
+  slug: commonFields.slug,
+  ...blogNamespaceKeySchema.shape,
+  // Transform string to Date object
+  pubDate: z.coerce.date(),
+  updatedDate: z.coerce.date().optional(),
+  headerImage: z.string().optional(),
+  headerImageAlt: z.string().optional(),
+  // Link to the same article in other languages
+  translationKey: z.string().optional(),
+  // Reference to the author by namespace and key
+  author: referenceSchema.optional(),
+  excerpt: z.object({
+    type: z.string(),
+    children: z.any(),
+  }),
 });
 
 
-export default defineContentConfig({
-    collections: {
-        carousel_de: defineCollection({
-            type: 'data',
-            source: 'homepage/de/carousel.json',
-            schema: carouselSchema
-        }),
-        carousel_en: defineCollection({
-            type: 'data',
-            source: 'homepage/en/carousel.json',
-            schema: carouselSchema
-        }),
-        history_de: defineCollection({
-            type: 'data',
-            source: 'homepage/de/history.json',
-            schema: historySchema
-        }),
-        history_en: defineCollection({
-            type: 'data',
-            source: 'homepage/en/history.json',
-            schema: historySchema
-        }),
-        activities_de: defineCollection({
-            type: 'data',
-            source: 'homepage/de/activities.json',
-            schema: activitiesSchema
-        }),
-        activities_en: defineCollection({
-            type: 'data',
-            source: 'homepage/en/activities.json',
-            schema: activitiesSchema
-        }),
-        team_de: defineCollection({
-            type: 'data',
-            source: 'team/de/**/*.json',
-            schema: teamSchema
-        }),
-        team_en: defineCollection({
-            type: 'data',
-            source: 'team/en/**/*.json',
-            schema: teamSchema
-        }),
-        blog_de: defineCollection(asSitemapCollection(asSchemaOrgCollection({
-            type: 'page',
-            source: 'blog/de/**/*.md',
-            schema: blogSchema
-        }))),
-        blog_en: defineCollection(asSitemapCollection(asSchemaOrgCollection({
-            type: 'page',
-            source: 'blog/en/**/*.md',
-            schema: blogSchema
-        }))),
-        projects_de: defineCollection({
-            type: 'data',
-            source: 'projects/de/**/*.json',
-            schema: z.object({
-                projects: z.array(projectSchema)
-            })
-        }),
-        projects_en: defineCollection({
-            type: 'data',
-            source: 'projects/en/**/*.json',
-            schema: z.object({
-                projects: z.array(projectSchema)
-            })
-        }),
-        authors_de: defineCollection({
-            type: 'data',
-            source: 'authors/de/**/*.json',
-            schema: authorSchema
-        }),
-        authors_en: defineCollection({
-            type: 'data',
-            source: 'authors/en/**/*.json',
-            schema: authorSchema
-        }),
-        sponsors_de: defineCollection({
-            type: 'data',
-            source: 'sponsors/de/**/*.json',
-            schema: sponsorsSchema
-        }),
-        sponsors_en: defineCollection({
-            type: 'data',
-            source: 'sponsors/en/**/*.json',
-            schema: sponsorsSchema
-        })
+// Helper function to create localized collections
+const createLocalizedCollections = (
+  baseNames: string[], 
+  languages: string[] = ['de', 'en'],
+  options: {
+    getType?: (baseName: string) => 'data' | 'page',
+    getSource?: (baseName: string, lang: string) => string,
+    getSchema?: (baseName: string) => any,
+    getWrapper?: (baseName: string) => (collection: any) => any
+  } = {}
+) => {
+  const {
+    getType = () => 'data',
+    getSource = (baseName, lang) => {
+      // Default source path patterns
+      if (baseName === 'carousel' || baseName === 'history' || baseName === 'activities') {
+        return `homepage/${lang}/${baseName}.json`
+      }
+      return `${baseName}/${lang}/**/*.${baseName === 'blog' ? 'md' : 'json'}`
+    },
+    getSchema = (baseName) => {
+      // Map base names to their schemas
+      const schemaMap: Record<string, any> = {
+        'carousel': carouselSchema,
+        'history': historySchema,
+        'activities': activitiesSchema,
+        'team': teamSchema,
+        'blog': blogSchema,
+        'authors': authorSchema,
+        'sponsors': sponsorsSchema,
+        'projects': z.object({ projects: z.array(projectSchema) })
+      }
+      return schemaMap[baseName]
+    },
+    getWrapper = (baseName) => {
+      // Apply special wrappers for certain collections
+      if (baseName === 'blog') {
+        return (collection: any) => defineCollection(asSitemapCollection(asSchemaOrgCollection(collection)))
+      }
+      return (collection: any) => defineCollection(collection)
     }
+  } = options
+
+  // Generate collections for all base names and languages
+  const collections: Record<string, any> = {}
+
+  for (const baseName of baseNames) {
+    for (const lang of languages) {
+      const collectionName = `${baseName}_${lang}`
+      const type = getType(baseName)
+      const source = getSource(baseName, lang)
+      const schema = getSchema(baseName)
+      const wrapper = getWrapper(baseName)
+
+      collections[collectionName] = wrapper({
+        type,
+        source,
+        schema
+      })
+    }
+  }
+
+  return collections
+}
+
+export default defineContentConfig({
+  collections: createLocalizedCollections([
+    'carousel',
+    'history',
+    'activities',
+    'team',
+    'blog',
+    'projects',
+    'authors',
+    'sponsors'
+  ], ['de', 'en'], {
+    getType: (baseName) => baseName === 'blog' ? 'page' : 'data'
+  })
 })

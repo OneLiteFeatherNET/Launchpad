@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
+import PageContainer from '~/components/common/PageContainer.vue';
 import TeamHeader from '~/components/team/TeamHeader.vue';
 import TeamMembersList from '~/components/team/TeamMembersList.vue';
 import RankExplanations from '~/components/team/RankExplanations.vue';
@@ -23,29 +24,16 @@ const description = computed(() => teamData.value?.description || '');
 const ranks = computed(() => teamData.value?.ranks || []);
 const rankExplanations = computed(() => teamData.value?.rankExplanations || []);
 
-// Set additional meta tags for SEO
-useHead({
-  meta: [
-    { name: 'description', content: computed(() => description.value || t('blog.team.description')) },
-    // Open Graph tags for social media sharing
-    { property: 'og:title', content: computed(() => title.value || t('blog.team.title')) },
-    { property: 'og:description', content: computed(() => description.value || t('blog.team.description')) },
-    { property: 'og:type', content: 'website' },
-    { property: 'og:image', content: '/logo.svg' },
-    // Twitter Card tags
-    { name: 'twitter:card', content: 'summary_large_image' },
-    { name: 'twitter:title', content: computed(() => title.value || t('blog.team.title')) },
-    { name: 'twitter:description', content: computed(() => description.value || t('blog.team.description')) },
-    { name: 'twitter:image', content: '/logo.svg' },
-  ],
-  link: [
-    { rel: 'canonical', href: computed(() => `https://blog.onelitefeather.net/${locale.value === 'de' ? '' : locale.value}/team`) }
-  ]
+// Use the SEO composable for meta tags
+useCustomSeoMeta({
+  title: () => title.value || t('blog.team.title'),
+  description: () => description.value || t('blog.team.description'),
+  path: '/team'
 });
 </script>
 
 <template>
-  <div class="bg-white dark:bg-gray-900">
+  <PageContainer>
     <!-- Page Header -->
     <TeamHeader :title="title" :description="description" />
 
@@ -54,5 +42,5 @@ useHead({
 
     <!-- Rank Explanations -->
     <RankExplanations :rankExplanations="rankExplanations" />
-  </div>
+  </PageContainer>
 </template>

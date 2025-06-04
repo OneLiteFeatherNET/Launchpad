@@ -129,6 +129,7 @@
     "features": "Features",
     "roadmap": "Roadmap",
     "statistics": "Statistics",
+    "statistics_description": "View detailed statistics for this project on bStats.",
     "servers_using": "Servers Using This Plugin",
     "players_using": "Players Using This Plugin",
     "view_on_bstats": "View on bStats",

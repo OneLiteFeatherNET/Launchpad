@@ -5,6 +5,8 @@
     {
       "name": "Beispielprojekt 1",
       "slug": "beispielprojekt-1",
+      "namespace": "project",
+      "key": "example-project-1",
       "description": "Ein Beispielprojekt zur Demonstration der Projektfunktionalität.",
       "status": "Aktiv",
       "github": "https://github.com/onelitefeather/beispielprojekt-1",
@@ -12,16 +14,12 @@
       "image": "/images/blog/dev-blog-1.webp",
       "authors": [
         {
-          "name": "Max Mustermann",
-          "slug": "max-mustermann",
-          "minecraftUsername": "MaxAdmin",
-          "role": "Projektleiter"
+          "namespace": "author",
+          "key": "max-mustermann"
         },
         {
-          "name": "Anna Schmidt",
-          "slug": "anna-schmidt",
-          "minecraftUsername": "AnnaAdmin",
-          "role": "Entwicklerin"
+          "namespace": "author",
+          "key": "anna-schmidt"
         }
       ],
       "features": [
@@ -55,6 +53,8 @@
     {
       "name": "Beispielprojekt 2",
       "slug": "beispielprojekt-2",
+      "namespace": "project",
+      "key": "example-project-2",
       "description": "Ein weiteres Beispielprojekt zur Demonstration der Projektfunktionalität.",
       "status": "In Entwicklung",
       "github": "https://github.com/onelitefeather/beispielprojekt-2",
@@ -62,10 +62,8 @@
       "image": "/images/blog/dev-blog-1.webp",
       "authors": [
         {
-          "name": "Tom Weber",
-          "slug": "tom-weber",
-          "minecraftUsername": "TomMod",
-          "role": "Entwickler"
+          "namespace": "author",
+          "key": "tom-weber"
         }
       ],
       "features": [

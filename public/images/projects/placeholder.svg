@@ -1,0 +1,6 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100%" height="100%" fill="#f0f0f0"/>
+  <text x="50%" y="50%" font-family="Arial, sans-serif" font-size="32" text-anchor="middle" dominant-baseline="middle" fill="#666">Project Placeholder</text>
+  <rect x="250" y="150" width="300" height="100" stroke="#999" stroke-width="2" fill="none"/>
+  <path d="M300 200 L350 150 L400 200 L450 150 L500 200" stroke="#999" stroke-width="2" fill="none"/>
+</svg>

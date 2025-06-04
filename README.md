@@ -162,3 +162,40 @@ The tests are configured to run against a local development server, which will b
 ### Browser Compatibility
 
 This project is also tested with BrowserStack for cross-browser compatibility.
+
+## Troubleshooting
+
+### Sharp Module Installation Issues
+
+If you encounter errors related to the sharp module not self-registering, such as:
+
+```
+[500] [IPX_ERROR] 
+Something went wrong installing the "sharp" module
+Module did not self-register: '.../sharp/build/Release/sharp-darwin-x64.node'.
+```
+
+Try one of these solutions:
+
+1. **Run the provided install:sharp script**:
+   ```bash
+   pnpm run install:sharp
+   ```
+   This script installs sharp with platform-specific options for macOS.
+
+2. **Install manually with platform-specific options**:
+   ```bash
+   # For macOS (darwin-x64)
+   pnpm install --platform=darwin --arch=x64 sharp
+
+   # For other platforms, adjust accordingly
+   # pnpm install --platform=<platform> --arch=<architecture> sharp
+   ```
+
+3. **Install with verbose logging to diagnose issues**:
+   ```bash
+   pnpm install --ignore-scripts=false --foreground-scripts --verbose sharp
+   ```
+
+4. **Check the sharp documentation** for more troubleshooting tips:
+   [Sharp Installation Guide](https://sharp.pixelplumbing.com/install)

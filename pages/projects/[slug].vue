@@ -59,7 +59,7 @@ useHead({
     { name: 'twitter:image', content: computed(() => project.value?.image || '/logo.svg') },
   ],
   link: [
-    { rel: 'canonical', href: computed(() => `https://blog.onelitefeather.net/${locale.value === 'de' ? '' : locale.value}/projects/${slug}`) }
+    { rel: 'canonical', href: computed(() => `https://blog.onelitefeather.net/${locale.value === 'de' ? '' : locale.value}/projects/${slugParam}`) }
   ]
 });
 </script>

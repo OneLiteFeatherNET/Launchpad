@@ -1,10 +1,77 @@
 <script setup lang="ts">
+import { ref, onMounted } from 'vue';
 import AuthorCard from '~/components/common/AuthorCard.vue';
 
-defineProps({
+const props = defineProps({
   authors: {
     type: Array,
     required: true
+  }
+});
+
+const { locale } = useI18n();
+const resolvedAuthors = ref([]);
+const isLoading = ref(true);
+
+// Function to fetch author data by namespace and key
+const fetchAuthorData = async (namespace, key) => {
+  try {
+    // First try to find the author in the standalone authors collection
+    const authorCollection = locale.value === 'de' ? 'authors_de' : 'authors_en';
+    const author = await queryCollection(authorCollection)
+      .where({ namespace, key })
+      .findOne();
+
+    if (author) {
+      return author;
+    }
+
+    // If not found, try to find the author in the team collection
+    const teamData = await queryContent(`/team/${locale.value}/team`).find();
+    if (teamData && teamData.length > 0) {
+      const allMembers = teamData[0]?.ranks?.flatMap(rank => rank.members) || [];
+      const teamMember = allMembers.find((member) => member.namespace === namespace && member.key === key);
+      if (teamMember) {
+        return teamMember;
+      }
+    }
+
+    // If still not found, return a placeholder with the reference info
+    return {
+      name: `${namespace}:${key}`,
+      namespace,
+      key
+    };
+  } catch (error) {
+    console.error(`Error fetching author data for ${namespace}:${key}:`, error);
+    return {
+      name: `${namespace}:${key}`,
+      namespace,
+      key
+    };
+  }
+};
+
+// Resolve all author references
+onMounted(async () => {
+  try {
+    const authors = [];
+
+    for (const authorRef of props.authors) {
+      if (authorRef.namespace && authorRef.key) {
+        const authorData = await fetchAuthorData(authorRef.namespace, authorRef.key);
+        authors.push(authorData);
+      } else {
+        // If it's already a full author object, use it as is
+        authors.push(authorRef);
+      }
+    }
+
+    resolvedAuthors.value = authors;
+  } catch (error) {
+    console.error('Error resolving author references:', error);
+  } finally {
+    isLoading.value = false;
   }
 });
 </script>
@@ -22,9 +89,15 @@ defineProps({
         {{ $t('projects.authors') }}
       </h2>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Loading state -->
+      <div v-if="isLoading" class="flex justify-center items-center py-12">
+        <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary dark:border-primary-dark"></div>
+      </div>
+
+      <!-- Authors grid -->
+      <div v-else class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <AuthorCard
-          v-for="(author, index) in authors"
+          v-for="(author, index) in resolvedAuthors"
           :key="author.slug || index"
           :author="author"
           display-mode="card"

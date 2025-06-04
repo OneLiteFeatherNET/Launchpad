@@ -8,7 +8,6 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare",
     "test": "playwright test",
     "test:ui": "playwright test --ui",
     "test:debug": "playwright test --debug",
@@ -38,6 +37,7 @@
     "vue-router": "^4.5.1"
   },
   "dependencies": {
-    "posthog-js": "^1.249.0"
+    "posthog-js": "^1.249.0",
+    "sharp": "^0.32.6"
   }
 }

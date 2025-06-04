@@ -1,24 +1,26 @@
 <script setup lang="ts">
-import {definePageMeta} from "#imports";
+import { definePageMeta } from "#imports";
+import PageContainer from '~/components/common/PageContainer.vue';
+import PageHeader from '~/components/common/PageHeader.vue';
+import ImprintContent from '~/components/imprint/ImprintContent.vue';
+
+// Define page meta for SEO
 definePageMeta({
   title: 'blog.imprint.title',
+});
+
+// Use the SEO composable for additional meta tags
+useCustomSeoMeta({
+  title: () => useI18n().t('blog.imprint.title'),
+  description: () => useI18n().t('blog.imprint.description'),
+  path: '/imprint'
 });
 </script>
 
 <template>
-  <div class="container mx-auto py-4">
-<div class="space-y-2">
-  <p class="font-semibold">Phillipp Glanz</p>
-  <p>Geisinger Straße 6</p>
-  <p>71634 Ludwigsburg</p>
-  <p>
-    <span class="font-semibold">Mail:</span>
-    <a href="mailto:contact@onelitefeather.net" class="text-blue-600 hover:underline"> contact@onelitefeather.net</a>
-  </p>
-</div>
-  </div>
+  <PageContainer narrow>
+    <PageHeader title="Impressum" />
+
+    <ImprintContent />
+  </PageContainer>
 </template>
-
-<style scoped>
-
-</style>

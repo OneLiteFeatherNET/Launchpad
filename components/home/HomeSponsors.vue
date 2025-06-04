@@ -45,8 +45,7 @@ const { getTierColor } = useSponsorTier();
           <NuxtLinkLocale :to="`/sponsors/${sponsor.slug}`" class="block">
             <div class="relative h-48 overflow-hidden">
               <NuxtImg 
-                v-if="sponsor.logo" 
-                :src="sponsor.logo" 
+                :src="sponsor.logo || '/images/sponsors/placeholder.svg'" 
                 :alt="sponsor.name"
                 class="w-full h-full object-contain p-4"
                 sizes="xs:100vw sm:100vw md:50vw lg:33vw xl:33vw"
@@ -56,9 +55,6 @@ const { getTierColor } = useSponsorTier();
                 quality="80"
                 loading="lazy"
               />
-              <div v-else class="w-full h-full bg-primary-container dark:bg-primary-container-dark flex items-center justify-center">
-                <span class="text-2xl font-bold text-on-primary-container dark:text-on-primary-container-dark">{{ sponsor.name }}</span>
-              </div>
 
               <!-- Tier badge -->
               <div 

@@ -28,6 +28,39 @@ if (!sponsor.value) {
   navigateTo('/sponsors');
 }
 
+// Fetch projects data to get full project information
+const { data: projectsData } = await useAsyncData('projects-for-sponsor', () => {
+  const collection = locale.value === 'de' ? 'projects_de' : 'projects_en';
+  return queryCollection(collection).first();
+});
+
+// Get full project information for each project reference in sponsor.projects
+const sponsorProjects = computed(() => {
+  if (!sponsor.value?.projects || !projectsData.value?.projects) {
+    return [];
+  }
+
+  const allProjects = projectsData.value.projects;
+  return sponsor.value.projects.map(projectRef => {
+    const fullProject = allProjects.find(p => 
+      p.namespace === projectRef.namespace && p.key === projectRef.key
+    );
+
+    // If we can't find the full project, create a default project object with basic information
+    if (!fullProject) {
+      return {
+        name: projectRef.key.charAt(0).toUpperCase() + projectRef.key.slice(1).replace(/-/g, ' '),
+        slug: projectRef.key,
+        namespace: projectRef.namespace,
+        key: projectRef.key,
+        description: `${projectRef.namespace}:${projectRef.key}`
+      };
+    }
+
+    return fullProject;
+  });
+});
+
 // Set additional meta tags for SEO
 useHead({
   meta: [
@@ -129,7 +162,7 @@ const { getTierColor } = useSponsorTier();
     </div>
 
     <!-- Sponsor Projects -->
-    <div v-if="sponsor.projects && sponsor.projects.length > 0" class="bg-surface-variant dark:bg-surface-variant-dark py-12 px-4 sm:px-6 lg:px-8">
+    <div v-if="sponsorProjects.length > 0" class="bg-surface-variant dark:bg-surface-variant-dark py-12 px-4 sm:px-6 lg:px-8">
       <div class="max-w-7xl mx-auto">
         <h2 class="text-2xl font-bold text-on-surface-variant dark:text-on-surface-variant-dark mb-8">
           {{ $t('sponsors.supported_projects') }}
@@ -137,14 +170,14 @@ const { getTierColor } = useSponsorTier();
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <div 
-            v-for="(project, index) in sponsor.projects" 
+            v-for="(project, index) in sponsorProjects" 
             :key="index"
-            class="bg-surface dark:bg-surface-dark rounded-lg shadow-md overflow-hidden"
+            class="bg-primary-container dark:bg-primary-container-dark rounded-lg shadow-md overflow-hidden"
           >
-            <NuxtLinkLocale :to="`/projects/${project.namespace}:${project.key}`" class="block">
+            <NuxtLinkLocale :to="`/projects/${project.slug}`" class="block">
               <div class="p-6">
-                <h3 class="text-xl font-bold text-on-surface dark:text-on-surface-dark mb-2">{{ project.name }}</h3>
-                <p v-if="project.description" class="text-on-surface-variant dark:text-on-surface-variant-dark">
+                <h3 class="text-xl font-bold text-on-primary-container dark:text-on-primary-container-dark mb-2">{{ project.name }}</h3>
+                <p v-if="project.description" class="text-on-primary-container dark:text-on-primary-container-dark">
                   {{ project.description }}
                 </p>
                 <!-- Affiliate link disclaimer -->

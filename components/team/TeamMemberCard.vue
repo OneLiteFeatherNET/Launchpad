@@ -13,8 +13,8 @@ const props = defineProps({
 });
 
 // Function to get Minecraft head URL
-const getMinecraftHeadUrl = (username: string) => {
-  return `https://mc-heads.net/avatar/${username}/100`;
+const getMinecraftHeadUrl = (username?: string) => {
+  return username ? `https://mc-heads.net/avatar/${username}/100` : '/images/authors/placeholder.svg';
 };
 </script>
 
@@ -25,7 +25,7 @@ const getMinecraftHeadUrl = (username: string) => {
         <div class="flex items-center mb-4">
           <NuxtImg
             :src="getMinecraftHeadUrl(member.minecraftUsername)"
-            :alt="`${member.name}'s Minecraft head`"
+            :alt="`${member.name}'s avatar`"
             class="w-16 h-16 rounded-md mr-4"
             sizes="xs:64px sm:64px md:64px lg:64px xl:64px"
             width="64"

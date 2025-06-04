@@ -76,7 +76,7 @@ export default defineNuxtConfig({
       xl: 1280,
       xxl: 1536,
       '2xl': 1536
-    }
+    },
   },
   posthog: {
     clientOptions: {

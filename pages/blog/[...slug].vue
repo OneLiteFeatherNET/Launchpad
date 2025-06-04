@@ -12,12 +12,17 @@ definePageMeta({
   layout: 'blog-entry',
 });
 
-// Get the slug from the route path
-const pathParts = route.path.split('/')
-const slug = pathParts.at(3)
+// Get the slug from the route params
+const slug = route.params.slug;
+// If slug is an array, use the first element
+const slugValue = Array.isArray(slug) ? slug[0] : slug;
+console.log('Slug from route params:', slug);
+console.log('Processed slug value:', slugValue);
 
 // Fetch the article using the localized content composable
-const { data: article } = await useLocalizedContent('blog', { slug })
+const { data: article, error } = await useLocalizedContent('blog', { "slug": slugValue });
+console.log('Article data:', article);
+console.log('Error:', error);
 
 // Find translations in other languages if translationKey exists
 const alternateLanguages = ref<{locale: string, url: string}[]>([])
@@ -49,7 +54,7 @@ if (article.value?.translationKey) {
 if (article.value) {
   // Apply any custom SEO metadata from the article
   if (article.value.seo) {
-    useSeoMeta(article.value.seo)
+    useCustomSeoMeta(article.value.seo)
   }
 
   // Generate social media preview image
@@ -106,7 +111,7 @@ const title = computed(() => {
                class="aspect-video object-cover rounded-lg w-[48rem] place-self-center" />
       <div class="p-4">
         <h1 class="text-3xl font-bold text-gray-900 dark:text-white">{{ title }}</h1>
-        <time v-if="article?.pubDate" class="text-sm text-gray-500 dark:text-gray-400"><i18n-d :value="article?.pubDate"></i18n-d></time>
+        <time v-if="article?.pubDate" class="text-sm text-gray-500 dark:text-gray-400"><i18n-d :value="new Date(article?.pubDate)"></i18n-d></time>
 
 
         <ContentRenderer class="text-gray-700 dark:text-gray-300 mt-2" :value="article">

@@ -32,8 +32,8 @@ const props = defineProps({
 const { locale } = useI18n();
 
 // Function to get Minecraft head URL
-const getMinecraftHeadUrl = (username: string) => {
-  return `https://mc-heads.net/avatar/${username}/100`;
+const getMinecraftHeadUrl = (username?: string) => {
+  return username ? `https://mc-heads.net/avatar/${username}/100` : '/images/authors/placeholder.svg';
 };
 
 // Function to get profile image URL with fallbacks
@@ -60,8 +60,8 @@ const getProfileImageUrl = computed(() => {
     return getMinecraftHeadUrl(author.slug);
   }
 
-  // Fallback to a default avatar
-  return '/images/default-avatar.png';
+  // Fallback to a placeholder avatar
+  return '/images/authors/placeholder.svg';
 });
 
 // Determine if we should show the author's role

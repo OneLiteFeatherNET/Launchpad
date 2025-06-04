@@ -22,7 +22,7 @@ const {blogArticle} = defineProps<{
       <div class="p-4">
         <h1 class="text-xl font-bold text-secondary dark:text-secondary">{{ blogArticle.title }}</h1>
         <time class="text-sm text-on-surface-variant dark:text-white">
-          <i18n-d :value="blogArticle.pubDate"></i18n-d>
+          <i18n-d :value="new Date(blogArticle.pubDate)"></i18n-d>
         </time>
         <p class="text-on-surface-variant mt-4 dark:text-white">{{ blogArticle.description }}</p>
       </div>
