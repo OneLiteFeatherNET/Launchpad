@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import NavigationBar from "~/components/base/navigation/NavigationBar.vue";
 import FooterSection from "~/components/base/footer/FooterSection.vue";
+import DevModeDisclaimer from "~/components/common/DevModeDisclaimer.vue";
 const route = useRoute()
 const { t } = useI18n()
 const head = useLocaleHead()
@@ -19,6 +20,7 @@ const title = computed(() => t(route.meta?.title ?? 'TDB'));
     </template>
   </Head>
   <Body class="h-full dark:bg-gray-900">
+    <DevModeDisclaimer />
     <NavigationBar />
     <main class="px-4 mx-auto sm:px-6 lg:px-8 w-full h-full min-h-screen">
       <slot/>

@@ -223,54 +223,54 @@ const authorSlug = computed(() => {
     </div>
 
     <!-- Detailed Mode -->
-    <div v-else-if="displayMode === 'detailed'" class="bg-surface-variant dark:bg-surface-variant-dark rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105">
+    <div v-else-if="displayMode === 'detailed'" class="bg-surface-variant dark:bg-surface-variant-dark rounded-lg shadow-md overflow-hidden transition-transform hover:sm:scale-105">
       <NuxtLinkLocale 
         v-if="hasValidSlug" 
         :to="`/authors/${authorSlug}`" 
         class="block"
         :aria-label="$t('author.view_profile_of', { name: author.name })"
       >
-        <div class="p-6">
-          <div class="flex items-center mb-4">
+        <div class="p-4 sm:p-5 md:p-6">
+          <div class="flex flex-col sm:flex-row sm:items-center mb-3 sm:mb-4">
             <NuxtImg
               :src="getProfileImageUrl"
               :alt="`${author.name}'s profile picture`"
-              :class="[imageSize, 'rounded-md mr-4']"
-              sizes="xs:100px sm:100px md:100px lg:100px xl:100px"
+              :class="[imageSize, 'rounded-md mx-auto sm:mx-0 sm:mr-4 mb-3 sm:mb-0']"
+              sizes="xs:80px sm:100px md:100px lg:100px xl:100px"
               width="100"
               height="100"
               format="webp"
               quality="80"
               loading="lazy"
             />
-            <div>
-              <component :is="headingLevel" class="text-xl font-semibold text-on-surface dark:text-on-surface-dark">
+            <div class="text-center sm:text-left">
+              <component :is="headingLevel" class="text-lg sm:text-xl font-semibold text-on-surface dark:text-on-surface-dark">
                 {{ author.name }}
               </component>
-              <p v-if="author.minecraftUsername" class="text-on-surface-variant dark:text-on-surface-variant-dark">
+              <p v-if="author.minecraftUsername" class="text-sm sm:text-base text-on-surface-variant dark:text-on-surface-variant-dark">
                 {{ author.minecraftUsername }}
               </p>
             </div>
           </div>
 
-          <div v-if="shouldShowQuote" class="mb-4 italic text-on-surface-variant dark:text-on-surface-variant-dark">
+          <div v-if="shouldShowQuote" class="mb-3 sm:mb-4 italic text-sm sm:text-base text-on-surface-variant dark:text-on-surface-variant-dark">
             "{{ author.quote }}"
           </div>
 
-          <div v-if="shouldShowTeamInfo" class="flex flex-wrap gap-2 mt-4">
-            <div v-if="author.joinDate" class="text-sm bg-primary-container dark:bg-primary-dark-container text-on-primary-container dark:text-on-primary-dark-container px-3 py-1 rounded-full">
+          <div v-if="shouldShowTeamInfo" class="flex flex-wrap justify-center sm:justify-start gap-2 mt-3 sm:mt-4">
+            <div v-if="author.joinDate" class="text-xs sm:text-sm bg-primary-container dark:bg-primary-dark-container text-on-primary-container dark:text-on-primary-dark-container px-2 sm:px-3 py-1 rounded-full">
               {{ $t('team.joined') }}: {{ new Date(author.joinDate).toLocaleDateString(locale) }}
             </div>
-            <div v-if="author.onProbation" class="text-sm bg-error-container dark:bg-error-dark-container text-on-error-container dark:text-on-error-dark-container px-3 py-1 rounded-full">
+            <div v-if="author.onProbation" class="text-xs sm:text-sm bg-error-container dark:bg-error-dark-container text-on-error-container dark:text-on-error-dark-container px-2 sm:px-3 py-1 rounded-full">
               {{ $t('team.on_probation') }}
             </div>
           </div>
 
-          <div v-if="showViewProfile" class="flex items-center justify-center mt-4">
-            <span class="text-sm text-on-surface-variant dark:text-on-surface-variant-dark">
+          <div v-if="showViewProfile" class="flex items-center justify-center mt-3 sm:mt-4">
+            <span class="text-xs sm:text-sm text-on-surface-variant dark:text-on-surface-variant-dark">
               {{ $t('projects.view_profile') }}
             </span>
-            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <svg class="w-3 h-3 sm:w-4 sm:h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
             </svg>
           </div>
@@ -278,38 +278,38 @@ const authorSlug = computed(() => {
       </NuxtLinkLocale>
 
       <!-- Non-linked version for authors without slug -->
-      <div v-else class="p-6">
-        <div class="flex items-center mb-4">
+      <div v-else class="p-4 sm:p-5 md:p-6">
+        <div class="flex flex-col sm:flex-row sm:items-center mb-3 sm:mb-4">
           <NuxtImg
             :src="getProfileImageUrl"
             :alt="`${author.name}'s profile picture`"
-            :class="[imageSize, 'rounded-md mr-4']"
-            sizes="xs:100px sm:100px md:100px lg:100px xl:100px"
+            :class="[imageSize, 'rounded-md mx-auto sm:mx-0 sm:mr-4 mb-3 sm:mb-0']"
+            sizes="xs:80px sm:100px md:100px lg:100px xl:100px"
             width="100"
             height="100"
             format="webp"
             quality="80"
             loading="lazy"
           />
-          <div>
-            <component :is="headingLevel" class="text-xl font-semibold text-on-surface dark:text-on-surface-dark">
+          <div class="text-center sm:text-left">
+            <component :is="headingLevel" class="text-lg sm:text-xl font-semibold text-on-surface dark:text-on-surface-dark">
               {{ author.name }}
             </component>
-            <p v-if="author.minecraftUsername" class="text-on-surface-variant dark:text-on-surface-variant-dark">
+            <p v-if="author.minecraftUsername" class="text-sm sm:text-base text-on-surface-variant dark:text-on-surface-variant-dark">
               {{ author.minecraftUsername }}
             </p>
           </div>
         </div>
 
-        <div v-if="shouldShowQuote" class="mb-4 italic text-on-surface-variant dark:text-on-surface-variant-dark">
+        <div v-if="shouldShowQuote" class="mb-3 sm:mb-4 italic text-sm sm:text-base text-on-surface-variant dark:text-on-surface-variant-dark">
           "{{ author.quote }}"
         </div>
 
-        <div v-if="shouldShowTeamInfo" class="flex flex-wrap gap-2 mt-4">
-          <div v-if="author.joinDate" class="text-sm bg-primary-container dark:bg-primary-dark-container text-on-primary-container dark:text-on-primary-dark-container px-3 py-1 rounded-full">
+        <div v-if="shouldShowTeamInfo" class="flex flex-wrap justify-center sm:justify-start gap-2 mt-3 sm:mt-4">
+          <div v-if="author.joinDate" class="text-xs sm:text-sm bg-primary-container dark:bg-primary-dark-container text-on-primary-container dark:text-on-primary-dark-container px-2 sm:px-3 py-1 rounded-full">
             {{ $t('team.joined') }}: {{ new Date(author.joinDate).toLocaleDateString(locale) }}
           </div>
-          <div v-if="author.onProbation" class="text-sm bg-error-container dark:bg-error-dark-container text-on-error-container dark:text-on-error-dark-container px-3 py-1 rounded-full">
+          <div v-if="author.onProbation" class="text-xs sm:text-sm bg-error-container dark:bg-error-dark-container text-on-error-container dark:text-on-error-dark-container px-2 sm:px-3 py-1 rounded-full">
             {{ $t('team.on_probation') }}
           </div>
         </div>

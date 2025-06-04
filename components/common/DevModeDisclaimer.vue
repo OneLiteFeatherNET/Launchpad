@@ -1,0 +1,53 @@
+<script setup lang="ts">
+import { ref, onMounted } from 'vue';
+
+// State to control visibility of the popup
+const isVisible = ref(true);
+
+// Function to close the popup
+const closePopup = () => {
+  isVisible.value = false;
+};
+
+// Check if we're in development mode
+// In Nuxt 3, we can use process.dev which is true in development and false in production
+const isDevelopment = process.dev;
+
+// Auto-hide the popup after 10 seconds
+onMounted(() => {
+  if (isDevelopment) {
+    setTimeout(() => {
+      isVisible.value = false;
+    }, 10000); // 10 seconds
+  }
+});
+</script>
+
+<template>
+  <!-- Only show in development mode and when isVisible is true -->
+  <Teleport to="body">
+    <div v-if="isDevelopment && isVisible" 
+         class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
+      <div class="bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-lg shadow-lg max-w-md w-full mx-2 sm:mx-4 my-2 sm:my-0">
+        <div class="flex justify-between items-start">
+          <h2 class="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">Entwicklungshinweis</h2>
+          <button @click="closePopup" class="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 p-1">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <div class="mt-3 sm:mt-4 text-sm sm:text-base text-gray-700 dark:text-gray-300">
+          <p class="mb-2 sm:mb-4">Diese Seite befindet sich aktuell in der Entwicklung (Work in Progress).</p>
+          <p>Einige Funktionen könnten noch nicht vollständig implementiert sein oder nicht wie erwartet funktionieren.</p>
+        </div>
+        <div class="mt-4 sm:mt-6 flex justify-end">
+          <button @click="closePopup" 
+                  class="px-3 sm:px-4 py-1.5 sm:py-2 text-sm sm:text-base bg-primary text-white rounded hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-opacity-50">
+            Verstanden
+          </button>
+        </div>
+      </div>
+    </div>
+  </Teleport>
+</template>
