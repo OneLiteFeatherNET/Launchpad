@@ -78,24 +78,24 @@ const getStatusColor = (status: string) => {
 <template>
   <div class="bg-white dark:bg-gray-900">
     <!-- Page Header -->
-    <div class="bg-primary-container dark:bg-primary-container-dark py-12 px-4 sm:px-6 lg:px-8">
+    <div class="bg-primary-container dark:bg-primary-container-dark py-8 sm:py-12 px-4 sm:px-6 lg:px-8">
       <div class="max-w-7xl mx-auto">
-        <h1 class="text-4xl font-bold text-on-primary-container dark:text-on-primary-container-dark mb-4">
+        <h1 class="text-3xl sm:text-4xl font-bold text-on-primary-container dark:text-on-primary-container-dark mb-2 sm:mb-4">
           {{ $t('blog.projects.title') }}
         </h1>
-        <p class="text-xl text-on-primary-container dark:text-on-primary-container-dark max-w-4xl">
+        <p class="text-lg sm:text-xl text-on-primary-container dark:text-on-primary-container-dark max-w-4xl">
           {{ $t('blog.projects.description') }}
         </p>
       </div>
     </div>
 
     <!-- Projects Grid -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+      <div class="flex overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-primary scrollbar-track-surface-variant -mx-4 px-4 sm:mx-0 sm:px-0 snap-x snap-mandatory" style="-webkit-overflow-scrolling: touch;">
         <div 
           v-for="(project, index) in projects" 
           :key="index"
-          class="bg-surface dark:bg-surface-dark rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105"
+          class="bg-surface dark:bg-surface-dark rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105 flex-shrink-0 w-[85%] sm:w-[70%] md:w-[calc(50%-1rem)] lg:w-[calc(33.333%-1rem)] mr-4 snap-start"
         >
           <NuxtLinkLocale :to="`/projects/${project.namespace}:${project.key}`" class="block">
             <div class="relative h-48 overflow-hidden">
@@ -104,7 +104,7 @@ const getStatusColor = (status: string) => {
                 :src="project.image" 
                 :alt="project.name"
                 class="w-full h-full object-cover"
-                sizes="xs:100vw sm:100vw md:50vw lg:33vw xl:33vw"
+                sizes="xs:85vw sm:70vw md:50vw lg:33vw xl:33vw"
                 width="800"
                 height="400"
                 format="webp"
@@ -135,7 +135,7 @@ const getStatusColor = (status: string) => {
               </div>
             </div>
 
-            <div class="p-6">
+            <div class="p-4 sm:p-6">
               <h3 class="text-xl font-bold text-on-surface dark:text-on-surface-dark mb-2">{{ project.name }}</h3>
               <p class="text-on-surface-variant dark:text-on-surface-variant-dark mb-4">{{ project.description }}</p>
 
