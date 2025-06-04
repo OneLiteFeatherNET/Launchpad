@@ -7,6 +7,11 @@ headerImage: 'images/blog/cyber-theDigitalArtist-Ethanol-Post.webp'
 headerImageAlt: 'Ethanol Malware Post Bild'
 slug: 'alles-was-man-ueber-ethanol-wissen-sollte'
 translationKey: 'everything-you-need-to-know-about-ethanol'
+namespace: 'blog'
+key: 'everything-you-need-to-know-about-ethanol'
+author:
+  namespace: 'author'
+  key: 'themeinerlp'
 schemaOrg:
   - type: "BlogPosting"
     headline: 'Relativ unbekannt und trotzdem schon jetzt auf mehreren hundert Servern. Genauso wie Fractureiser wird diese von dem User mori0 / Riesenrad beworben, um Server zu “trollen”. Was sich dahinter verbirgt.'

@@ -6,6 +6,11 @@ headerImage: 'images/blog/dev-blog-1.webp'
 headerImageAlt: 'Title Bild für DevBlog #1'
 translationKey: 'dev-blog-1-what-we-using'
 slug: 'dev-blog-1-was-wir-verwenden'
+namespace: 'blog'
+key: 'dev-blog-1'
+author:
+  namespace: 'author'
+  key: 'themeinerlp'
 schemaOrg:
   - type: "BlogPosting"
     headline: "Heute möchte ich aus unserem Team die aktiv verwenden Technologien vorstellen und was die für Vorteile uns bringen. "

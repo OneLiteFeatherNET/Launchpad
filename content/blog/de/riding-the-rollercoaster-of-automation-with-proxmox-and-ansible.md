@@ -6,6 +6,11 @@ headerImage: 'images/blog/riding-the-rollercoaster-of-automation-with-proxmox-an
 headerImageAlt: 'Mit Proxmox und Ansible in eine Achterbahn der Automatisierung Bild'
 slug: 'mit-proxmox-und-ansible-in-eine-achterbahn-der-automatisierung-vserver'
 translationKey: 'proxmox-ansible-automation'
+namespace: 'blog'
+key: 'proxmox-ansible-automation'
+author:
+  namespace: 'author'
+  key: 'themeinerlp'
 schemaOrg:
   - type: "BlogPosting"
     headline: 'In der unendlichen Weite der digitalen Welt hat unser Team, OneLiteFeather, eine kleine aber feine Spielwiese gefunden, auf der wir unsere kreativen und technischen Visionen verwirklichen. Im Zentrum dieser Entdeckungsreise stehen Proxmox und Ansible, zwei Werkzeuge, die uns nicht nur den Rücken freihalten, sondern auch die Türen zu unerforschten Gebieten öffnen.'

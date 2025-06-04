@@ -5,6 +5,11 @@ pubDate: 2024-09-29
 slug: "effizientes-logging-paper-plugins-slf4j-log4j2-grafana-loki"
 headerImage: 'images/blog/effizientes-logging-paper-plugins-slf4j-log4j2-grafana-loki.jpg'
 headerImageAlt: 'Effizientes Logging in Paper-Plugins mit SLF4J und log4j2 Grafana Loki Bild'
+namespace: 'blog'
+key: 'effizientes-logging-paper-plugins'
+author:
+  namespace: 'author'
+  key: 'themeinerlp'
 schemaOrg:
   - type: "BlogPosting"
     headline: "Lerne, wie du mit SLF4J und log4j2 Marker verwendest, um Logs thematisch zu gruppieren und die Auswertung zu erleichtern."

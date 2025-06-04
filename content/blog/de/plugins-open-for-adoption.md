@@ -5,6 +5,11 @@ pubDate: 'Feb 5 2025'
 headerImage: 'images/blog/plugin-adoptation.webp'
 headerImageAlt: 'Wer möchte Plugins adoptieren ? Bild'
 slug: 'wer-moechte-plugins-adoptieren'
+namespace: 'blog'
+key: 'plugins-open-for-adoption'
+author:
+  namespace: 'author'
+  key: 'themeinerlp'
 schemaOrg:
   - type: "BlogPosting"
     headline: 'Adoption von Plugins hilft uns und der Minecraft Community weiterhin sinnvolle Plugins/Software zu warten, dabei helfen wir als Organisation den Maintainer die Richtigen Personen oder Resourcen zu finden.'
