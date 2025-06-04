@@ -20,16 +20,16 @@ defineProps({
       <div class="relative overflow-y-auto pb-8" role="region" :aria-label="$t('timeline.label')" tabindex="0">
         <div class="relative py-5">
           <!-- Vertical line in the middle -->
-          <div class="absolute top-0 bottom-0 left-1/2 md:left-1/2 w-1 bg-secondary dark:bg-secondary dark:opacity-80 transform -translate-x-1/2 md:-translate-x-1/2 left-5 sm:left-5"></div>
+          <div class="absolute top-0 bottom-0 w-1 bg-secondary dark:bg-secondary dark:opacity-80 transform -translate-x-1/2 md:left-1/2 left-10"></div>
 
           <!-- Timeline Items -->
           <div 
             v-for="(item, index) in timeline" 
             :key="index"
             :class="[
-              'p-6 md:p-6 sm:p-3 rounded-lg shadow-md relative overflow-hidden md:w-[45%] w-[calc(100%-40px)] mb-8 md:mb-8 sm:mb-6',
+              'p-6 md:p-6 sm:p-3 rounded-lg shadow-md relative overflow-hidden md:w-[45%] w-[calc(100%-60px)] mb-8 md:mb-8 sm:mb-6',
               index % 2 === 0 ? 'md:mr-auto md:ml-0' : 'md:ml-auto md:mr-0',
-              'ml-10 sm:ml-8',
+              'ml-16 sm:ml-16',
               item.color === 'secondary' 
                 ? 'bg-secondary-container dark:bg-secondary-container-dark' 
                 : `bg-${item.color}-container dark:bg-${item.color}-container-dark`
@@ -41,7 +41,7 @@ defineProps({
               :class="[
                 'absolute w-4 h-4 sm:w-3 sm:h-3 bg-secondary dark:bg-secondary dark:opacity-90 rounded-full top-5 z-10',
                 index % 2 === 0 ? 'md:right-[-38px] md:left-auto' : 'md:left-[-38px] md:right-auto',
-                'left-[-30px] sm:left-[-22px]',
+                'left-[-36px] sm:left-[-36px]',
                 'dark:shadow-[0_0_5px_rgba(255,255,255,0.3)]'
               ]"
             ></div>
@@ -67,6 +67,19 @@ defineProps({
                 <span v-if="item.month" class="ml-2">{{ item.month }}</span>
               </h3>
               <p class="text-on-surface-variant dark:text-gray-300">{{ item.description }}</p>
+
+              <!-- Link to detail page if slug is available -->
+              <div v-if="item.slug" class="mt-3">
+                <NuxtLink 
+                  :to="`/timeline/${item.slug}`"
+                  class="inline-flex items-center text-sm font-medium text-secondary dark:text-secondary hover:underline"
+                >
+                  {{ $t('timeline.read_more') }}
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </NuxtLink>
+              </div>
             </div>
           </div>
         </div>

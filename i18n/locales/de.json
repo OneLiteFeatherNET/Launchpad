@@ -111,7 +111,28 @@
     "go_to_slide": "Zur Folie {number}"
   },
   "timeline": {
-    "label": "Zeitleiste"
+    "label": "Zeitleiste",
+    "title": "Unsere Geschichte",
+    "read_more": "Mehr erfahren",
+    "no_items": "Noch keine Zeitleisten-Einträge verfügbar."
+  },
+  "minecraft": {
+    "servers": "Minecraft Server",
+    "toggle_servers": "Server-Adressen anzeigen",
+    "close": "Schließen",
+    "java": {
+      "title": "Java Edition",
+      "address": "play.onelitefeather.net",
+      "copy": "Java Server-Adresse kopieren",
+      "copied": "In die Zwischenablage kopiert!"
+    },
+    "bedrock": {
+      "title": "Bedrock Edition",
+      "address": "play.onelitefeather.net",
+      "port": "19132",
+      "copy": "Bedrock Server-Adresse kopieren",
+      "copied": "In die Zwischenablage kopiert!"
+    }
   },
   "home": {
     "featured_projects": "Ausgewählte Projekte",
@@ -157,5 +178,8 @@
       "silver": "Silber",
       "bronze": "Bronze"
     }
+  },
+  "common": {
+    "back": "Zurück"
   }
 }

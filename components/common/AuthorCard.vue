@@ -113,7 +113,12 @@ const headingLevel = computed(() => {
 
 // Determine if the author has a valid slug for linking
 const hasValidSlug = computed(() => {
-  return !!props.author.slug;
+  return !!props.author.slug && props.author.slug.trim() !== '';
+});
+
+// Get the author's slug for routing
+const authorSlug = computed(() => {
+  return props.author.slug || '';
 });
 </script>
 
@@ -129,7 +134,7 @@ const hasValidSlug = computed(() => {
     <!-- Compact Mode -->
     <NuxtLinkLocale 
       v-if="displayMode === 'compact' && hasValidSlug" 
-      :to="`/authors/${author.slug}`"
+      :to="`/authors/${authorSlug}`"
       class="flex items-center p-3 bg-surface dark:bg-surface-dark rounded-lg hover:bg-surface-variant dark:hover:bg-surface-variant-dark transition-colors"
       :aria-label="$t('author.view_profile_of', { name: author.name })"
     >
@@ -153,7 +158,7 @@ const hasValidSlug = computed(() => {
     <div v-else-if="displayMode === 'card'" class="bg-surface dark:bg-surface-dark rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105">
       <NuxtLinkLocale 
         v-if="hasValidSlug" 
-        :to="`/authors/${author.slug}`" 
+        :to="`/authors/${authorSlug}`" 
         class="block"
         :aria-label="$t('author.view_profile_of', { name: author.name })"
       >
@@ -221,7 +226,7 @@ const hasValidSlug = computed(() => {
     <div v-else-if="displayMode === 'detailed'" class="bg-surface-variant dark:bg-surface-variant-dark rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105">
       <NuxtLinkLocale 
         v-if="hasValidSlug" 
-        :to="`/authors/${author.slug}`" 
+        :to="`/authors/${authorSlug}`" 
         class="block"
         :aria-label="$t('author.view_profile_of', { name: author.name })"
       >

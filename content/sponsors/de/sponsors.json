@@ -10,7 +10,7 @@
       "description": "Ein führender deutscher Webhosting-Provider und Cloud-Anbieter.",
       "tier": "Platinum",
       "featured": true,
-      "logo": "images/blog/effizientes-logging-paper-plugins-slf4j-log4j2-grafana-loki.jpg",
+      "logo": "/images/sponsors/hetzner.webp",
       "website": "https://www.hetzner.com/",
       "since": "2023",
       "content": "<p>Hetzner ist ein führender deutscher Webhosting-Provider und Cloud-Anbieter, der zuverlässige und kostengünstige Hosting-Lösungen anbietet. Als Platinum-Sponsor unterstützt Hetzner maßgeblich unsere Infrastruktur und ermöglicht es uns, hochwertige Dienste für die Community bereitzustellen.</p>"
@@ -18,10 +18,12 @@
     {
       "name": "Crowdin",
       "slug": "crowdin",
+      "namespace": "sponsor",
+      "key": "crowdin",
       "description": "Eine Lokalisierungsmanagement-Plattform, die es uns ermöglicht, i18n-Fähigkeiten in unsere Projekte einzubauen.",
       "tier": "Gold",
       "featured": true,
-      "logo": "images/blog/effizientes-logging-paper-plugins-slf4j-log4j2-grafana-loki.jpg",
+      "logo": "/images/sponsors/crowdin.webp",
       "website": "https://crowdin.com/",
       "since": "2023",
       "content": "<p>Crowdin ist eine cloudbasierte Lokalisierungsmanagement-Plattform, die den Übersetzungsprozess für unsere Projekte optimiert. Ihre leistungsstarken Tools ermöglichen es uns, Internationalisierungsfunktionen (i18n) zu implementieren und unsere Software für Benutzer auf der ganzen Welt zugänglich zu machen.</p><p>Mit der Unterstützung von Crowdin können wir Übersetzungen effizient verwalten, mit Übersetzern zusammenarbeiten und sicherstellen, dass unsere Projekte in mehreren Sprachen verfügbar sind.</p>",
@@ -33,23 +35,56 @@
       ]
     },
     {
-      "name": "Beispiel Sponsor 2",
-      "slug": "example-sponsor-2",
+      "name": "1Password",
+      "slug": "1password",
       "namespace": "sponsor",
-      "key": "example-sponsor-2",
-      "description": "Eine gemeinschaftsorientierte Organisation, die die Entwicklung von Minecraft-Servern unterstützt.",
+      "key": "1password",
+      "description": "Ein führender Passwort-Manager und Sicherheitslösung für Teams und Einzelpersonen.",
       "tier": "Silver",
       "featured": true,
-      "logo": "images/blog/effizientes-logging-paper-plugins-slf4j-log4j2-grafana-loki.jpg",
-      "website": "https://example-sponsor2.org",
-      "since": "2022",
-      "content": "<p>Beispiel Sponsor 2 ist eine gemeinschaftsorientierte Organisation, die sich der Unterstützung der Entwicklung von Minecraft-Servern widmet. Sie haben maßgeblich dazu beigetragen, Tools und Plugins zu erstellen, die das Minecraft-Erlebnis verbessern.</p><p>Ihre Unterstützung hat es uns ermöglicht, unsere Dienste einem breiteren Publikum anzubieten und die Qualität unserer Projekte zu verbessern.</p>",
-      "projects": [
-        {
-          "namespace": "project",
-          "key": "example-project-2"
-        }
-      ]
+      "logo": "/images/sponsors/1password.webp",
+      "website": "https://1password.com/",
+      "since": "2023",
+      "content": "<p>1Password ist ein führender Passwort-Manager, der sichere Passwort-Verwaltung und digitale Identitätsschutz für Teams und Einzelpersonen bietet. Ihre Unterstützung hilft uns, die Sicherheit unserer Projekte zu verbessern und Best Practices für Passwort-Management zu implementieren.</p>"
+    },
+    {
+      "name": "YourKit",
+      "slug": "yourkit",
+      "namespace": "sponsor",
+      "key": "yourkit",
+      "description": "Anbieter von leistungsstarken Java- und .NET-Profiling-Tools für Entwickler.",
+      "tier": "Silver",
+      "featured": true,
+      "logo": "/images/sponsors/yourkit.webp",
+      "website": "https://www.yourkit.com/",
+      "since": "2023",
+      "content": "<p>YourKit unterstützt uns mit Profiling-Lizenzen für ihre leistungsstarken Java- und .NET-Profiling-Tools. Diese Tools helfen uns, die Leistung unserer Anwendungen zu optimieren und Ressourcenverbrauch zu analysieren, was zu effizienteren und stabileren Projekten führt.</p>"
+    },
+    {
+      "name": "CloudFlare",
+      "slug": "cloudflare",
+      "namespace": "sponsor",
+      "key": "cloudflare",
+      "description": "Ein führendes Unternehmen für Netzwerksicherheit, Leistungsoptimierung und Domain-Services.",
+      "tier": "Bronze",
+      "featured": true,
+      "logo": "/images/sponsors/cloudflare.webp",
+      "website": "https://www.cloudflare.com/",
+      "since": "2023",
+      "content": "<p>CloudFlare unterstützt uns durch die Bereitstellung von Domains und weiteren Diensten. Ihre Lösungen für Netzwerksicherheit und Leistungsoptimierung helfen uns, zuverlässige und schnelle Dienste für unsere Nutzer anzubieten.</p>"
+    },
+    {
+      "name": "GitBook",
+      "slug": "gitbook",
+      "namespace": "sponsor",
+      "key": "gitbook",
+      "description": "Eine moderne Dokumentationsplattform für Teams und Projekte.",
+      "tier": "Bronze",
+      "featured": true,
+      "logo": "/images/sponsors/gitbook.webp",
+      "website": "https://www.gitbook.com/",
+      "since": "2023",
+      "content": "<p>GitBook unterstützt uns mit ihrer modernen Dokumentationsplattform, die es uns ermöglicht, Wiki-Seiten und umfassende Dokumentationen für unsere Projekte zu erstellen. Ihre benutzerfreundlichen Tools helfen uns, qualitativ hochwertige und zugängliche Dokumentationen zu erstellen.</p>"
     }
   ]
 }

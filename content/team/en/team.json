@@ -1,51 +1,45 @@
 {
   "title": "Our Team",
-  "description": "Meet the members of the OneLiteFeather team behind our projects.",
+  "description": "Meet the members of the OneLiteFeather team behind our projects. Last update: May 24, 2025",
   "ranks": [
     {
-      "name": "Administrator",
-      "description": "Responsible for managing and developing the platform.",
+      "name": "Administration",
+      "description": "Responsible for the management and financial direction of the platform.",
       "members": [
         {
-          "name": "Max Mustermann",
-          "slug": "max-mustermann",
-          "minecraftUsername": "MaxAdmin",
-          "quote": "Together we build a great community!",
-          "joinDate": "2020-01-15",
-          "bio": "Max is an experienced administrator with a passion for building communities. He has been with OneLiteFeather since the beginning and has contributed to many of our projects.",
+          "name": "Seelenretterin",
+          "slug": "seelenretterin",
+          "bio": "Financial server owner and part of the administration. Also creates content for various social media to attract new players.",
           "profileImage": ""
         },
         {
-          "name": "Anna Schmidt",
-          "slug": "anna-schmidt",
-          "minecraftUsername": "AnnaAdmin",
-          "quote": "Creativity and collaboration are the keys to success.",
-          "joinDate": "2020-03-20",
-          "bio": "Anna is a creative developer who loves to collaborate with others. She has been instrumental in developing many of our core features.",
+          "name": "TheMeinerLP",
+          "slug": "themeinerlp",
+          "bio": "Financial server owner and part of the administration. Also active in development leadership.",
+          "profileImage": ""
+        },
+        {
+          "name": "theEvilReaper",
+          "slug": "theevilreaper",
+          "bio": "Member of the administration. Also active in development leadership.",
           "profileImage": ""
         }
       ]
     },
     {
-      "name": "Moderator",
-      "description": "Supports the community and ensures a pleasant gaming experience.",
+      "name": "Development Leadership",
+      "description": "Manages servers, supports new developers, and makes technology decisions.",
       "members": [
         {
-          "name": "Tom Weber",
-          "slug": "tom-weber",
-          "minecraftUsername": "TomMod",
-          "quote": "I'm happy to help where I can!",
-          "joinDate": "2021-02-10",
-          "bio": "Tom is a dedicated moderator who is always ready to help community members. He has a keen eye for detail and ensures that our community guidelines are followed.",
+          "name": "TheMeinerLP",
+          "slug": "themeinerlp",
+          "bio": "Manages servers, supports new developers, and helps with questions. Makes decisions about which technologies to implement based on expertise.",
           "profileImage": ""
         },
         {
-          "name": "Lisa Müller",
-          "slug": "lisa-muller",
-          "minecraftUsername": "LisaMod",
-          "joinDate": "2021-05-05",
-          "onProbation": true,
-          "bio": "Lisa is our newest moderator and is currently on probation. She brings fresh perspectives and is learning the ropes of community management.",
+          "name": "theEvilReaper",
+          "slug": "theevilreaper",
+          "bio": "Manages servers, supports new developers, and helps with questions. Makes decisions about which technologies to implement based on expertise.",
           "profileImage": ""
         }
       ]
@@ -55,20 +49,93 @@
       "description": "Creative minds who shape our worlds.",
       "members": [
         {
-          "name": "Jan Becker",
-          "slug": "jan-becker",
-          "minecraftUsername": "JanBuilder",
-          "quote": "Every building tells a story.",
-          "joinDate": "2021-07-15",
-          "bio": "Jan is a talented builder with an eye for detail. He specializes in creating immersive environments that tell a story through architecture and design.",
+          "name": "PegasusFieber17",
+          "slug": "pegasusfieber17",
+          "bio": "Building leadership. Builds villages, redstone circuits, and other projects.",
+          "profileImage": ""
+        }
+      ]
+    },
+    {
+      "name": "Developer",
+      "description": "Develop plugins, AI, RestApis, and other technical solutions.",
+      "members": [
+        {
+          "name": "Joltra",
+          "slug": "joltra",
+          "bio": "Developer at OneLiteFeather. Works on plugins, AI, and RestApis.",
           "profileImage": ""
         },
         {
-          "name": "Sophie Klein",
-          "slug": "sophie-klein",
-          "minecraftUsername": "SophieBuilder",
-          "joinDate": "2022-01-10",
-          "bio": "Sophie is a creative builder who loves to experiment with different styles and techniques. She has contributed to several of our most visually stunning projects.",
+          "name": "Random (3s1)",
+          "slug": "random-3s1",
+          "bio": "Developer at OneLiteFeather. Works on plugins, AI, and RestApis.",
+          "profileImage": ""
+        },
+        {
+          "name": "theShadowsDust",
+          "slug": "theshadowsdust",
+          "bio": "Developer at OneLiteFeather. Works on plugins, AI, and RestApis.",
+          "profileImage": ""
+        }
+      ]
+    },
+    {
+      "name": "System Integrators",
+      "description": "Take care of server infrastructure, security, and automation.",
+      "members": [
+        {
+          "name": "Saynax",
+          "slug": "saynax",
+          "bio": "Server whisperer who ensures servers are protected. Also develops automation solutions (DevOps).",
+          "profileImage": ""
+        },
+        {
+          "name": "mcmdev",
+          "slug": "mcmdev",
+          "bio": "Server whisperer who ensures servers are protected. Also develops automation solutions (DevOps).",
+          "profileImage": ""
+        }
+      ]
+    },
+    {
+      "name": "Marketing",
+      "description": "Creates content for social media and attracts new players.",
+      "members": [
+        {
+          "name": "Seelenretterin",
+          "slug": "seelenretterin",
+          "bio": "Creates content for various social media to attract new players.",
+          "profileImage": ""
+        }
+      ]
+    },
+    {
+      "name": "Writer",
+      "description": "Create concepts for game modes and translate them into features for plugins.",
+      "members": [
+        {
+          "name": "weltspielt",
+          "slug": "weltspielt",
+          "bio": "Takes care of concepts for game modes and ensures that concepts are translated into features for plugins that developers implement in versions.",
+          "profileImage": ""
+        }
+      ]
+    },
+    {
+      "name": "Moderation",
+      "description": "Supports players and ensures rules are followed.",
+      "members": [
+        {
+          "name": "Morelia0815",
+          "slug": "morelia0815",
+          "bio": "Ensures that players are supported and rules are followed. Direct contact for issues related to the Minecraft server.",
+          "profileImage": ""
+        },
+        {
+          "name": "blndr2",
+          "slug": "blndr2",
+          "bio": "Ensures that players are supported and rules are followed. Direct contact for issues related to the Minecraft server.",
           "profileImage": ""
         }
       ]
@@ -76,16 +143,36 @@
   ],
   "rankExplanations": [
     {
-      "rank": "Administrator",
-      "description": "Administrators have full rights on the server and are responsible for the technical infrastructure, development, and strategic decisions."
+      "rank": "Administration",
+      "description": "The administration consists of financial server owners and other members responsible for management and strategic direction."
     },
     {
-      "rank": "Moderator",
-      "description": "Moderators help enforce the rules, resolve conflicts, and ensure a pleasant gaming experience for everyone."
+      "rank": "Development Leadership",
+      "description": "The development leadership manages servers, supports new developers, and makes decisions about which technologies to implement based on expertise."
     },
     {
       "rank": "Builder",
-      "description": "Builders are responsible for designing the game worlds and contribute creative ideas to create unique environments."
+      "description": "Builders work on villages, redstone circuits, and other projects to shape the game world."
+    },
+    {
+      "rank": "Developer",
+      "description": "Developers work on plugins, AI, RestApis, and other technical solutions for the server."
+    },
+    {
+      "rank": "System Integrators",
+      "description": "System integrators take care of server infrastructure, security, and automation (DevOps)."
+    },
+    {
+      "rank": "Marketing",
+      "description": "The marketing team creates content for social media to attract new players."
+    },
+    {
+      "rank": "Writer",
+      "description": "Writers create concepts for game modes and translate them into features for plugins that are implemented by developers."
+    },
+    {
+      "rank": "Moderation",
+      "description": "Moderators support players, ensure rules are followed, and are direct contacts for issues related to the Minecraft server."
     }
   ]
 }

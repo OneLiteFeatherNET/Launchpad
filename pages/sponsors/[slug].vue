@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useSponsorTier } from '~/composables/useSponsorTier';
+import BackButton from '~/components/common/BackButton.vue';
 
 const { locale, t } = useI18n();
 const route = useRoute();
@@ -87,6 +88,9 @@ const { getTierColor } = useSponsorTier();
 
 <template>
   <div v-if="sponsor" class="bg-white dark:bg-gray-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
+      <BackButton />
+    </div>
     <!-- Sponsor Header -->
     <div class="bg-primary-container dark:bg-primary-container-dark py-12 px-4 sm:px-6 lg:px-8">
       <div class="max-w-7xl mx-auto">
@@ -115,20 +119,9 @@ const { getTierColor } = useSponsorTier();
           <!-- Sponsor Info -->
           <div class="w-full md:w-2/3">
             <div class="flex items-center mb-4">
-              <h1 class="text-4xl font-bold text-on-primary-container dark:text-on-primary-container-dark mr-4">
+              <h1 class="text-4xl font-bold text-on-primary-container dark:text-on-primary-container-dark">
                 {{ sponsor.name }}
               </h1>
-              <!-- Tier badge -->
-              <div 
-                v-if="sponsor.tier"
-                :class="[
-                  'px-3 py-1 rounded-full text-sm font-medium',
-                  `bg-${getTierColor(sponsor.tier)}-container dark:bg-${getTierColor(sponsor.tier)}-container-dark`,
-                  `text-on-${getTierColor(sponsor.tier)}-container dark:text-on-${getTierColor(sponsor.tier)}-container-dark`
-                ]"
-              >
-                {{ sponsor.tier }}
-              </div>
             </div>
 
             <p class="text-xl text-on-primary-container dark:text-on-primary-container-dark mb-6">
@@ -146,8 +139,20 @@ const { getTierColor } = useSponsorTier();
             </div>
 
             <!-- Since date -->
-            <div v-if="sponsor.since" class="text-on-primary-container dark:text-on-primary-container-dark">
+            <div v-if="sponsor.since" class="text-on-primary-container dark:text-on-primary-container-dark mb-4">
               {{ $t('sponsors.sponsor_since') }}: {{ sponsor.since }}
+            </div>
+
+            <!-- Tier badge -->
+            <div 
+              v-if="sponsor.tier"
+              :class="[
+                'inline-block px-3 py-1 rounded-full text-sm font-medium',
+                `bg-${getTierColor(sponsor.tier)} dark:bg-${getTierColor(sponsor.tier)}`,
+                `text-white dark:text-white`
+              ]"
+            >
+              {{ sponsor.tier }}
             </div>
           </div>
         </div>

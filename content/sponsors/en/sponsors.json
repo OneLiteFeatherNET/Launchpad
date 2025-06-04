@@ -35,23 +35,56 @@
       ]
     },
     {
-      "name": "Example Sponsor 2",
-      "slug": "example-sponsor-2",
+      "name": "1Password",
+      "slug": "1password",
       "namespace": "sponsor",
-      "key": "example-sponsor-2",
-      "description": "A community-focused organization supporting Minecraft server development.",
+      "key": "1password",
+      "description": "A leading password manager and security solution for teams and individuals.",
       "tier": "Silver",
       "featured": true,
-      "logo": "/images/sponsors/example-sponsor-2.webp",
-      "website": "https://example-sponsor2.org",
-      "since": "2022",
-      "content": "<p>Example Sponsor 2 is a community-focused organization dedicated to supporting Minecraft server development. They have been instrumental in helping us create tools and plugins that enhance the Minecraft experience.</p><p>Their support has enabled us to offer our services to a wider audience and improve the quality of our projects.</p>",
-      "projects": [
-        {
-          "namespace": "project",
-          "key": "example-project-2"
-        }
-      ]
+      "logo": "/images/sponsors/1password.webp",
+      "website": "https://1password.com/",
+      "since": "2023",
+      "content": "<p>1Password is a leading password manager that provides secure password management and digital identity protection for teams and individuals. Their support helps us improve the security of our projects and implement best practices for password management.</p>"
+    },
+    {
+      "name": "YourKit",
+      "slug": "yourkit",
+      "namespace": "sponsor",
+      "key": "yourkit",
+      "description": "Provider of powerful Java and .NET profiling tools for developers.",
+      "tier": "Silver",
+      "featured": true,
+      "logo": "/images/sponsors/yourkit.webp",
+      "website": "https://www.yourkit.com/",
+      "since": "2023",
+      "content": "<p>YourKit supports us with profiling licenses for their powerful Java and .NET profiling tools. These tools help us optimize the performance of our applications and analyze resource usage, leading to more efficient and stable projects.</p>"
+    },
+    {
+      "name": "CloudFlare",
+      "slug": "cloudflare",
+      "namespace": "sponsor",
+      "key": "cloudflare",
+      "description": "A leading company for network security, performance optimization, and domain services.",
+      "tier": "Bronze",
+      "featured": true,
+      "logo": "/images/sponsors/cloudflare.webp",
+      "website": "https://www.cloudflare.com/",
+      "since": "2023",
+      "content": "<p>CloudFlare supports us by providing domains and additional services. Their solutions for network security and performance optimization help us deliver reliable and fast services to our users.</p>"
+    },
+    {
+      "name": "GitBook",
+      "slug": "gitbook",
+      "namespace": "sponsor",
+      "key": "gitbook",
+      "description": "A modern documentation platform for teams and projects.",
+      "tier": "Bronze",
+      "featured": true,
+      "logo": "/images/sponsors/gitbook.webp",
+      "website": "https://www.gitbook.com/",
+      "since": "2023",
+      "content": "<p>GitBook supports us with their modern documentation platform that allows us to create wiki pages and comprehensive documentation for our projects. Their user-friendly tools help us create high-quality and accessible documentation.</p>"
     }
   ]
 }

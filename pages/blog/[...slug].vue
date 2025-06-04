@@ -2,6 +2,7 @@
 import {definePageMeta} from "#imports";
 import SocialMediaShare from "~/components/blog/SocialMediaShare.vue";
 import BlogAuthors from "~/components/blog/BlogAuthors.vue";
+import BackButton from "~/components/common/BackButton.vue";
 const { locale, t, locales } = useI18n()
 const route = useRoute()
 const config = useRuntimeConfig()
@@ -98,6 +99,7 @@ const title = computed(() => {
 
 <template>
   <div class="container mx-auto py-4">
+    <BackButton />
     <article v-if="article" class="bg-white dark:bg-gray-800 rounded-xxl shadow-md overflow-hidden">
       <NuxtImg v-if="article?.headerImage"
                :src="article?.headerImage"

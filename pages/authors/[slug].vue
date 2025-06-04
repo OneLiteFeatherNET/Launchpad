@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useI18n } from 'vue-i18n';
+import BackButton from '~/components/common/BackButton.vue';
 
 const { t, locale } = useI18n();
 const route = useRoute();
@@ -108,6 +109,7 @@ if (!author.value) {
 
 <template>
   <div v-if="author" class="container mx-auto px-4 py-12">
+    <BackButton />
     <div class="max-w-5xl mx-auto">
       <!-- Author Header -->
       <div class="bg-surface dark:bg-surface-dark rounded-lg shadow-md p-6 mb-8">

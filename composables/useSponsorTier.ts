@@ -6,7 +6,7 @@ export type SponsorTier = z.infer<typeof SponsorTierEnum>;
 
 // Function to get tier color
 export const useSponsorTier = () => {
-  // Tier color mapping
+  // Tier color mapping with Material Design 3 colors in descending order
   const tierColorMap = {
     'Platinum': 'primary',
     'Gold': 'warning',

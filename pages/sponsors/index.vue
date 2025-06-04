@@ -37,12 +37,12 @@ const { data: sponsorsData } = await useAsyncData('sponsors-list', () => {
 // Get all sponsors
 const sponsors = computed(() => sponsorsData.value?.sponsors || []);
 
-// Function to get tier color
+// Function to get tier color with Material Design 3 colors in descending order
 const tierColorMap = {
-  'Gold': 'warning',
-  'Silver': 'secondary',
-  'Bronze': 'tertiary',
-  'Platinum': 'primary'
+  'Platinum': 'secondary-cyan-bg',
+  'Gold': 'secondary-orange-bg',
+  'Silver': 'secondary-blue-bg',
+  'Bronze': 'secondary-purple-bg'
 };
 
 // Get tier color
@@ -91,17 +91,6 @@ const getTierColor = (tier: string) => {
                 <span class="text-2xl font-bold text-on-primary-container dark:text-on-primary-container-dark">{{ sponsor.name }}</span>
               </div>
 
-              <!-- Tier badge -->
-              <div 
-                v-if="sponsor.tier"
-                :class="[
-                  'absolute top-4 right-4 px-3 py-1 rounded-full text-sm font-medium',
-                  `bg-${getTierColor(sponsor.tier)}-container dark:bg-${getTierColor(sponsor.tier)}-container-dark`,
-                  `text-on-${getTierColor(sponsor.tier)}-container dark:text-on-${getTierColor(sponsor.tier)}-container-dark`
-                ]"
-              >
-                {{ sponsor.tier }}
-              </div>
             </div>
 
             <div class="p-6">
@@ -119,8 +108,20 @@ const getTierColor = (tier: string) => {
               </div>
 
               <!-- Since date -->
-              <div v-if="sponsor.since" class="mt-4 text-sm text-on-surface-variant dark:text-on-surface-variant-dark">
+              <div v-if="sponsor.since" class="mt-4 text-sm text-on-surface-variant dark:text-on-surface-variant-dark mb-4">
                 {{ $t('sponsors.sponsor_since') }}: {{ sponsor.since }}
+              </div>
+
+              <!-- Tier badge -->
+              <div 
+                v-if="sponsor.tier"
+                :class="[
+                  'inline-block mt-4 px-3 py-1 rounded-full text-sm font-medium',
+                  `bg-${getTierColor(sponsor.tier)} dark:bg-${getTierColor(sponsor.tier)}`,
+                  `text-white dark:text-white`
+                ]"
+              >
+                {{ sponsor.tier }}
               </div>
             </div>
           </NuxtLinkLocale>

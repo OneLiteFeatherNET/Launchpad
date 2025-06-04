@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import HomeCarousel from '~/components/home/HomeCarousel.vue';
+import HomeMinecraftServers from '~/components/home/HomeMinecraftServers.vue';
 import HomeTimeline from '~/components/home/HomeTimeline.vue';
 import HomeActivities from '~/components/home/HomeActivities.vue';
 import HomeFeaturedProjects from '~/components/home/HomeFeaturedProjects.vue';
@@ -65,6 +66,9 @@ const featuredSponsors = computed(() => {
   <div>
     <!-- Carousel Component -->
     <HomeCarousel :slides="slides" />
+
+    <!-- Minecraft Servers Component -->
+    <HomeMinecraftServers />
 
     <!-- Timeline Component -->
     <HomeTimeline :title="historyTitle" :timeline="timeline" />

@@ -147,6 +147,20 @@ const timelineItemSchema = z.object({
   year: z.string(),
   color: z.string(),
   description: commonFields.description,
+  slug: commonFields.slug.optional(), // Optional slug for linking to detail pages
+});
+
+// Timeline detail page schema
+const timelineDetailSchema = z.object({
+  title: commonFields.title,
+  year: z.string(),
+  month: z.string().optional(),
+  color: z.string(),
+  description: commonFields.description,
+  slug: commonFields.slug,
+  content: z.string().optional(),
+  image: commonFields.image.optional(),
+  translationKey: z.string().optional(),
 });
 
 const historySchema = z.object({
@@ -262,7 +276,8 @@ const createLocalizedCollections = (
         'blog': blogSchema,
         'authors': authorSchema,
         'sponsors': sponsorsSchema,
-        'projects': z.object({ projects: z.array(projectSchema) })
+        'projects': z.object({ projects: z.array(projectSchema) }),
+        'timeline': timelineDetailSchema
       }
       return schemaMap[baseName]
     },
@@ -306,8 +321,9 @@ export default defineContentConfig({
     'blog',
     'projects',
     'authors',
-    'sponsors'
+    'sponsors',
+    'timeline'
   ], ['de', 'en'], {
-    getType: (baseName) => baseName === 'blog' ? 'page' : 'data'
+    getType: (baseName) => ['blog', 'timeline'].includes(baseName) ? 'page' : 'data'
   })
 })
