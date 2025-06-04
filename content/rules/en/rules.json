@@ -1,0 +1,56 @@
+{
+  "title": "Code of Conduct",
+  "description": "The following Code of Conduct constitutes the binding foundation for all interactions within the OneLiteFeather Community. These provisions shall be applied in full and without exception on all OneLiteFeather platforms - including, but not limited to, our Minecraft servers, Discord servers, and all other community areas. Acknowledgment and strict adherence to these provisions is mandatory for all members. Violations may result in warnings, temporary or permanent exclusion, depending on severity.",
+  "generalRules": [
+    {
+      "title": "§1 Respect and Conduct",
+      "description": "1.1 Every member of the community is obligated to treat all other members with appropriate respect.\n1.2 Any form of insults, discrimination based on origin, gender, sexual orientation, religion, or other personal characteristics, as well as harassment, is expressly prohibited.\n1.3 Violation will result, depending on severity, in a warning or temporary to permanent exclusion from the community."
+    },
+    {
+      "title": "§2 Authority Directives",
+      "description": "2.1 Instructions from administrators and moderators must be followed immediately and completely.\n2.2 Team directives are non-negotiable and must be complied with promptly.\n2.3 Complaints about directives must be submitted exclusively through the designated channels and not discussed publicly."
+    },
+    {
+      "title": "§3 Communication Behavior",
+      "description": "3.1 Any form of spam is strictly prohibited.\n3.2 Spam specifically includes: repeated sending of identical or similar messages, excessive use of capital letters, emojis or special characters, as well as sending irrelevant or disruptive content.\n3.3 Circumvention of communication filters or restrictions is prohibited and will result in immediate sanctions."
+    }
+  ],
+  "sections": [
+    {
+      "title": "§4 Minecraft Server Provisions",
+      "description": "The following provisions apply additionally and specifically to all OneLiteFeather Minecraft servers:",
+      "rules": [
+        {
+          "title": "§4.1 Protection of Property",
+          "description": "4.1.1 The destruction, damage, misappropriation, or unauthorized modification of buildings, items, or other possessions of other players is expressly prohibited.\n4.1.2 Any violation of this provision will result in an immediate sanction, ranging from temporary exclusion to permanent ban.\n4.1.3 In the event of damage, restoration or compensation may additionally be ordered."
+        },
+        {
+          "title": "§4.2 Game Integrity",
+          "description": "4.2.1 The use of hacks, cheats, mods with unfair advantage, or other unauthorized aids is strictly prohibited.\n4.2.2 This includes in particular: X-Ray, flyhacks, speedhacks, autoclickers (over 20 CPS), killaura, and comparable modifications.\n4.2.3 If a rule violation is suspected, the team may request evidence or ask the player for a screenshare. Refusal is considered an admission of guilt."
+        },
+        {
+          "title": "§4.3 Server Resources",
+          "description": "4.3.1 Excessive use of server resources is prohibited.\n4.3.2 This includes in particular: redstone circuits with excessive tick consumption, high-density entity farms, automated systems without shutdown mechanisms.\n4.3.3 The team reserves the right to remove corresponding constructions without warning if they affect server performance."
+        }
+      ]
+    },
+    {
+      "title": "§5 Discord Provisions",
+      "description": "The following provisions apply additionally and specifically to the OneLiteFeather Discord server:",
+      "rules": [
+        {
+          "title": "§5.1 Channel Restrictions",
+          "description": "5.1.1 Communication in the respective channels must be strictly limited to the topics specified in the channel description.\n5.1.2 Off-topic posts will be removed without warning.\n5.1.3 Repeated violations will result in progressive sanctions up to exclusion."
+        },
+        {
+          "title": "§5.2 Voice Chat Regulation",
+          "description": "5.2.1 Excessively loud, disruptive, or inappropriate noises and sound effects are expressly prohibited in voice chats.\n5.2.2 The use of soundboards, voice changers, or similar tools is only permitted with the express permission of a moderator.\n5.2.3 Recording conversations is only allowed with the prior consent of all persons involved."
+        },
+        {
+          "title": "§5.3 Advertising Regulation",
+          "description": "5.3.1 Any form of advertising for external services, servers, products, or content is permitted exclusively in the designated channels and only after prior written approval by an administrator.\n5.3.2 Unauthorized advertising, including direct messages to community members, will result in immediate exclusion.\n5.3.3 The decision on the admissibility of advertising content lies solely at the discretion of the administration team."
+        }
+      ]
+    }
+  ]
+}
