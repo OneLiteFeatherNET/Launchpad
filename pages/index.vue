@@ -5,6 +5,7 @@ import HomeTimeline from '~/components/home/HomeTimeline.vue';
 import HomeActivities from '~/components/home/HomeActivities.vue';
 import HomeFeaturedProjects from '~/components/home/HomeFeaturedProjects.vue';
 import HomeSponsors from '~/components/home/HomeSponsors.vue';
+import HomeFeaturedContent from '~/components/home/HomeFeaturedContent.vue';
 
 const { locale, t } = useI18n();
 const isUnmounted = ref(false);
@@ -45,6 +46,43 @@ const { data: activitiesData } = await useLocalizedContent('activities');
 const { data: projectsData } = await useLocalizedContent('projects');
 const { data: sponsorsData } = await useLocalizedContent('sponsors');
 
+// Fetch the latest blog posts
+const { fetchBlogPosts } = useBlog();
+const { data: blogPosts } = await fetchBlogPosts(3);
+
+// Fetch the latest tutorials
+const { data: tutorials } = await useAsyncData('home-tutorials', () => {
+  return queryCollection(`tutorials_${locale.value}`).order('pubDate', 'DESC').limit(3).all();
+});
+
+// Combine and sort blog posts and tutorials by date
+const featuredContent = computed(() => {
+  if (isUnmounted.value) return [];
+
+  const posts = [];
+
+  // Add blog posts
+  if (blogPosts.value) {
+    posts.push(...blogPosts.value.map(post => ({
+      ...post,
+      type: 'blog'
+    })));
+  }
+
+  // Add tutorials
+  if (tutorials.value) {
+    posts.push(...tutorials.value.map(tutorial => ({
+      ...tutorial,
+      type: 'tutorial'
+    })));
+  }
+
+  // Sort by publication date (newest first) and limit to 3
+  return posts
+    .sort((a, b) => new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime())
+    .slice(0, 3);
+});
+
 const slides = computed(() => isUnmounted.value ? [] : carouselData.value?.slides || []);
 const historyTitle = computed(() => isUnmounted.value ? '' : historyData.value?.title || '');
 const timeline = computed(() => isUnmounted.value ? [] : historyData.value?.timeline || []);
@@ -66,6 +104,14 @@ const featuredSponsors = computed(() => {
   <div>
     <!-- Carousel Component -->
     <HomeCarousel :slides="slides" />
+
+    <!-- Featured Content Component -->
+    <HomeFeaturedContent 
+      v-if="featuredContent.length > 0"
+      :title="$t('home.featured_content')"
+      :featuredContent="featuredContent"
+      :locale="locale"
+    />
 
     <!-- Minecraft Servers Component -->
     <HomeMinecraftServers />
