@@ -3,45 +3,53 @@
   "description": "Entdecken Sie die Projekte von OneLiteFeather, an denen wir arbeiten.",
   "projects": [
     {
-      "name": "Beispielprojekt 1",
-      "slug": "beispielprojekt-1",
+      "name": "AntiRedstoneClock-Remastered",
+      "slug": "antiredstoneclock-remastered",
       "namespace": "project",
-      "key": "example-project-1",
-      "description": "Ein Beispielprojekt zur Demonstration der Projektfunktionalität.",
-      "status": "Aktiv",
-      "github": "https://github.com/onelitefeather/beispielprojekt-1",
+      "key": "antiredstoneclock-remastered",
+      "description": "Ein Plugin zum Erkennen von Redstone-Uhren, Informieren von Mitarbeitern oder der Konsole über aktive Uhren und optional zum Zerstören/Deaktivieren der Redstone-Uhren, damit Ihr Server Leistung für andere Dinge sparen kann.",
+      "status": "Entwicklung",
+      "github": "https://github.com/onelitefeather/AntiRedstoneClock-Remastered",
       "featured": true,
-      "image": "/images/blog/dev-blog-1.webp",
+      "image": "/images/projects/antiredstoneclock-remastered.webp",
       "authors": [
         {
           "namespace": "author",
-          "key": "max-mustermann"
+          "key": "themeinerlp",
+          "slug": "phillipp-glanz"
         },
         {
           "namespace": "author",
-          "key": "anna-schmidt"
+          "key": "seelenretterin",
+          "slug": "seelenretterin"
+        },
+        {
+          "namespace": "author",
+          "key": "theevilreaper",
+          "slug": "theevilreaper"
         }
       ],
       "features": [
-        "Feature 1: Beschreibung des ersten Features",
-        "Feature 2: Beschreibung des zweiten Features",
-        "Feature 3: Beschreibung des dritten Features"
+        "1.19+ Unterstützung",
+        "Java 21 Unterstützung",
+        "Plotsquared v6 und v7 Unterstützung",
+        "WorldGuard Unterstützung",
+        "1.19, 1.20, 1.21 bereit",
+        "Uhrenerkennung",
+        "Sculk Unterstützung",
+        "Konfigurationsmigration (bald)",
+        "Verhindert doppeltes Laden von Anti-Redstoneclock-Plugins"
       ],
       "roadmap": [
         {
-          "title": "Phase 1",
-          "description": "Beschreibung der ersten Phase",
-          "status": "Abgeschlossen"
+          "title": "Version 1.0",
+          "description": "Erste stabile Version mit grundlegenden Funktionen",
+          "status": "Archiviert"
         },
         {
-          "title": "Phase 2",
-          "description": "Beschreibung der zweiten Phase",
-          "status": "In Bearbeitung"
-        },
-        {
-          "title": "Phase 3",
-          "description": "Beschreibung der dritten Phase",
-          "status": "Geplant"
+          "title": "Version 2.0",
+          "description": "Erweiterte Funktionen und Verbesserungen",
+          "status": "Entwicklung"
         }
       ],
       "bstats": {
@@ -56,14 +64,25 @@
       "namespace": "project",
       "key": "example-project-2",
       "description": "Ein weiteres Beispielprojekt zur Demonstration der Projektfunktionalität.",
-      "status": "In Entwicklung",
+      "status": "Prototypen",
       "github": "https://github.com/onelitefeather/beispielprojekt-2",
       "featured": false,
       "image": "/images/blog/dev-blog-1.webp",
       "authors": [
         {
           "namespace": "author",
-          "key": "tom-weber"
+          "key": "themeinerlp",
+          "slug": "phillipp-glanz"
+        },
+        {
+          "namespace": "author",
+          "key": "seelenretterin",
+          "slug": "seelenretterin"
+        },
+        {
+          "namespace": "author",
+          "key": "theevilreaper",
+          "slug": "theevilreaper"
         }
       ],
       "features": [
@@ -74,12 +93,12 @@
         {
           "title": "Phase 1",
           "description": "Beschreibung der ersten Phase",
-          "status": "In Bearbeitung"
+          "status": "Entwicklung"
         },
         {
           "title": "Phase 2",
           "description": "Beschreibung der zweiten Phase",
-          "status": "Geplant"
+          "status": "Evaluierung"
         }
       ]
     }

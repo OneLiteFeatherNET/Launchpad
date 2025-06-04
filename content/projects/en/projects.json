@@ -3,45 +3,53 @@
   "description": "Discover the projects OneLiteFeather is working on.",
   "projects": [
     {
-      "name": "Example Project 1",
-      "slug": "example-project-1",
+      "name": "AntiRedstoneClock-Remastered",
+      "slug": "antiredstoneclock-remastered",
       "namespace": "project",
-      "key": "example-project-1",
-      "description": "An example project to demonstrate the project functionality.",
-      "status": "Active",
-      "github": "https://github.com/onelitefeather/example-project-1",
+      "key": "antiredstoneclock-remastered",
+      "description": "A plugin to detect redstone clocks, inform staff or console about active ones and optionally destroy/disable the redstone clocks so your server can save performance for something else.",
+      "status": "Development",
+      "github": "https://github.com/onelitefeather/AntiRedstoneClock-Remastered",
       "featured": true,
-      "image": "/images/projects/example-project-1.webp",
+      "image": "/images/projects/antiredstoneclock-remastered.webp",
       "authors": [
         {
           "namespace": "author",
-          "key": "max-mustermann"
+          "key": "themeinerlp",
+          "slug": "phillipp-glanz"
         },
         {
           "namespace": "author",
-          "key": "anna-schmidt"
+          "key": "seelenretterin",
+          "slug": "seelenretterin"
+        },
+        {
+          "namespace": "author",
+          "key": "theevilreaper",
+          "slug": "theevilreaper"
         }
       ],
       "features": [
-        "Feature 1: Description of the first feature",
-        "Feature 2: Description of the second feature",
-        "Feature 3: Description of the third feature"
+        "1.19+ Support",
+        "Java 21 only support",
+        "Plotsquared v6 and v7 support",
+        "WorldGuard Support",
+        "1.19, 1.20, 1.21 ready",
+        "Clock detection",
+        "Sculk support",
+        "Config Migration (Soon)",
+        "Prevent duplicated loading of anti-redstoneclock plugins"
       ],
       "roadmap": [
         {
-          "title": "Phase 1",
-          "description": "Description of the first phase",
-          "status": "Completed"
+          "title": "Version 1.0",
+          "description": "First stable version with basic features",
+          "status": "Archived"
         },
         {
-          "title": "Phase 2",
-          "description": "Description of the second phase",
-          "status": "In Progress"
-        },
-        {
-          "title": "Phase 3",
-          "description": "Description of the third phase",
-          "status": "Planned"
+          "title": "Version 2.0",
+          "description": "Enhanced features and improvements",
+          "status": "Development"
         }
       ],
       "bstats": {
@@ -56,14 +64,25 @@
       "namespace": "project",
       "key": "example-project-2",
       "description": "Another example project to demonstrate the project functionality.",
-      "status": "In Development",
+      "status": "Prototype",
       "github": "https://github.com/onelitefeather/example-project-2",
       "featured": false,
       "image": "/images/projects/example-project-2.webp",
       "authors": [
         {
           "namespace": "author",
-          "key": "tom-weber"
+          "key": "themeinerlp",
+          "slug": "phillipp-glanz"
+        },
+        {
+          "namespace": "author",
+          "key": "seelenretterin",
+          "slug": "seelenretterin"
+        },
+        {
+          "namespace": "author",
+          "key": "theevilreaper",
+          "slug": "theevilreaper"
         }
       ],
       "features": [
@@ -74,12 +93,12 @@
         {
           "title": "Phase 1",
           "description": "Description of the first phase",
-          "status": "In Progress"
+          "status": "Development"
         },
         {
           "title": "Phase 2",
           "description": "Description of the second phase",
-          "status": "Planned"
+          "status": "Evaluation"
         }
       ]
     }
