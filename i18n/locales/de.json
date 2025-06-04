@@ -2,17 +2,28 @@
   "navigation": {
     "overview": "Übersicht",
     "blog": "Blog",
+    "tutorials": "Tutorials",
     "team": "Team",
     "projects": "Projekte",
     "sponsors": "Sponsoren",
     "authors": "Autoren",
+    "rules": "Code of Conduct",
     "toggle_mobile_menu": "Mobile Menü umschalten",
-    "select_language": "Sprache auswählen"
+    "select_language": "Sprache auswählen",
+    "content": "Inhalt",
+    "about": "Über uns",
+    "resources": "Ressourcen"
   },
   "layouts": {
     "title": "Titel"
   },
   "TDB": "Zu erledigen",
+  "tutorials": {
+    "overview": {
+      "title": "Tutorials",
+      "description": "Entdecke hilfreiche Tutorials vom OneLiteFeather-Team zu verschiedenen Themen rund um Minecraft, Entwicklung und mehr."
+    }
+  },
   "blog": {
     "overview": {
       "title": "Übersicht",
@@ -21,6 +32,10 @@
     "home": {
       "title": "OneLiteFeather Network",
       "description": "OneLiteFeather ist ein Minecraft-Netzwerk, das sich auf die Entwicklung von Tools konzentriert, die mit anderen Servern geteilt werden."
+    },
+    "rules": {
+      "title": "Code of Conduct",
+      "description": "Hier findest du unseren Code of Conduct, der überall bei OneLiteFeather gilt."
     },
     "team": {
       "title": "Unser Team",
@@ -70,6 +85,7 @@
     "imprint": "Impressum",
     "privacy_policy": "Datenschutz",
     "authors": "Autoren",
+    "rules": "Code of Conduct",
     "all_rights_reserved": "Alle Rechte vorbehalten",
     "made_with_love": "Mit Liebe erstellt vom OneLiteFeather Team und Mitwirkenden",
     "love": "Liebe"
@@ -114,7 +130,10 @@
     "label": "Zeitleiste",
     "title": "Unsere Geschichte",
     "read_more": "Mehr erfahren",
-    "no_items": "Noch keine Zeitleisten-Einträge verfügbar."
+    "no_items": "Noch keine Zeitleisten-Einträge verfügbar.",
+    "view_all": "Vollständige Zeitleiste anzeigen",
+    "view_all_year": "Vollständige Zeitleiste",
+    "view_all_description": "Klicken Sie hier, um unsere komplette Geschichte anzuzeigen"
   },
   "minecraft": {
     "servers": "Minecraft Server",
@@ -135,8 +154,8 @@
     }
   },
   "home": {
+    "featured_content": "Neueste Beiträge",
     "featured_projects": "Ausgewählte Projekte",
-    "view_all_projects": "Alle Projekte anzeigen",
     "sponsors": "Unsere Sponsoren",
     "view_all_sponsors": "Alle Sponsoren anzeigen"
   },
@@ -159,12 +178,12 @@
     "current_status": "Aktueller Status",
     "affiliate_link": "Affiliate-Link",
     "status": {
-      "active": "Aktiv",
-      "completed": "Abgeschlossen",
-      "in_development": "In Entwicklung",
-      "in_progress": "In Bearbeitung",
-      "planned": "Geplant",
-      "paused": "Pausiert"
+      "evaluation": "Evaluierung",
+      "prototype": "Prototypen",
+      "development": "Entwicklung",
+      "maintenance": "Wartung",
+      "archived": "Archiviert",
+      "abandoned": "Aufgegeben"
     },
     "status_indicator": "Status-Indikator für"
   },
@@ -177,6 +196,13 @@
       "gold": "Gold",
       "silver": "Silber",
       "bronze": "Bronze"
+    },
+    "tier_explanations": "Tier-Erklärungen",
+    "tier_description": {
+      "platinum": "Platin-Sponsoren bieten die höchste Unterstützungsstufe und erhalten maximale Sichtbarkeit und exklusive Vorteile.",
+      "gold": "Gold-Sponsoren bieten eine starke Unterstützung und erhalten hervorgehobene Platzierung und besondere Anerkennung.",
+      "silver": "Silber-Sponsoren bieten wertvolle Unterstützung und werden auf unserer Website und in Materialien anerkannt.",
+      "bronze": "Bronze-Sponsoren bieten grundlegende Unterstützung und werden als geschätzte Unterstützer unserer Projekte anerkannt."
     }
   },
   "common": {

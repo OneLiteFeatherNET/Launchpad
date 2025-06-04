@@ -2,17 +2,28 @@
   "navigation": {
     "overview": "Overview",
     "blog": "Blog",
+    "tutorials": "Tutorials",
     "team": "Team",
     "projects": "Projects",
     "sponsors": "Sponsors",
     "authors": "Authors",
+    "rules": "Code of Conduct",
     "toggle_mobile_menu": "Toggle mobile menu",
-    "select_language": "Select language"
+    "select_language": "Select language",
+    "content": "Content",
+    "about": "About",
+    "resources": "Resources"
   },
   "layouts": {
     "title": "Title"
   },
   "TDB": "To Do",
+  "tutorials": {
+    "overview": {
+      "title": "Tutorials",
+      "description": "Discover helpful tutorials from the OneLiteFeather team on various topics related to Minecraft, development, and more."
+    }
+  },
   "blog": {
     "overview": {
       "title": "Overview",
@@ -21,6 +32,10 @@
     "home": {
       "title": "OneLiteFeather Network",
       "description": "OneLiteFeather is a Minecraft Network focusing on the development of tools that are shared with other servers."
+    },
+    "rules": {
+      "title": "Code of Conduct",
+      "description": "Here you can find our Code of Conduct that applies everywhere at OneLiteFeather."
     },
     "team": {
       "title": "Our Team",
@@ -70,6 +85,7 @@
     "imprint": "Imprint",
     "privacy_policy": "Privacy Policy",
     "authors": "Authors",
+    "rules": "Code of Conduct",
     "all_rights_reserved": "All rights reserved",
     "made_with_love": "Made with love by the OneLiteFeather Team and contributors",
     "love": "love"
@@ -114,7 +130,10 @@
     "label": "Timeline",
     "title": "Our History Timeline",
     "read_more": "Read more",
-    "no_items": "No timeline items available yet."
+    "no_items": "No timeline items available yet.",
+    "view_all": "View full timeline",
+    "view_all_year": "Full Timeline",
+    "view_all_description": "Click here to view our complete history timeline"
   },
   "minecraft": {
     "servers": "Minecraft Servers",
@@ -135,8 +154,8 @@
     }
   },
   "home": {
+    "featured_content": "Latest Content",
     "featured_projects": "Featured Projects",
-    "view_all_projects": "View All Projects",
     "sponsors": "Our Sponsors",
     "view_all_sponsors": "View All Sponsors"
   },
@@ -159,12 +178,12 @@
     "current_status": "Current Status",
     "affiliate_link": "Affiliate Link",
     "status": {
-      "active": "Active",
-      "completed": "Completed",
-      "in_development": "In Development",
-      "in_progress": "In Progress",
-      "planned": "Planned",
-      "paused": "Paused"
+      "evaluation": "Evaluation",
+      "prototype": "Prototype",
+      "development": "Development",
+      "maintenance": "Maintenance",
+      "archived": "Archived",
+      "abandoned": "Abandoned"
     },
     "status_indicator": "Status indicator for"
   },
@@ -177,6 +196,13 @@
       "gold": "Gold",
       "silver": "Silver",
       "bronze": "Bronze"
+    },
+    "tier_explanations": "Tier Explanations",
+    "tier_description": {
+      "platinum": "Platinum sponsors provide the highest level of support and receive maximum visibility and exclusive benefits.",
+      "gold": "Gold sponsors provide strong support and receive featured placement and special recognition.",
+      "silver": "Silver sponsors provide valuable support and are recognized on our website and materials.",
+      "bronze": "Bronze sponsors provide basic support and are recognized as valued supporters of our projects."
     }
   },
   "common": {
