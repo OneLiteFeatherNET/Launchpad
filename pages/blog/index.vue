@@ -1,22 +1,30 @@
 <script setup lang="ts">
+import type { BlogPostListItem } from '~/types/blog';
 import ArticleCard from "~/components/blog/page/card/ArticleCard.vue";
-import {definePageMeta} from "#imports";
 import Top1 from "~/components/blog/page/top1/Top1.vue";
-const { locale, t } = useI18n()
+import { definePageMeta } from "#imports";
 
+const { t } = useI18n();
+const { fetchFeaturedBlogPost, fetchBlogPosts } = useBlog();
+
+// Define page metadata
 definePageMeta({
   title: 'blog.overview.title',
 });
-const { data: top1Article} = await useAsyncData('top1', () => {
-  // @ts-ignore
-  return queryCollection('blog_'+locale?.value || 'blog_de').order('pubDate', 'DESC').first();
+
+// Fetch the featured blog post (most recent)
+const { data: top1Article, pending: featuredLoading } = await fetchFeaturedBlogPost();
+
+// Fetch all blog posts
+const { data: allPostsData, pending: postsLoading } = await fetchBlogPosts();
+
+// Remove the first item as it is already displayed in Top1
+const allPosts = computed(() => {
+  if (!allPostsData.value) return [];
+  return allPostsData.value.slice(1);
 });
 
-const {data: allPostsData} = await useAsyncData('all-posts', () => {
-  // @ts-ignore
-  return queryCollection('blog_'+locale?.value || 'blog_de').order('pubDate', 'DESC').all();
-});
-const allPosts = allPostsData.value?.slice(1); // Remove the first item as it is already displayed in Top1
+// Set up head metadata
 useHead({
   link: [
     {
@@ -25,14 +33,18 @@ useHead({
       href: '/favicon.svg'
     }
   ]
-})
-const img = useImage()
+});
+
+// Prepare social media preview image
+const img = useImage();
 const previewSocial = img('images/logo.svg', {
   width: 1200,
   height: 630,
   format: 'webp',
   quality: 80,
 });
+
+// Set up SEO metadata
 useSeoMeta({
   description: t('blog.overview.description'),
   ogDescription: t('blog.overview.description'),
@@ -40,15 +52,17 @@ useSeoMeta({
   twitterTitle: t('blog.overview.title'),
   twitterDescription: t('blog.overview.description'),
   twitterImage: previewSocial
-})
+});
+
+// Set up Schema.org metadata
 useSchemaOrg({
   '@context': 'https://schema.org',
   '@type': 'Blog',
   name: t('blog.overview.title'),
   description: t('blog.overview.description'),
   url: previewSocial,
-  image: previewSocial, // Replace with your blog image URL
-})
+  image: previewSocial,
+});
 </script>
 
 <template>
