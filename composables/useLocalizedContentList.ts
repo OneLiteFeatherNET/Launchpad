@@ -2,13 +2,13 @@ import { useI18n } from 'vue-i18n'
 import { useContentService } from './content/useContentService'
 
 /**
- * Composable for fetching localized content from the content collections
+ * Composable for fetching a list of localized content from the content collections
  * @param baseCollectionName The base name of the collection without locale suffix
  * @param queryParams Optional query parameters for filtering the collection
  * @param providerName Optional name of the content provider to use
- * @returns Async data with the localized content
+ * @returns Async data with the localized content list
  */
-export function useLocalizedContent<T = any>(
+export function useLocalizedContentList<T = any>(
   baseCollectionName: string, 
   queryParams?: Record<string, any>,
   providerName?: string
@@ -20,16 +20,10 @@ export function useLocalizedContent<T = any>(
   const collectionName = computed(() => `${baseCollectionName}_${locale.value}`)
 
   // Fetch the data with the appropriate collection name
-  const { data, pending, error, refresh } = useAsyncData<T>(
-    `${baseCollectionName}-${locale.value}-${JSON.stringify(queryParams)}`,
+  const { data, pending, error, refresh } = useAsyncData<T[]>(
+    `${baseCollectionName}-list-${locale.value}-${JSON.stringify(queryParams)}`,
     async () => {
-      // If we're querying by slug, use the findBySlug method
-      if (queryParams?.slug) {
-        return await contentService.findBySlug<T>(collectionName.value, queryParams.slug)
-      }
-
-      // For other queries, use queryFirst with the query parameters
-      return await contentService.queryFirst<T>(collectionName.value, queryParams)
+      return await contentService.queryAll<T>(collectionName.value, queryParams)
     }
   )
 
