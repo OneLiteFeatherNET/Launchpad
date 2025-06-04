@@ -69,11 +69,11 @@ const getStatusColor = (status: string) => {
         </NuxtLinkLocale>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="flex overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-primary scrollbar-track-surface-variant -mx-4 px-4 sm:mx-0 sm:px-0 snap-x snap-mandatory" style="-webkit-overflow-scrolling: touch;">
         <div 
           v-for="(project, index) in projects" 
           :key="index"
-          class="bg-surface dark:bg-surface-dark rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105"
+          class="bg-surface dark:bg-surface-dark rounded-lg shadow-md overflow-hidden transition-transform hover:scale-105 flex-shrink-0 w-[85%] sm:w-[70%] md:w-[calc(50%-0.75rem)] lg:w-[calc(33.333%-0.75rem)] mr-3 snap-start"
         >
           <NuxtLinkLocale :to="`/projects/${project.namespace}:${project.key}`" class="block">
             <div class="relative h-48 overflow-hidden">
@@ -82,7 +82,7 @@ const getStatusColor = (status: string) => {
                 :src="project.image" 
                 :alt="project.name"
                 class="w-full h-full object-cover"
-                sizes="xs:100vw sm:100vw md:50vw lg:33vw xl:33vw"
+                sizes="xs:85vw sm:70vw md:50vw lg:33vw xl:33vw"
                 width="800"
                 height="400"
                 format="webp"
@@ -113,7 +113,7 @@ const getStatusColor = (status: string) => {
               </div>
             </div>
 
-            <div class="p-6">
+            <div class="p-4 sm:p-6">
               <h3 class="text-xl font-bold text-on-surface dark:text-on-surface-dark mb-2">{{ project.name }}</h3>
               <p class="text-on-surface-variant dark:text-on-surface-variant-dark mb-4">{{ project.description }}</p>
 

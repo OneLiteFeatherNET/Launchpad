@@ -1,5 +1,9 @@
 <script setup lang="ts">
-defineProps({
+import { useI18n } from 'vue-i18n';
+
+const { t } = useI18n();
+
+const props = defineProps({
   title: {
     type: String,
     required: true
@@ -9,6 +13,74 @@ defineProps({
     required: true,
     default: () => []
   }
+});
+
+// Sort timeline items by year (newest first)
+const sortedTimeline = computed(() => {
+  return [...props.timeline].sort((a, b) => {
+    // First compare by year
+    const yearA = parseInt(a.year) || 0;
+    const yearB = parseInt(b.year) || 0;
+
+    if (yearA !== yearB) {
+      return yearB - yearA; // Descending order (newest first)
+    }
+
+    // If years are the same, compare by month if available
+    if (a.month && b.month) {
+      return a.month.localeCompare(b.month);
+    }
+
+    // If one has a month and the other doesn't, the one with a month comes first
+    if (a.month) return -1;
+    if (b.month) return 1;
+
+    return 0;
+  });
+});
+
+// Get the 2 newest entries
+const newestEntries = computed(() => {
+  return sortedTimeline.value.slice(0, 2);
+});
+
+// Get the 2 oldest entries
+const oldestEntries = computed(() => {
+  return [...sortedTimeline.value].sort((a, b) => {
+    // First compare by year (oldest first)
+    const yearA = parseInt(a.year) || 0;
+    const yearB = parseInt(b.year) || 0;
+
+    if (yearA !== yearB) {
+      return yearA - yearB;
+    }
+
+    // If years are the same, compare by month if available
+    if (a.month && b.month) {
+      return b.month.localeCompare(a.month);
+    }
+
+    // If one has a month and the other doesn't, the one without a month comes first
+    if (a.month) return 1;
+    if (b.month) return -1;
+
+    return 0;
+  }).slice(0, 2);
+});
+
+// Create a middle entry that links to the full timeline
+const middleEntry = computed(() => {
+  return {
+    year: t('timeline.view_all_year'),
+    description: t('timeline.view_all_description'),
+    color: 'secondary',
+    isViewAllLink: true
+  };
+});
+
+// Combine the entries for display
+const displayEntries = computed(() => {
+  return [...newestEntries.value, middleEntry.value, ...oldestEntries.value];
 });
 </script>
 
@@ -24,12 +96,13 @@ defineProps({
 
           <!-- Timeline Items -->
           <div 
-            v-for="(item, index) in timeline" 
+            v-for="(item, index) in displayEntries" 
             :key="index"
             :class="[
               'p-6 md:p-6 sm:p-3 rounded-lg shadow-md relative overflow-hidden md:w-[45%] w-[calc(100%-60px)] mb-8 md:mb-8 sm:mb-6',
               index % 2 === 0 ? 'md:mr-auto md:ml-0' : 'md:ml-auto md:mr-0',
               'ml-16 sm:ml-16',
+              'relative z-1',
               item.color === 'secondary' 
                 ? 'bg-secondary-container dark:bg-secondary-container-dark' 
                 : `bg-${item.color}-container dark:bg-${item.color}-container-dark`
@@ -39,7 +112,7 @@ defineProps({
             <!-- Timeline dot -->
             <div 
               :class="[
-                'absolute w-4 h-4 sm:w-3 sm:h-3 bg-secondary dark:bg-secondary dark:opacity-90 rounded-full top-5 z-10',
+                'absolute w-4 h-4 sm:w-3 sm:h-3 bg-secondary dark:bg-secondary dark:opacity-90 rounded-full top-5 z-5',
                 index % 2 === 0 ? 'md:right-[-38px] md:left-auto' : 'md:left-[-38px] md:right-auto',
                 'left-[-36px] sm:left-[-36px]',
                 'dark:shadow-[0_0_5px_rgba(255,255,255,0.3)]'
@@ -56,7 +129,7 @@ defineProps({
               ]"
             ></div>
 
-            <div class="relative z-10">
+            <div class="relative z-1">
               <h3 :class="[
                 'text-xl font-bold mb-2',
                 item.color === 'secondary' 
@@ -75,6 +148,19 @@ defineProps({
                   class="inline-flex items-center text-sm font-medium text-secondary dark:text-secondary hover:underline"
                 >
                   {{ $t('timeline.read_more') }}
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </NuxtLink>
+              </div>
+
+              <!-- Link to full timeline page for the middle entry -->
+              <div v-if="item.isViewAllLink" class="mt-3">
+                <NuxtLink 
+                  to="/timeline"
+                  class="inline-flex items-center text-sm font-medium text-secondary dark:text-secondary hover:underline"
+                >
+                  {{ $t('timeline.view_all') }}
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                   </svg>
